@@ -12,3 +12,16 @@
   - npm i nuxt
     - vue가이드 사이트 : [https://kr.vuejs.org/v2/guide/index.html](https://kr.vuejs.org/v2/guide/index.html)
     - nuxt가이드 사이트 : [https://ko.nuxtjs.org/guide](https://ko.nuxtjs.org/guide)
+    - [nuxt 가이드북 (https://vue-nuxt.gitbook.io/nuxt/)](https://vue-nuxt.gitbook.io/nuxt/)
+* package.json, ```'scripts'``` 작성
+  ```javascript
+  {
+    "scripts": {
+      "dev": "nuxt",
+      "build": "nuxt build",
+      "start": "nuxt start"
+    }
+  }
+  ```
+* pages 폴더를 생성.
+  - index.vue 파일 생성 (첫 entry페이지)

@@ -4,7 +4,9 @@
   "description": "nuxt를 사용하여(typescript는 사용하지 않음) blog 만들기",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start"
   },
   "keywords": [
     "nuxt",
