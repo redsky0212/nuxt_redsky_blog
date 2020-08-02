@@ -1,0 +1,15 @@
+{
+  "name": "nuxt_redsky_blog",
+  "version": "0.0.1",
+  "description": "nuxt를 사용하여(typescript는 사용하지 않음) blog 만들기",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "nuxt",
+    "redsky_blog"
+  ],
+  "author": "redsky0212",
+  "license": "ISC"
+}
