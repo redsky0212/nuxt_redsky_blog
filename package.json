@@ -11,5 +11,8 @@
     "redsky_blog"
   ],
   "author": "redsky0212",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "nuxt": "^2.14.0"
+  }
 }
