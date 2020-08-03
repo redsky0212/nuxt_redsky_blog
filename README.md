@@ -23,5 +23,11 @@
     }
   }
   ```
+  - nuxt에서 제공하는 커맨드 명령어
+    - nuxt : 개발서버를 구동(HMR 기능 활성화)
+    - nuxt build : 배포목적 빌드(css, js압축 등)
+    - nuxt start : 배포모드로 서버구동(빌드 후에 사용)
+    - nuxt generate : 정적호스팅목적으로 앱 빌드(모든 라우트 html파일생성)
+
 * pages 폴더를 생성.
   - index.vue 파일 생성 (첫 entry페이지)
