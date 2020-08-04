@@ -37,7 +37,7 @@
   - 나머지 필요파일 생성
 
 * nuxt 환경설정 (nuxt.config.js)
-  <img src="./client/assets/images/common/nuxtConfig.png" width="60%" />
+  - <img src="./client/assets/images/common/nuxtConfig.png" width="60%" />
   - NUXTCONFIG.md 파일 참조.
 
 * client 폴더 하나로 정리하기
