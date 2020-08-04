@@ -41,5 +41,18 @@
   - [NUXTCONFIG.md 파일 참조.](https://github.com/redsky0212/nuxt_redsky_blog/blob/master/NUXTCONFIG.md)
 
 * client 폴더 하나로 정리하기
+  - 루트에 client폴더를 만든다 ```mkdir client```
   - nuxt.config.js에 srcDir옵션을 설정하여 만든 client폴더를 설정해 준다.
   - client폴더에 pages, assets 등 폴더를 이동한다.
+
+* Pug, Sass 사용
+  - Pug설치 : npm i -D pug pug-plain-loader (특별히 사용할 필요는 없는것 같음.)
+  - Sass설치 : npm i -D node-sass sass-loader (잘 사용하면 유용함.)
+    - 설치 후 ```lang="scss"``` 셋팅하고 scss 사용하는게 좋음.
+
+* style 사용 방법
+  - global스타일
+    - nuxt.config.js에 css: ['@/assets/sass/main.scss'] 설정 후 사용.
+  - local스타일
+    - 각 SPA 화면에 &lt;style lang="scss" ```scoped```&gt; 설정 후 각 페이지에서 사용.
+

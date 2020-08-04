@@ -6,6 +6,7 @@
       <nav>
         <nuxt-link to="/services"> 서비스 이름 </nuxt-link>
       </nav>
+      <img src="@/assets/images/common/nuxtConfig.png" alt="nuxt config테스트이미지" />
     </header>
   </div>
 </template>
