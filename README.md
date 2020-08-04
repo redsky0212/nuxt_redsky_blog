@@ -37,4 +37,9 @@
   - 나머지 필요파일 생성
 
 * nuxt 환경설정 (nuxt.config.js)
+  <img src="./client/assets/images/common/nuxtConfig.png" width="60%" />
   - NUXTCONFIG.md 파일 참조.
+
+* client 폴더 하나로 정리하기
+  - nuxt.config.js에 srcDir옵션을 설정하여 만든 client폴더를 설정해 준다.
+  - client폴더에 pages, assets 등 폴더를 이동한다.

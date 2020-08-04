@@ -70,10 +70,10 @@
   ```
 ---
 ### Pug / Sass 설정
-#### 들여쓰기에 민감하므로 settings에서 renderWhitespace값을 all로 하면 editor에서 들여쓰기를 눈으로 확인할 수 있다.
+#### Pug와Sass는 들여쓰기에 민감하므로 (VSCode)settings에서 renderWhitespace값을 all로 하면 editor에서 들여쓰기를 눈으로 확인할 수 있다.
 * nuxt.js는 확장자를 자동으로 추측, webpack에 프로세서 로더를 사용한다. 필요에따라 설치를 해서 사용한다.
-  - Pug (HTML 템플릿 엔진) npm i -D pug pug-plain-loader
-  - Sass (css 프리프로세서) npm i -D node-sass sass-loader
+  - Pug (HTML 템플릿 엔진) npm i -D pug pug-plain-loader (html을 좀 더 쉽게 코딩할 수 있는 것... 굳이 필요할까? 싶음)
+  - Sass (css 프리프로세서) npm i -D node-sass sass-loader (scss는 사용하면 훨씬편함.)
 * sass를 설치하면 scss를 사용할 수 있다. scss는 sass의 좀 더 큰범위 상위개념(scss를 추천).
 * 설치한 프로세서 Vue컴포넌트에서 `lang`을 이용하여 사용하기
 ```html
@@ -92,6 +92,7 @@ export default {
 }
 </script>
 
+// sass보다는 scss사 사용하기 더 편함.
 <style lang="sass">
 .container
   background-color: #101010

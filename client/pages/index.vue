@@ -20,3 +20,11 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.container {
+  h2 {
+    color: #ff0000;
+  }
+}
+</style>
