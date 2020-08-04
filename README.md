@@ -35,3 +35,6 @@
 * pages 폴더를 생성.
   - index.vue 파일 생성 (첫 entry페이지)
   - 나머지 필요파일 생성
+
+* nuxt 환경설정 (nuxt.config.js)
+  - NUXTCONFIG.md 파일 참조.
