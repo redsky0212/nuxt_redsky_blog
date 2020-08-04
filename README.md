@@ -38,7 +38,7 @@
 
 * nuxt 환경설정 (nuxt.config.js)
   - <img src="./client/assets/images/common/nuxtConfig.png" width="60%" />
-  - NUXTCONFIG.md 파일 참조.
+  - [NUXTCONFIG.md 파일 참조.](https://github.com/redsky0212/nuxt_redsky_blog/blob/master/NUXTCONFIG.md)
 
 * client 폴더 하나로 정리하기
   - nuxt.config.js에 srcDir옵션을 설정하여 만든 client폴더를 설정해 준다.
