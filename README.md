@@ -90,3 +90,8 @@
     }
   }
   ```
+  - [ESLint설정관련 참조 url](https://velog.io/@kyusung/eslint-config-2)
+  - .eslintrc.js파일에서 lint관련 추가,빼기를 적용하여 적절하게 lint를 적용한다.
+
+* IE 호환 설정
+  - IE브라우저 호환을 위한 설정
