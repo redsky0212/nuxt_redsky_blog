@@ -219,3 +219,18 @@
   svg path, svg rect { fill: #00d0ff; }
   </style>
   ```
+  - SPA모드일때 로딩 인디케이트 설정 ([SpinKit 사용](https://tobiasahlin.com/spinkit/))
+  ```javascript
+  nuxt.config.js
+  export default {
+    mode: 'spa',
+    loadingIndicator: {
+      name: 'folding-cube',
+      color: '#fff',
+      background: 'rgba(255,255,255,0.12)',
+    }
+  }
+  // 설정 가능한 로딩 인디케이터 name
+  // circle, cube-grid, fading-circle, folding-cube, chasing-dots, nuxt, pulse,
+  // rectangle-bounce, rotating-plane, three-bounce, wandering-cubes
+  ```
