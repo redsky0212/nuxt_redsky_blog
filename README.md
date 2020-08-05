@@ -1,5 +1,6 @@
 # nuxt, (typescript X), eslint, 블로그(Vue 2.0, Nuxt 2)
 ## 프로젝트 구성 순서 및 설치 내용.
+*  프로젝트 폴더 생성.
 * npm init
 * .gitignore 파일 생성하여 제외목록 작성.
   - ignore 해야할 목록을 알려주는 사이트 [https://www.gitignore.io/](https://www.gitignore.io/)
