@@ -1,4 +1,5 @@
 module.exports = {
+  mode: 'spa',
   srcDir: 'client/',
   build: {
     extend(config, ctx) {
@@ -11,5 +12,10 @@ module.exports = {
         })
       }
     },
+  },
+  loadingIndicator: {
+    name: 'folding-cube',
+    color: '#fff',
+    background: 'rgba(255,255,255,0.12)',
   },
 }
