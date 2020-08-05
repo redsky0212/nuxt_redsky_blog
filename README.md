@@ -9,7 +9,18 @@
   - git add .
   - git commit -m '첫 프로젝트 생성'
   - git remote add origin https://github.com/redsky0212/nuxt_redsky_blog.git
-* nuxt 설치 (```Vue2, Vue Router, Vuex, Vue Server Renderer, vue-meta, vue-loader, babel-loader, webpack 포함```)
+* nuxt설치의 다양한 방법
+  - npx로 설치(npx create-nuxt-app <프로젝트명>)
+  - vue-cli로설치
+    - cli설치 npm i -g @vue/cli @vue/cli-init
+    - vue init nuxt-community/express-template 프로젝트명
+    - cd 프로젝트명
+    - npm i
+  - offline 설치
+    - git clone https://github.com/nuxt-community/starter-template 에서 미리 클론 받아서 프로젝트 폴더로 옮겨놓는다.
+    - 이 상태에서 vue cli로 오프라인 설치를 한다. vue init starter-template 프로젝트명 --offline
+  - Nuxt.js 단일설치 (npm i nuxt)
+* nuxt 단일 설치 (```Vue2, Vue Router, Vuex, Vue Server Renderer, vue-meta, vue-loader, babel-loader, webpack 포함됨```)
   - npm i nuxt
     - vue가이드 사이트 : [https://kr.vuejs.org/v2/guide/index.html](https://kr.vuejs.org/v2/guide/index.html)
     - nuxt가이드 사이트 : [https://ko.nuxtjs.org/guide](https://ko.nuxtjs.org/guide)
