@@ -14,6 +14,7 @@
         width="60%"
       />
     </header>
+    <div class="spinner"></div>
   </div>
 </template>
 

@@ -1,6 +1,7 @@
 module.exports = {
   mode: 'spa',
   srcDir: 'client/',
+  css: ['@/assets/sass/global.scss'],
   build: {
     extend(config, ctx) {
       if (ctx.isDev && ctx.isClient) {
