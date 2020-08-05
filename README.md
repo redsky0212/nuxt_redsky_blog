@@ -60,7 +60,7 @@
 * Pug, Sass 사용
   - Pug설치 : npm i -D pug pug-plain-loader (특별히 사용할 필요는 없는것 같음.)
   - Sass설치 : npm i -D node-sass sass-loader (잘 사용하면 유용함.)
-    - 설치 후 ```lang="scss"``` 셋팅하고 scss 사용하는게 좋음.
+    - 설치 후 ```lang="scss"``` 셋팅하고 사용. sass보다 scss 사용하는게 더 좋음.
 
 * style 사용 방법
   - global스타일
@@ -77,6 +77,15 @@
   - 설치 : ```npm i -D babel-eslint eslint eslint-config-prettier eslint-loader eslint-plugin-vue eslint-plugin-prettier prettier```
   - .eslintrc.js 파일 생성 ```touch .eslintrc.js``` eslint관련 설정을 코딩한다.
   - package.json의 "scripts"에 lint, lintfix 스크립트를 추가해서 lint를 실행 할 수 있게 적용한다.
+  ```javascript
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "lintfix": "eslint --fix --ext .js,.vue --ignore-path .gitignore ."
+  },
+  ```
 
 * ESLint 를 webpack을 통해 핫 리로드 모드 활성화 하기. (npm run dev 실행동안 저장시 lint를 확인한다.)
   - nuxt.config.js에 다음 소스 추가.
