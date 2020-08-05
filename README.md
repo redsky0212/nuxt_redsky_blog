@@ -148,6 +148,12 @@
   - 컴포넌트에서 사용방법
     - 시작 : ```this.$nuxt.$loading.start()```
     - 종료 : ```this.$nuxt.$loading.finish()```
+  - 설정가능한 로딩 메서드
+    - start() 필수 : 페이지 라우터 변경
+    - finish() 필수 : 라우트 로드 완료 되고, 불러올 때 콜백
+    - fail() 선택 : 페이지 라우트 실패
+    - increase(num) 선택 : 컴포넌트 호출하는 동안 실행 콜백
+
   - 커스텀 로딩 컴포넌트 설정
   ```javascript
   nuxt.config.js
