@@ -1,7 +1,14 @@
 module.exports = {
   mode: 'spa',
   srcDir: 'client/',
-  css: ['@/assets/sass/global.scss'],
+  css: [
+    '@/assets/sass/global.scss',
+    '~assets/css/bootstrap.min.css',
+    '~assets/css/all.min.css',
+    '~assets/css/ace.min.css',
+    '~assets/font-awesome/4.5.0/css/font-awesome.min.css',
+    '~assets/css/prettify.min.css',
+  ],
   build: {
     extend(config, ctx) {
       if (ctx.isDev && ctx.isClient) {
