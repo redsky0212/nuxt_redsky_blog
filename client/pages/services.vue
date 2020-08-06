@@ -14,7 +14,7 @@ export default {
   data() {
     return {
       title: '서비스 페이지 타이틀',
-    }
+    };
   },
-}
+};
 </script>
