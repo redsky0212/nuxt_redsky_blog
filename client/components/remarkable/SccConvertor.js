@@ -1,15 +1,15 @@
 const SccConvertor = {
   sccType: {
-    head:       'scc-page-head',
-    headDesc:   'scc-page-head-desc',
-    h3:         'scc-h3',
-    h3Green:    'scc-h3-green',
-    h3Red:      'scc-h3-red',
-    h3Blue:     'scc-h3-blue',
-    h3Purple:   'scc-h3-purple',
-    p:          'scc-p',
-    widget:     'scc-widget',
-    widgetTitle:'scc-widget-title',
+    head: 'scc-page-head',
+    headDesc: 'scc-page-head-desc',
+    h3: 'scc-h3',
+    h3Green: 'scc-h3-green',
+    h3Red: 'scc-h3-red',
+    h3Blue: 'scc-h3-blue',
+    h3Purple: 'scc-h3-purple',
+    p: 'scc-p',
+    widget: 'scc-widget',
+    widgetTitle: 'scc-widget-title',
     widgetBody: 'scc-widget-body',
   },
   render(str) {
@@ -60,13 +60,13 @@ const SccConvertor = {
       end = '</div></div></div></div>';
     }
 
-    return {front, end};
+    return { front, end };
   },
   setPageHTML(text, type) {
     const tagObj = this.selectTag(type);
 
-    const re = new RegExp('\{\{(\s*' + type + ')\s*\}\}', 'g');
-    const re2 = new RegExp('\{\{(\/?)(\s*' + type + ')\s*\}\}', 'g');
+    const re = new RegExp('{{(s*' + type + ')s*}}', 'g');
+    const re2 = new RegExp('{{(/?)(s*' + type + ')s*}}', 'g');
 
     let front = text.match(re);
     if (Array.isArray(front)) {

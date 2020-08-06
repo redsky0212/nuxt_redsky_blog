@@ -8,11 +8,7 @@
       <nav>
         <nuxt-link to="/services">서비스 이름</nuxt-link>
       </nav>
-      <img
-        src="@/assets/images/common/nuxtConfig.png"
-        alt="nuxt config테스트이미지"
-        width="60%"
-      />
+      <img src="@/assets/images/common/nuxtConfig.png" alt="nuxt config테스트이미지" width="60%" />
     </header>
     <div class="spinner"></div>
   </div>

@@ -1,22 +1,12 @@
 <template>
   <ul class="nav nav-list">
     <li class="" v-for="(gnbItem, index) in menuList" :key="index">
-      <a
-        v-if="gnbItem.link === ''"
-        href="#"
-        :class="{ 'dropdown-toggle': gnbItem.sub.length > 0 }"
-        @click="onMenuClick"
-      >
+      <a v-if="gnbItem.link === ''" href="#" :class="{ 'dropdown-toggle': gnbItem.sub.length > 0 }" @click="onMenuClick">
         <i :class="['menu-icon', gnbItem.iconNm]"></i>
         <span class="menu-text">{{ gnbItem.name }}</span>
         <b v-if="gnbItem.sub.length > 0" class="arrow fa fa-angle-down"></b>
       </a>
-      <router-link
-        v-else
-        :to="gnbItem.link"
-        :class="{ 'dropdown-toggle': gnbItem.sub.length > 0 }"
-        @click.native="onMenuClick"
-      >
+      <router-link v-else :to="gnbItem.link" :class="{ 'dropdown-toggle': gnbItem.sub.length > 0 }" @click.native="onMenuClick">
         <i :class="['menu-icon', gnbItem.iconNm]"></i>
         <span class="menu-text">{{ gnbItem.name }}</span>
         <b v-if="gnbItem.sub.length > 0" class="arrow fa fa-angle-down"></b>
@@ -24,11 +14,7 @@
 
       <b class="arrow"></b>
 
-      <sub-menu
-        v-if="gnbItem.sub.length > 0"
-        :sub-data="gnbItem.sub"
-        @rcvMenuClick="onMenuClick"
-      />
+      <sub-menu v-if="gnbItem.sub.length > 0" :sub-data="gnbItem.sub" @rcvMenuClick="onMenuClick" />
     </li>
   </ul>
 </template>
@@ -79,7 +65,7 @@ export default {
           el = this;
         do {
           i = matches.length;
-          while (--i >= 0 && matches.item(i) !== el) {}
+          // while (--i >= 0 && matches.item(i) !== el) {}
         } while (i < 0 && (el = el.parentElement));
         return el;
       };

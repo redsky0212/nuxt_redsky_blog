@@ -10,7 +10,7 @@ module.exports = {
           test: /\.(js|vue)$/,
           loader: 'eslint-loader',
           exclude: /(node_modules)/,
-        })
+        });
       }
     },
   },
@@ -19,4 +19,4 @@ module.exports = {
     color: '#fff',
     background: 'rgba(255,255,255,0.12)',
   },
-}
+};
