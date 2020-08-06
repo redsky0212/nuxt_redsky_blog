@@ -18,11 +18,7 @@
 
       <b class="arrow"></b>
 
-      <sub-menu
-        v-if="item.sub.length > 0"
-        :sub-data="item.sub"
-        @rcvMenuClick="onMenuClick"
-      />
+      <sub-menu v-if="item.sub.length > 0" :sub-data="item.sub" @rcvMenuClick="onMenuClick" />
     </li>
   </ul>
 </template>
@@ -33,10 +29,10 @@ export default {
   props: ['subData'],
   methods: {
     onMenuClick(event) {
-      this.$emit('rcvMenuClick', event)
+      this.$emit('rcvMenuClick', event);
     },
   },
-}
+};
 </script>
 
 <style></style>

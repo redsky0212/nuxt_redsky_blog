@@ -74,6 +74,7 @@
 * ESLint, Prettier 사용
   - ESLint : 코드를 깔끔하게 유지.
   - Prettier : 코드 포매터.
+    - [prettier전체 스키마 링크](https://json.schemastore.org/prettierrc)
   - 설치 : ```npm i -D babel-eslint eslint eslint-config-prettier eslint-loader eslint-plugin-vue eslint-plugin-prettier prettier```
   - .eslintrc.js 파일 생성 ```touch .eslintrc.js``` eslint관련 설정을 코딩한다.
   - package.json의 "scripts"에 lint, lintfix 스크립트를 추가해서 lint를 실행 할 수 있게 적용한다.

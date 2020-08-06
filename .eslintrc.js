@@ -7,11 +7,7 @@ module.exports = {
   parserOptions: {
     parser: 'babel-eslint',
   },
-  extends: [
-    'eslint:recommended',
-    'plugin:vue/recommended',
-    'plugin:prettier/recommended',
-  ],
+  extends: ['eslint:recommended', 'plugin:vue/recommended', 'plugin:prettier/recommended'],
   plugins: ['vue'],
   rules: {
     // semi: [2, 'never'],
@@ -23,10 +19,13 @@ module.exports = {
     'prettier/prettier': [
       'error',
       {
+        trailingComma: 'es5',
+        printWidth: 200,
         semi: true,
         endOfLine: 'auto',
         singleQuote: true,
+        tabWidth: 2,
       },
     ],
   },
-}
+};

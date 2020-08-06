@@ -24,9 +24,9 @@ export default {
     return {
       title: '프로젝트 메인 타이틀',
       test: 'vi테스트',
-    }
+    };
   },
-}
+};
 </script>
 
 <style lang="scss" scoped>
