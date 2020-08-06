@@ -14,11 +14,12 @@ module.exports = {
   ],
   plugins: ['vue'],
   rules: {
-    semi: [2, 'never'],
+    // semi: [2, 'never'],
     'vue/singleline-html-element-content-newline': 'off',
     'vue/html-self-closing': 'off',
     'no-console': 'off',
     'vue/max-attributes-per-line': 'off',
+    'vue/require-prop-types': 'off',
     'prettier/prettier': [
       'error',
       {

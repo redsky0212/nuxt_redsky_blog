@@ -1,0 +1,80 @@
+<template>
+  <ul class="nav nav-list">
+    <li class="" v-for="(gnbItem, index) in menuList" :key="index">
+      <a v-if="gnbItem.link===''" href="#" :class="{'dropdown-toggle':gnbItem.sub.length > 0}" @click="onMenuClick">
+        <i :class="['menu-icon', gnbItem.iconNm]"></i>
+        <span class="menu-text">{{gnbItem.name}}</span>
+        <b v-if="gnbItem.sub.length > 0" class="arrow fa fa-angle-down"></b>
+      </a>
+      <router-link v-else :to="gnbItem.link" :class="{'dropdown-toggle':gnbItem.sub.length > 0}" @click.native="onMenuClick">
+        <i :class="['menu-icon', gnbItem.iconNm]"></i>
+        <span class="menu-text">{{gnbItem.name}}</span>
+        <b v-if="gnbItem.sub.length > 0" class="arrow fa fa-angle-down"></b>
+      </router-link>
+
+      <b class="arrow"></b>
+
+      <sub-menu v-if="gnbItem.sub.length > 0" :sub-data="gnbItem.sub" @rcvMenuClick="onMenuClick" />
+    </li>
+  </ul>
+</template>
+
+<script>
+import SubMenu from '@/components/sideBar/SubMenu.vue';
+
+export default {
+  components: {
+    SubMenu,
+  },
+  props: ['menuList'],
+  data() {
+    return {
+      routes: this.$nuxt.$router.options.routes,
+    };
+  },
+  computed: {
+    name() {
+      return this.$store.state.sideBar.sideName;
+    }
+  },
+  methods: {
+    onMenuClick(event) {
+      const target = event.currentTarget;
+      const parent = target.parentElement;
+      // 우선 선택 되어있는 메뉴를 모두 선택삭제.
+      const elem = document.querySelectorAll('.nav-list li.active');
+      elem.forEach(element => {
+        element.classList.remove('active');
+      });
+      // 현재 선택한 메뉴 선택추가.
+      parent.classList.add('active');
+      // 메뉴의 최상단에 active넣기
+      target.closest('.nav-list > li').classList.add('active');
+    },
+    onChange() {
+      this.$store.dispatch('sideBar/signUp');
+    },
+  },
+  mounted() {
+    console.log(this.$nuxt.$router.options.routes);
+    // element closest polyfill
+    if (window.Element && !Element.prototype.closest) {
+      Element.prototype.closest =
+      function(s) {
+        var matches = (this.document || this.ownerDocument).querySelectorAll(s),
+            i,
+            el = this;
+        do {
+          i = matches.length;
+          while (--i >= 0 && matches.item(i) !== el) {};
+        } while ((i < 0) && (el = el.parentElement));
+        return el;
+      };
+    }
+  }
+}
+</script>
+
+<style>
+
+</style>

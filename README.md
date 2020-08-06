@@ -113,6 +113,7 @@
   ```
   - [ESLint설정관련 참조 url](https://velog.io/@kyusung/eslint-config-2)
   - .eslintrc.js파일에서 lint관련 추가,빼기를 적용하여 적절하게 lint를 적용한다.
+  - [eslint standard rules 기본 설정 관련 url](https://github.com/standard/eslint-config-standard/blob/master/eslintrc.json)
 
 * IE 호환 설정
   - PostCSS, Autoprefixer를 이용하여 IE호환 설정을 할 수 있다.
