@@ -237,3 +237,8 @@
   // circle, cube-grid, fading-circle, folding-cube, chasing-dots, nuxt, pulse,
   // rectangle-bounce, rotating-plane, three-bounce, wandering-cubes
   ```
+* 디렉토리 구조
+  - 레이아웃/페이지/컴포넌트
+    - layouts : 앱의 시작점, 레이아웃 설정 &lt;nuxt /&gt;포함
+    - pages : 앱 페이지
+    - components : 앱 컴포넌트
