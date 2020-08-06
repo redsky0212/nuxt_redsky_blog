@@ -114,7 +114,7 @@
   - [ESLint설정관련 참조 url](https://velog.io/@kyusung/eslint-config-2)
   - .eslintrc.js파일에서 lint관련 추가,빼기를 적용하여 적절하게 lint를 적용한다.
   - [eslint standard rules 기본 설정 관련 url](https://github.com/standard/eslint-config-standard/blob/master/eslintrc.json)
-    - eslint 설정값 중 [2, 'never'] 이런식의 값 중에 첫번째는 (0,1,2)(none, warning, error)를나타냄. [참조url](eslint.org/docs/user-guide/configuring#configuring-rules)
+    - eslint 설정값 중 [2, 'never'] 이런식의 값 중에 첫번째는 (0,1,2)(none, warning, error)를나타냄. [참조url](https://eslint.org/docs/user-guide/configuring#configuring-rules)
 
 * IE 호환 설정
   - PostCSS, Autoprefixer를 이용하여 IE호환 설정을 할 수 있다.
