@@ -238,7 +238,17 @@
   // rectangle-bounce, rotating-plane, three-bounce, wandering-cubes
   ```
 * 디렉토리 구조
-  - 레이아웃/페이지/컴포넌트
+  - 화면관련 디렉토리 (레이아웃/페이지/컴포넌트)
     - layouts : 앱의 시작점, 레이아웃 설정 &lt;nuxt /&gt;포함
     - pages : 앱 페이지
     - components : 앱 컴포넌트
+  - nuxt전체 기본 디렉토리
+    - layouts : 앱을 구성하는 레이아웃
+    - pages : 앱 내부의 모든 화면 vue파일
+    - components : 앱 내부의 vue 컴포넌트
+    - assets : 컴파일 되지 않는 정적 에셋(css, js, sass 등)을 포함
+    - plugins : vue 앱이 생성되기 전 실행하고 싶은 js 플러그인 포함
+    - store : Vue Store 파일을 포함하는 디렉토리(index.js 파일이 생성되면 자동 활성화)
+    - static : 정적 파일들을 포함하는 디렉토리, 내부 파일들은 루트패스(/)에 연결
+    - middleware : 페이지 또는 레이아웃을 렌더링 하기 전에 실행 할 수 있는 사용자 정의 함수 포함
+
