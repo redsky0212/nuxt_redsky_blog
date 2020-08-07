@@ -280,3 +280,17 @@
        };
       </script>
       ```
+
+* 라우팅 (nuxt에서는 pages폴더의 디렉토리 구조가 라우터url이 된다.)
+  - 다이나믹 라우트
+    - routes(경로) : /music-info/:id
+    - 실제 pages 내부 컴포넌트 경로 : music-info/_id.vue
+    ```javascript
+    <template>
+      <header>
+        <!-- $route.params.id -->
+        <h1>음악 ID : {{ $route.params.id }}</h1>
+      </header>
+    </template>
+    ```
+  
