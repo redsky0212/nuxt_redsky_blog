@@ -318,7 +318,7 @@
   - 프로그래밍 방식의 라우터
     - this.$router.push();
   - 라우터 매개변수 검사
-    - 컴포넌트 안에서 validate()메서드로 검사 가능.
+    - 컴포넌트 안에서 `validate()`메서드로 검사 가능.
     ```javascript
     // /books/10 의 숫자만 가능하도록 검사 한다면
     export default {
