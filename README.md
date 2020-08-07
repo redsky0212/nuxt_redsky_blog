@@ -284,13 +284,22 @@
 * 라우팅 (nuxt에서는 pages폴더의 디렉토리 구조가 라우터url이 된다.)
   - 다이나믹 라우트
     - routes(경로) : /music-info/:id
-    - 실제 pages 내부 컴포넌트 경로 : music-info/_id.vue
+    - 실제 pages 내부 컴포넌트 경로 : music-info/_id.vue (언더바를 붙임)
     ```javascript
     <template>
       <header>
+        <!-- vue파일에서는 $route의 params속성으로 매개변수에 접근할 수 있다. -->
         <!-- $route.params.id -->
         <h1>음악 ID : {{ $route.params.id }}</h1>
       </header>
     </template>
     ```
-  
+  - 라우터 링크
+    - ```&ltnuxt-link&gt;```의 ```to```속성으로 링크를 적용할 수 있다.
+    ```html
+    <nuxt-link to="/services">서비스</nuxt-link>
+    ```
+    - 고정된 path가 아닌경우 v-bind:to 또는 :to 속성을 사용해서 동적 라우팅을 할 수 있다.
+    ```html
+    <nuxt-link :to="'/products/' + product.id">{{ product.name }}<nuxt-link>
+    ```
