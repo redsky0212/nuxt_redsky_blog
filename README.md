@@ -303,3 +303,28 @@
     ```html
     <nuxt-link :to="'/products/' + product.id">{{ product.name }}<nuxt-link>
     ```
+  - 링크 활성화 css 클래스
+    - 링크활성화 css 이름 : .nuxt-link-active { ... }
+    - 링크활성화 "완전일치모드(exact)"는 : .nuxt-link-exact-active {...}
+    - 링크활성화 클래스명을 변경하고자 할때는 nuxt.config.js에서 변경가능
+    ```javascript
+    export default {
+      router: {
+        linkActiveClass: 'link-active',
+        linkExactActiveClass: 'link-exact-active',
+      }
+    }
+    ```
+  - 프로그래밍 방식의 라우터
+    - this.$router.push();
+  - 라우터 매개변수 검사
+    - 컴포넌트 안에서 validate()메서드로 검사 가능.
+    ```javascript
+    // /books/10 의 숫자만 가능하도록 검사 한다면
+    export default {
+      validate(data) {
+        // 라우트 매개변수 ID값이 숫자인 경우만 허용
+        return /^\d+$/.test(this.$route.params.id);
+      }
+    }
+    ```
