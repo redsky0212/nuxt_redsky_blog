@@ -330,3 +330,5 @@
     ```
   - 중첩된 라우트 처리
     - 자식 라우트`<nuxt-child />` 처리를 위해서는 부모라우팅 vue파일과 같은 이름의 디렉토리가 있어야 한다. 그 안에 자식라우터vue페이지들이 있다.
+* 라우팅 트랜지션
+  - [참조URL : https://vue-nuxt.gitbook.io/nuxt/routing-transition](https://vue-nuxt.gitbook.io/nuxt/routing-transition)
