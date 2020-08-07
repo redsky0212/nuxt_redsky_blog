@@ -19,6 +19,8 @@
   "author": "redsky0212",
   "license": "ISC",
   "dependencies": {
+    "bootstrap": "^3.3.6",
+    "jquery": "^2.1.4",
     "nuxt": "^2.14.0"
   },
   "devDependencies": {
