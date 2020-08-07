@@ -10,16 +10,24 @@ module.exports = {
     '~assets/font-awesome/4.5.0/css/font-awesome.min.css',
     '~assets/css/prettify.min.css',
   ],
+  head: {
+    bodyAttrs: {
+      class: 'no-skin',
+    },
+  },
   plugins: [
+    { src: '@/plugins/js/bootstrap.min.js', mode: 'client' },
     { src: '@/plugins/js/ace-elements.min.js', mode: 'client' },
     { src: '@/plugins/js/ace.min.js', mode: 'client' },
     { src: '@/plugins/js/prettify.min.js', mode: 'client' },
   ],
   build: {
-    vendor: ['jquery', 'bootstrap'],
+    vendor: ['jquery'],
     plugins: [
       new webpack.ProvidePlugin({
         $: 'jquery',
+        jQuery: 'jquery',
+        'window.jQuery': 'jquery',
       }),
     ],
     extend(config, ctx) {
