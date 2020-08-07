@@ -251,4 +251,14 @@
     - store : Vue Store 파일을 포함하는 디렉토리(index.js 파일이 생성되면 자동 활성화)
     - static : 정적 파일들을 포함하는 디렉토리, 내부 파일들은 루트패스(/)에 연결
     - middleware : 페이지 또는 레이아웃을 렌더링 하기 전에 실행 할 수 있는 사용자 정의 함수 포함
-
+  - layouts의 기본 호출 파일은 default.vue파일이다.
+  - 사용자 정의 layout적용하기.
+    - layouts에 원하는 특정 layout 파일을 만들고
+    - 만든 사용자 layout파일을 적용하고자 할때는 페이지vue파일에 아래와 같이 layout을 등록한다.
+    ```javascript
+    <script>
+      export default {
+        layout: 레이아웃 파일명,
+      };
+    </script>
+    ```
