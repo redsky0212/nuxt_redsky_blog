@@ -295,7 +295,7 @@
     </template>
     ```
   - 라우터 링크
-    - ```&ltnuxt-link&gt;```의 ```to```속성으로 링크를 적용할 수 있다.
+    - ```<nuxt-link>```의 ```to```속성으로 링크를 적용할 수 있다.
     ```html
     <nuxt-link to="/services">서비스</nuxt-link>
     ```
