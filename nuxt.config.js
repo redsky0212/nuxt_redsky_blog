@@ -22,6 +22,9 @@ module.exports = {
     { src: '@/plugins/js/ace.min.js', mode: 'client' },
     { src: '@/plugins/js/prettify.min.js', mode: 'client' },
   ],
+  router: {
+    base: '/redsky/devil/',
+  },
   build: {
     vendor: ['jquery'],
     publicPath: process.env.NODE_ENV === 'production' ? 'http://hyun0238.dothome.co.kr/redsky/devil/' : '/nuxt',
