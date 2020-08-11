@@ -11,6 +11,7 @@ module.exports = {
     '~assets/css/prettify.min.css',
   ],
   head: {
+    meta: [{ charset: 'utf-8' }, { 'http-equiv': 'content-language', content: 'ko' }],
     bodyAttrs: {
       class: 'no-skin',
     },
@@ -23,6 +24,7 @@ module.exports = {
   ],
   build: {
     vendor: ['jquery'],
+    publicPath: process.env.NODE_ENV === 'production' ? 'http://hyun0238.dothome.co.kr/redsky/devil/' : '/',
     plugins: [
       new webpack.ProvidePlugin({
         $: 'jquery',

@@ -183,7 +183,7 @@
               </div>
             </div>
             <hr />
-            <h3>Vue CLI로 구성하기</h3>
+
             <h4>Vue CLI란?</h4>
             <p>
               Vue CLI 는 커맨드라인 인터페이스 기반의 Vue 프로젝트 생성 도구입니다. Vue 애플리케이션을 개발할 때 기본적인 폴더 구조, 라이브러리 등을 설정해줍니다.<br />
@@ -192,7 +192,7 @@
             <div class="widget-box">
               <div class="widget-header widget-header-flat">
                 <h4 class="smaller">
-                  Vue CLI 로 환경 설정
+                  Vue CLI 로 설치하기
                 </h4>
               </div>
 
