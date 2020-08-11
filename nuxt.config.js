@@ -11,7 +11,10 @@ module.exports = {
     '~assets/css/prettify.min.css',
   ],
   head: {
+    titleTemplate: '%s - redsky',
+    // 한글 깨짐현상 관련 적용
     meta: [{ charset: 'utf-8' }, { 'http-equiv': 'content-language', content: 'ko' }],
+    // body태그에 class 추가
     bodyAttrs: {
       class: 'no-skin',
     },
@@ -23,10 +26,12 @@ module.exports = {
     { src: '@/plugins/js/prettify.min.js', mode: 'client' },
   ],
   router: {
-    base: '/redsky/devil/',
+    // 빌드 후 router url이 특정 디렉토리 일때 추가.
+    base: process.env.NODE_ENV === 'production' ? '/redsky/devil/' : '',
   },
   build: {
     vendor: ['jquery'],
+    // 빌드 시 루트경로 적용
     publicPath: process.env.NODE_ENV === 'production' ? 'http://hyun0238.dothome.co.kr/redsky/devil/' : '/nuxt',
     plugins: [
       new webpack.ProvidePlugin({
