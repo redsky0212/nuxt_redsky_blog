@@ -19,6 +19,7 @@ module.exports = {
     'vue/require-prop-types': 'off',
     'vue/attributes-order': 'off',
     'vue/multiline-html-element-content-newline': 'off',
+    'no-debugger': 'off',
     'prettier/prettier': [
       'error',
       {

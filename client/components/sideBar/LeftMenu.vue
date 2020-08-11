@@ -39,6 +39,7 @@ export default {
   },
   methods: {
     onMenuClick(event) {
+      // TODO: 수정작업필요.
       const target = event.currentTarget;
       const parent = target.parentElement;
       // 우선 선택 되어있는 메뉴를 모두 선택삭제.
@@ -50,6 +51,28 @@ export default {
       parent.classList.add('active');
       // 메뉴의 최상단에 active넣기
       target.closest('.nav-list > li').classList.add('active');
+
+      // const target: HTMLElement = event.currentTarget as HTMLElement;
+      // const parent: HTMLElement = target.parentElement as HTMLElement;
+      const ulElem = parent.querySelector('ul.submenu');
+      if (parent.nodeName === 'LI' && ulElem) {
+        if (parent.className === 'open') {
+          // parent.className = '';
+          // ulElem.className += ' nav-hide';
+          // ulElem.style.display = 'none';
+          // ulElem.style.height = '0';
+          // ulElem.style.maxHeight = '0';
+        } else {
+          parent.className = 'open';
+          ulElem.className += ' nav-show';
+          ulElem.style.display = 'block';
+          ulElem.style.height = 'auto';
+          ulElem.style.maxHeight = '500px';
+        }
+        ulElem.style.transitionProperty = 'max-height';
+        ulElem.style.transitionDuration = '1s';
+        ulElem.style.transitionTimingFunction = 'ease-in';
+      }
     },
     onChange() {
       this.$store.dispatch('sideBar/signUp');
