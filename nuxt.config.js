@@ -24,7 +24,7 @@ module.exports = {
   ],
   build: {
     vendor: ['jquery'],
-    publicPath: process.env.NODE_ENV === 'production' ? 'http://hyun0238.dothome.co.kr/redsky/devil/' : '/',
+    publicPath: process.env.NODE_ENV === 'production' ? 'http://hyun0238.dothome.co.kr/redsky/devil/' : '/nuxt',
     plugins: [
       new webpack.ProvidePlugin({
         $: 'jquery',
