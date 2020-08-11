@@ -334,4 +334,32 @@
   - [참조URL : https://vue-nuxt.gitbook.io/nuxt/routing-transition](https://vue-nuxt.gitbook.io/nuxt/routing-transition)
 
 * 빌드
+  - 특정 디렉토리에서 서비스 해야 할 경우 router, base속성을 셋팅합니다.
+  ```javascript
+  export default {
+    router: {
+      base: '/특정 디렉토리/',
+    }
+  }
+  ```
+  - 특정 디렉토리가 자주 변경이 있을 경우 cli명령어를 이용하여 변수 처리하여 실행한다.
+  ```javascript
+  // nuxt.js v2 는 cross-env패키지가 기본 설치 되어 있다.
+  nuxt.config.js
+  const BASE_DIR = process.env.BASE_DIR || '';
+  export default {
+    router: { base: BASE_DIR }
+  }
+
+  package.json
+  {
+    "scripts": {
+      "generate": "cross-env BASE_DIR=$BASE_DIR nuxt generate"
+    }
+  }
+
+  // $BASE_DIR 변수를 사용하여 CLI명령어에서 사용할 수 있다.
+  CLI명령어 사용
+  $ BASE_DIR=<특정_디렉토리> npm run generate
+  ```
 * 배포
