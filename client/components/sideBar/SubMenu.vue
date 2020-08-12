@@ -4,7 +4,7 @@
     <li v-for="(item, index) in subData" :key="index">
       <!-- open, active -->
 
-      <a v-if="item.link === ''" href="#" @click="onMenuClick">
+      <a v-if="item.link === ''" href="javascript:void(0)" @click="onMenuClick">
         <!-- dropdown-toggle -->
         <i class="menu-icon fa fa-caret-right"></i>
         {{ item.name }}

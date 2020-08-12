@@ -339,6 +339,14 @@
                             <a href="https://vue-nuxt.gitbook.io/nuxt">nuxt 가이드 북</a>
                           </b>
                         </li>
+                        <li>
+                          <b>
+                            nuxt단일설치 시 과정 정리 참고 :
+                            <a href="https://github.com/redsky0212/nuxt_redsky_blog">
+                              https://github.com/redsky0212/nuxt_redsky_blog
+                            </a>
+                          </b>
+                        </li>
                       </ul>
                     </div>
                   </div>

@@ -46,13 +46,13 @@ export default {
         if (itemArr[depth - 1] === '') {
           obj[itemArr[depth - 1]] = {
             name: 'Home',
-            iconNm: 'fas fa-folder-open',
+            iconNm: 'fab fa-codepen',
             link: '/',
             sub: {},
           };
           menu.unshift({
             name: 'Home',
-            iconNm: 'fas fa-folder-open',
+            iconNm: 'fab fa-codepen',
             link: '/',
             sub: [],
           });

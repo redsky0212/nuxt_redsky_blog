@@ -14,8 +14,8 @@
       <div class="navbar-header pull-left">
         <router-link to="/" class="navbar-brand">
           <small>
-            <i class="fab fa-vuejs"></i>
-            Guide
+            <i class="fas fa-archive"></i>
+            Redsky Library
           </small>
         </router-link>
       </div>

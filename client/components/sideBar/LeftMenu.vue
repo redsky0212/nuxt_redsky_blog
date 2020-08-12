@@ -1,7 +1,7 @@
 <template>
   <ul class="nav nav-list">
     <li class="" v-for="(gnbItem, index) in menuList" :key="index">
-      <a v-if="gnbItem.link === ''" href="#" :class="{ 'dropdown-toggle': gnbItem.sub.length > 0 }" @click="onMenuClick">
+      <a v-if="gnbItem.link === ''" href="javascript:void(0)" :class="{ 'dropdown-toggle': gnbItem.sub.length > 0 }" @click="onMenuClick">
         <i :class="['menu-icon', gnbItem.iconNm]"></i>
         <span class="menu-text">{{ gnbItem.name }}</span>
         <b v-if="gnbItem.sub.length > 0" class="arrow fa fa-angle-down"></b>
@@ -56,14 +56,16 @@ export default {
       // const parent: HTMLElement = target.parentElement as HTMLElement;
       const ulElem = parent.querySelector('ul.submenu');
       if (parent.nodeName === 'LI' && ulElem) {
-        if (parent.className === 'open') {
-          // parent.className = '';
-          // ulElem.className += ' nav-hide';
-          // ulElem.style.display = 'none';
-          // ulElem.style.height = '0';
-          // ulElem.style.maxHeight = '0';
+        if (parent.className === 'open' || parent.className === 'open active') {
+          parent.className = '';
+          ulElem.classList.remove('nav-show');
+          ulElem.className += ' nav-hide';
+          ulElem.style.display = 'none';
+          ulElem.style.height = '0';
+          ulElem.style.maxHeight = '0';
         } else {
           parent.className = 'open';
+          ulElem.classList.remove('nav-hide');
           ulElem.className += ' nav-show';
           ulElem.style.display = 'block';
           ulElem.style.height = 'auto';
