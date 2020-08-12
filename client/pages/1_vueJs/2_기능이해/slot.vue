@@ -5,7 +5,7 @@
         Slot
         <small>
           <i class="ace-icon fa fa-angle-double-right"></i>
-          Slot 이해하기.
+          Slot 이해하기. 참조 : kr.vuejs.org/v2/guide/components-slot.html
         </small>
       </h1>
     </div>
