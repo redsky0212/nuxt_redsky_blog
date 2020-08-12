@@ -14,6 +14,7 @@ module.exports = {
     titleTemplate: '%s - redsky',
     // 한글 깨짐현상 관련 적용
     meta: [{ charset: 'utf-8' }, { 'http-equiv': 'content-language', content: 'ko' }],
+    link: [{ rel: 'icon', type: 'image/png', href: '/assets/images/common/GLChart.ico' }],
     // body태그에 class 추가
     bodyAttrs: {
       class: 'no-skin',
