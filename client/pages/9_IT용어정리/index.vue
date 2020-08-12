@@ -19,10 +19,51 @@
               <div class="media-body">
                 <div>
                   <h4 class="media-heading">
-                    <a href="#" class="blue">Media heading</a>
+                    <a href="#" class="blue">폴리필(polyfill)</a>
                   </h4>
                 </div>
-                <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis ...</p>
+                <p>특정 기능이 지원되지 않는 브라우저를 위해 사용할 수 있는 js라이브러리, 코드 조각, 플러그인 따위로 정상동작 하게끔 대안 구현 행위</p>
+                <ul>
+                  <li class="text-success">
+                    <b><a href="https://github.com/afarkas/html5shiv" target="_blank">html5shiv</a></b>
+                    : HTML5의 섹셔닝 요소(예: header, nav)를 지원하지 않는 브라우저를 위한 라이브러리.
+                  </li>
+                  <li class="text-success">
+                    <b><a href="http://www.mediaelementjs.com/" target="_blank">mediaelement.js</a></b>
+                    : HTML5의 video, audio 요소들을 모든 브라우저에서 하나의 파일로 같은 UI를 제공하기 위한 라이브러리.
+                  </li>
+                  <li class="text-success">
+                    <b><a href="https://github.com/UmbraEngineering/Placeholder" target="_blank">Placeholder</a></b>
+                    : HTML5의 플레이스홀더(placeholder)의 지원을 통일하기 위해서 제공하는 라이브러리.
+                  </li>
+                  <li class="text-success">
+                    <b><a href="http://ericleads.com/h5validate/" target="_blank">h5Validate</a></b>
+                    : HTML5의 폼검증 기능을 구현하기 위해 제공하는 라이브러리.
+                  </li>
+                  <li class="text-success">
+                    <b><a href="http://selectivizr.com/" target="_blank">selectivizr</a></b>
+                    : CSS3의 의사클래스(pseudo-class)와 속성 선택자들을 IE6~8에서 지원하기 위한 라이브러리.
+                  </li>
+                  <li class="text-success">
+                    <b><a href="http://css3pie.com/" target="_blank">css3pie</a></b>
+                    : CSS3의 boder-radius와 box-shadow, liner-gradient를 IE6~9 브라우저에서 지원하기 위한 라이브러리.
+                  </li>
+                  <li class="text-success">
+                    <b><a href="https://github.com/scottjehl/Respond" target="_blank">Respond</a></b>
+                    : 반응형 웹의 필수 속성중에 하나인 미디어쿼리를 IE6~8에서 지원하기 위한 라이브러리.
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="media search-media">
+              <div class="media-body">
+                <div>
+                  <h4 class="media-heading">
+                    <a href="#" class="blue">심(shim)</a>
+                  </h4>
+                </div>
+                <p>땜빵해주는...(틈 메우는)</p>
+                <p>프로그램 API에서 중간에 매개변수를 가로 채 변경하거나 조작 처리하는 작은 라이브러리.</p>
               </div>
             </div>
           </div>
