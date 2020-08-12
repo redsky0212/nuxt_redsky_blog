@@ -20,6 +20,7 @@ module.exports = {
     'vue/attributes-order': 'off',
     'vue/multiline-html-element-content-newline': 'off',
     'no-debugger': 'off',
+    'vue/html-closing-bracket-newline': 'off',
     'prettier/prettier': [
       'error',
       {
