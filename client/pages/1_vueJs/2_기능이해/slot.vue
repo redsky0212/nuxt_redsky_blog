@@ -16,14 +16,23 @@
         <div class="row">
           <div class="col-xs-12">
             <h3>Slot은 부모 컴포넌트에서 자식 컴포넌트의 element를 구성하여 넘겨줘 뿌려주는 기능이다.</h3>
-            <p>
-              Vue, Typescript 를 이용하여 작업중에 멍청하게 몰랐던 부분들, 오랫동안 고민한것들을 기억하기 위한 용도로 정리 한다.
-            </p>
+            <div class="alert alert-info hidden-sm hidden-xs">
+              <button type="button" class="close" data-dismiss="alert">
+                <i class="ace-icon fa fa-times"></i>
+              </button>
+              Vuejs 2.6.0 버전에서는
+              <span class="red bolder">slot 과 slot-scope</span>
+              을 대체하는 새로운 통합문법
+              <span class="blue bolder">(v-slot)</span>
+              이 도입되었습니다.
+              <span class="red bolder">slot 과 slot-scope</span>
+              이 아직 삭제된건 아니지만 앞으로 사라질 예정 입니다.
+            </div>
 
             <div class="widget-box">
               <div class="widget-header widget-header-flat">
                 <h4 class="smaller">
-                  기본 방법(기본적으로 부모의 inner html은 자식 컴포넌트의 slot으로 들어간다. )
+                  (기존방식) slot기본(기본적으로 부모의 inner html이 자식 컴포넌트의 slot으로 들어간다. )
                 </h4>
               </div>
 
@@ -69,7 +78,7 @@
             <div class="widget-box">
               <div class="widget-header widget-header-flat">
                 <h4 class="smaller">
-                  named-slot (자식 컴포넌트의 slot에 name을 정해주고 부모에서 그 name으로 태그를 넣어주는 방법)
+                  (기존방식) named-slot (자식 컴포넌트의 slot에 name을 정해주고 부모에서 그 name으로 태그를 넣어주는 방법)
                 </h4>
               </div>
 
@@ -134,7 +143,7 @@
             <div class="widget-box">
               <div class="widget-header widget-header-flat">
                 <h4 class="smaller">
-                  slot-scope (자식 컴포넌트에서 데이터를 부모로 넘겨줘서 내부 element에서 그 데이터를 사용하는 방법)
+                  (기존방식) slot-scope (자식 컴포넌트에서 데이터를 부모로 넘겨줘서 내부 element에서 그 데이터를 사용하는 방법)
                 </h4>
               </div>
 
