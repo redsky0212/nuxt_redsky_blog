@@ -31,6 +31,7 @@ module.exports = {
     base: process.env.NODE_ENV === 'production' ? '/redsky/devil/' : '',
   },
   build: {
+    analyze: true,
     vendor: ['jquery'],
     // 빌드 시 루트경로 적용
     publicPath: process.env.NODE_ENV === 'production' ? 'http://hyun0238.dothome.co.kr/redsky/devil/' : '/nuxt',

@@ -5,7 +5,7 @@
         Vue.js 환경설정
         <small>
           <i class="ace-icon fa fa-angle-double-right"></i>
-          프로젝트 구성 &amp; nuxt설치 방법 3가지 &amp; ETC
+          프로젝트 구성 &amp; nuxt설치, 다양한 방법 &amp; ETC
         </small>
       </h1>
     </div>
