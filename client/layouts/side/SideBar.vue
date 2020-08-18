@@ -1,5 +1,6 @@
 <template>
-  <div id="sidebar" class="sidebar responsive ace-save-state sidebar-fixed">
+  <!-- <div id="sidebar" class="sidebar responsive ace-save-state sidebar-fixed"> -->
+  <div id="sidebar" class="sidebar responsive ace-save-state">
     <left-menu :menu-list="menuList" />
 
     <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">

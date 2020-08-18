@@ -5,7 +5,7 @@
         현대카드 앱 3.0
         <small>
           <i class="ace-icon fa fa-angle-double-right"></i>
-          현대카드 앱 3.0 (2019.01.02? ~ 2020.08.31)
+          현대카드 앱 3.0 (2019.01.02 ~ 2020.08.31)
         </small>
       </h1>
     </div>
