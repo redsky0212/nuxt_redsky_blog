@@ -40,7 +40,8 @@
                         <li>
                           <b>참조글</b><br />
                           <a href="https://vuejs-kr.github.io/jekyll/update/2017/01/13/vuejs-plugin/" target="_blank">VueJs플러그인 제작기</a><br />
-                          <a href="https://jjong-factory.tistory.com/12" target="_blank">Vuejs + Cordova + OnsenUi 로 하이브리드 어플 개발기</a>
+                          <a href="https://jjong-factory.tistory.com/12" target="_blank">Vuejs + Cordova + OnsenUi 로 하이브리드 어플 개발기</a><br />
+                          만들어진 UI 참조:<a href="https://github.com/ElemeFe/element/blob/dev/src/index.js" target="_blank">element 컴포넌트</a>
                         </li>
                       </ul>
                     </div>
