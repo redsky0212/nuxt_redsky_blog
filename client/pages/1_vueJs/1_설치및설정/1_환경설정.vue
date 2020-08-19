@@ -59,6 +59,14 @@
                               <i class="ace-icon fa fa-caret-right blue"></i>
                               <a href="https://www.jetbrains.com/ko-kr/webstorm/" target="_blank">WebStorm</a> 또는 <a href="https://code.visualstudio.com/" target="_blank">VSCode</a> 추천.
                             </li>
+                            <li>
+                              <i class="ace-icon fa fa-caret-right blue"></i>
+                              VSCode에서 사용하면 좋은 extensions<br />
+                              * Auto Close Tag<br />
+                              * Import Cost<br />
+                              * GitLens<br />
+                              * TODO Highlight<br />
+                            </li>
                           </ul>
                         </li>
                       </ul>
