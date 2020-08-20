@@ -5,7 +5,7 @@
         현대카드 앱 3.0
         <small>
           <i class="ace-icon fa fa-angle-double-right"></i>
-          현대카드 앱 3.0 (2019.01.02 ~ 2020.08.31)
+          현대카드 앱 3.0 (2019.01.02 ~ 2020.08.31) 8개월
         </small>
       </h1>
     </div>
@@ -15,7 +15,7 @@
         <!-- PAGE CONTENT BEGINS -->
         <div class="row">
           <div class="col-xs-12">
-            <h3>Slot은 부모 컴포넌트에서 자식 컴포넌트의 element를 구성하여 넘겨줘 뿌려주는 기능이다.</h3>
+            <h3>Slot은 부</h3>
             <div class="alert alert-info hidden-sm hidden-xs">
               <button type="button" class="close" data-dismiss="alert">
                 <i class="ace-icon fa fa-times"></i>
@@ -32,7 +32,7 @@
             <div class="widget-box">
               <div class="widget-header widget-header-flat">
                 <h4 class="smaller">
-                  (기존방식) slot기본(기본적으로 부모의 inner html이 자식 컴포넌트의 slot으로 들어간다. )
+                  프로젝트 느낌, 경험 메모 단순 나열
                 </h4>
               </div>
 
@@ -42,31 +42,90 @@
                     <div class="col-sm-12">
                       <ul>
                         <li>
-                          <b>부모 컴포넌트</b>
-                          <pre class="prettyprint linenums">
-&lt;BaseButton&gt;
-  &lt;span&gt;저장하기&lt;/span&gt;
-&lt;/BaseButton&gt;</pre
-                          >
+                          <b>VueJs 첫 프로젝트</b>
                         </li>
                         <li>
-                          <b>자식 컴포넌트 (BaseButton.vue)</b>
-                          <pre class="prettyprint linenums">
-&lt;button&gt;
-  &lt;slot&gt;기본값&lt;/slot&gt;
-&lt;/button&gt;</pre
-                          >
+                          <b>코로나</b>
                         </li>
                         <li>
-                          <b>결과</b>
-                          <pre class="prettyprint linenums">
-&lt;button&gt;
-  &lt;span&gt;저장하기&lt;/span&gt;
-&lt;/button&gt;</pre
-                          >
+                          <b>VDI업무pc, MAC장비</b>
+                          <p>vdi업무pc는 그나마 빨리 지급이 되지만 mac은 2주걸림.</p>
                         </li>
                         <li>
-                          <b>자식 컴포넌트의 slot태그는 없어지고 그 자리에 부모 컴포넌트에서 적어 준 element가 그대로 들어간다.</b>
+                          <b>모바일 메모리 이슈</b>
+                          <p>하이브리드 앱 개발시 ios웹뷰에서 메모리가 1기가가 넘어가면 웹뷰가 초기화 되버리는 현상이 있었음.</p>
+                        </li>
+                        <li>
+                          <b>웹 접근성</b>
+                          <p>웹 접근성을 고려한 컴포넌트 코딩, 프로젝트 개발 시작전에 미리 인지 하고 있어야 하며 필수 사항임.</p>
+                        </li>
+                        <li>
+                          <b>TypeScript적용</b>
+                          <p>TypeScript코딩 시 javascript로 했을때와 차이, 장단점?</p>
+                          <p>vue-property-decorator, class, 데코레이터 방식의 코딩</p>
+                        </li>
+                        <li>
+                          <b>ssr은 고려되지 않음.</b>
+                        </li>
+                        <li>
+                          <b></b>
+                        </li>
+                        <li>
+                          <b></b>
+                        </li>
+                        <li>
+                          <b></b>
+                        </li>
+                        <li>
+                          <b></b>
+                        </li>
+                        <li>
+                          <b></b>
+                        </li>
+                        <li>
+                          <b></b>
+                        </li>
+                        <li>
+                          <b></b>
+                        </li>
+                        <li>
+                          <b></b>
+                        </li>
+                        <li>
+                          <b></b>
+                        </li>
+                        <li>
+                          <b></b>
+                        </li>
+                        <li>
+                          <b></b>
+                        </li>
+                        <li>
+                          <b></b>
+                        </li>
+                        <li>
+                          <b></b>
+                        </li>
+                        <li>
+                          <b></b>
+                        </li>
+                        <li>
+                          <b></b>
+                        </li>
+                        <li>
+                          <b></b>
+                        </li>
+                        <li>
+                          <b></b>
+                        </li>
+                        <li>
+                          <b></b>
+                        </li>
+                        <li>
+                          <b></b>
+                        </li>
+                        <li>
+                          <b></b>
                         </li>
                       </ul>
                     </div>
