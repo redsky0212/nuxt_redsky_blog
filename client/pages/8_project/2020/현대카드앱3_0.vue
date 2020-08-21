@@ -66,9 +66,30 @@
                         </li>
                         <li>
                           <b>ssr은 고려되지 않음.</b>
+                          <p>ssr, csr에 따른 seo(search engine optimization)를 생각해볼 필요가 있음.</p>
+                          <p>SPA장단점</p>
+                          <ul>
+                            <li>자연스러운 사용자경험(UX)</li>
+                            <li>async API를통한 필요한 리소스만 부분적으로 로딩(성능)</li>
+                            <li>서버에서의 템플릿연산을 클라이언트로 분산(성능)</li>
+                            <li>컴포넌트형태 개발 용이(생산성)</li>
+                            <li>mobile app 개발 시 API로 공통화 설계 가능</li>
+                            <li>JS파일의 번들링으로 인해 사이즈가 커져서 초기 로딩 구동 속도가 느림(webpack code splitting으로 개선가능)</li>
+                            <li>검색엔진최적화(SEO)가 어려움(SSR, nuxt등으로 해결가능)</li>
+                            <li>nuxt사용 시 nodejs필요</li>
+                            <li>보안이슈 (비즈니스 로직이 프론트에 있을때) (프론트 비즈니스 로직의 최소화)</li>
+                          </ul>
+                          <p>MPA (ssr) 장단점</p>
+                          <ul>
+                            <li>검색엔진최적화 (SEO)</li>
+                            <li>페이지 이동시 깜빡임 (UX)</li>
+                            <li>페이지 이동시 불필요한 탬플릿도 중복해서 로딩 (성능)</li>
+                            <li>서버 렌더링에 따른 부하(성능)</li>
+                            <li>모바일 앱 개발 시 추가적인 백엔드 작업 필요(생산성)</li>
+                          </ul>
                         </li>
                         <li>
-                          <b></b>
+                          <b> </b>
                         </li>
                         <li>
                           <b></b>
