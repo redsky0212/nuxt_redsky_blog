@@ -87,63 +87,6 @@
                         <li>
                           <b> </b>
                         </li>
-                        <li>
-                          <b></b>
-                        </li>
-                        <li>
-                          <b></b>
-                        </li>
-                        <li>
-                          <b></b>
-                        </li>
-                        <li>
-                          <b></b>
-                        </li>
-                        <li>
-                          <b></b>
-                        </li>
-                        <li>
-                          <b></b>
-                        </li>
-                        <li>
-                          <b></b>
-                        </li>
-                        <li>
-                          <b></b>
-                        </li>
-                        <li>
-                          <b></b>
-                        </li>
-                        <li>
-                          <b></b>
-                        </li>
-                        <li>
-                          <b></b>
-                        </li>
-                        <li>
-                          <b></b>
-                        </li>
-                        <li>
-                          <b></b>
-                        </li>
-                        <li>
-                          <b></b>
-                        </li>
-                        <li>
-                          <b></b>
-                        </li>
-                        <li>
-                          <b></b>
-                        </li>
-                        <li>
-                          <b></b>
-                        </li>
-                        <li>
-                          <b></b>
-                        </li>
-                        <li>
-                          <b></b>
-                        </li>
                       </ul>
                     </div>
                   </div>
@@ -154,7 +97,7 @@
             <div class="widget-box">
               <div class="widget-header widget-header-flat">
                 <h4 class="smaller">
-                  (기존방식) named-slot (자식 컴포넌트의 slot에 name을 정해주고 부모에서 그 name으로 태그를 넣어주는 방법)
+                  API사용 구조 정리
                 </h4>
               </div>
 
@@ -164,35 +107,83 @@
                     <div class="col-sm-12">
                       <ul>
                         <li>
-                          <b>부모 컴포넌트</b>
+                          <b>화면부분</b>
                           <pre class="prettyprint linenums">
-&lt;div&gt;
-  &lt;BaseModal&gt; &lt;!-- 자식 컴포넌트 호출 --&gt;
-    &lt;template slot="header"&gt;  &lt;!-- template 태그는 현재태그를 화면에 보이고싶지 않을때 사용 --&gt;
-      &lt;h1&gt;모달 제목&lt;/h1&gt;
-      &lt;button&gt;닫기&lt;/button&gt;
-    &lt;/template&gt;
-    &lt;p slot="content"&gt;모달의 컨텐츠입니다.&lt;/p&gt;
-  &lt;/BaseModal&gt;
-&lt;/div&gt;</pre
+&lt;template&gt;
+ &lt;div&gt;API 사용 구조 정리&lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import {Vue, Component, Mixins, Watch, Ref} from 'vue-property-decorator';
+// api
+import {Action, State, namespace} from 'vuex-class';
+const Customer = namespace('common/customer');
+import {IResponseError} from '@/API/commonInterface';
+import {CustomerActions} from '@/store/Common/customer/actionConstructor';
+import {SCTAI000} from '@/API/Common/interface/customer';
+
+@Component({
+  name: '파일명',
+  components: {
+    컴포넌트1,
+  }
+})
+export default class 클래스명 extends Mixins(BaseviewMixin) {
+  @Ref('term-full-popup') private readonly termFullPopup!: ITermFullPopup;
+  @Customer.State('iqryTpList') private iqryTpList!: [];
+  @Customer.Action(CustomerActions.SCT000)
+  private regActionAPI!: (data: SCT000.Request) => Promise&lt;SCT000.Response&gt;;
+
+  private onClick() {
+    const form: SCT000.Request = {
+      a: '',
+      b: '',
+    };
+    this.regActionAPI(form)
+    .then((res) => {
+      // 성공
+    })
+    .catch((err: IResponseError) => {
+      // 실패
+    });
+  }
+}
+&lt;/script&gt;</pre
                           >
                         </li>
                         <li>
-                          <b>자식 컴포넌트 (BaseModal.vue)</b>
+                          <b>Action file</b>
                           <pre class="prettyprint linenums">
-&lt;div&gt;
-  &lt;header&gt;
-    &lt;slot name="header"&gt;
-      &lt;strong&gt;기본 타이틀&lt;/strong&gt;
-      &lt;button&gt;기본 버튼&lt;/button&gt;
-    &lt;/slot&gt;
-  &lt;/header&gt;
-  &lt;div&gt;
-    &lt;slot name="content"&gt;
-      &lt;p&gt;기본 콘텐츠&lt;/p&gt;
-    &lt;/slot&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</pre
+import {
+  SCT000,
+} from '@/API/Common/interface/customer';
+
+export const enum CustomerActions {
+  SCT000 = 'SCT000',
+}
+
+const actionConstructor: ActionConstructor&lt;CustomerState, CustomerActions&gt; = (api) => {
+  return {
+    [CustomerActions.SCT000](store, data: SCT000.Request) {
+      return new Promise((resolve, reject) => {
+        const reqConfig = makeRequestConfig&lt;SCT000.Request&lt;true&gt;&gt;(
+          URL.SCT000,
+          data,
+        );
+        api.instance.request&lt;IResponse&lt;SCT000.Response&lt;true&gt;&gt;&gt;(reqConfig)
+        .then(
+          // 추가
+          resolve(res.data);
+        )
+        .catch((error: IResponseError) => {
+          // 에러추가
+          reject(error);
+        });
+      })
+    }
+  };
+};
+
+export default actionConstructor;</pre
                           >
                         </li>
                         <li>
