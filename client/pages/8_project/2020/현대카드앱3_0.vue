@@ -15,18 +15,14 @@
         <!-- PAGE CONTENT BEGINS -->
         <div class="row">
           <div class="col-xs-12">
-            <h3>Slot은 부</h3>
+            <h3>현대카드 3.0</h3>
             <div class="alert alert-info hidden-sm hidden-xs">
               <button type="button" class="close" data-dismiss="alert">
                 <i class="ace-icon fa fa-times"></i>
               </button>
-              Vuejs 2.6.0 버전에서는
-              <span class="red bolder">slot 과 slot-scope</span>
-              을 대체하는 새로운 통합문법
-              <span class="blue bolder">(v-slot)</span>
-              이 도입되었습니다.
-              <span class="red bolder">slot 과 slot-scope</span>
-              이 아직 삭제된건 아니지만 앞으로 사라질 예정 입니다.
+              <span class="blue bolder">
+                Vue-CLI, VueJs 2, TypeScript, vue-property-decorator, tslint vuex, vuex-class, vue-router, axios
+              </span>
             </div>
 
             <div class="widget-box">
