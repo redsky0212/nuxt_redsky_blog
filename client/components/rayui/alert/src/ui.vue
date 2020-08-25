@@ -25,12 +25,12 @@ export default {
     };
   },
   methods: {
-    show: (title, message) => {
+    show(title, message) {
       this.isShowModal = true;
       this.title = title;
       this.message = message;
     },
-    close: () => {
+    close() {
       this.isShowModal = false;
     },
   },
