@@ -85,6 +85,8 @@ methods: {
                           <span>캐싱을 잘 활용하면 빠른 성능을 기대할 수 있으므로 적절히 computed를 사용 하도록 하자.</span>
                           <br />
                           <span>물론 특정 함수를 실행하여 검증을 거쳐야 하는 로직이 있다면 Computed로 사용하면 안됨.</span>
+                          <br />
+                          함수 선언은 화살표함수로 하면 this가 달라지므로 <span class="red bolder">일반function()</span> 형태로 선언한다.
                         </li>
                       </ul>
                     </div>

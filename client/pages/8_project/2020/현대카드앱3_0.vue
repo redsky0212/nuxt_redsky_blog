@@ -153,6 +153,14 @@ export default class 클래스명 extends Mixins(BaseviewMixin) {
                         <li>
                           <b>Action file</b>
                           <pre class="prettyprint linenums">
+import URL from '@/API/Common/url';
+import {IRequest, IResponse, IResponseError} from '@/API/commonInterface';
+import makeRequestConfig, { RequestMethod } from '@/store/request';
+import { ActionConstructor } from '@/store/actionConstructor';
+import setServerTime from '@/store/response';
+import commit from '@/store/commit';
+import Moment from 'moment';
+
 import {
   SCT000,
 } from '@/API/Common/interface/customer';
@@ -170,10 +178,12 @@ const actionConstructor: ActionConstructor&lt;CustomerState, CustomerActions&gt;
           data,
         );
         api.instance.request&lt;IResponse&lt;SCT000.Response&lt;true&gt;&gt;&gt;(reqConfig)
-        .then(
-          // 추가
+        .then((res) => {
+          // 관련소스추가
+          const {bdy} = res.data;
+          commit(store, CustomerMutations.set어쩌고, bdy);
           resolve(res.data);
-        )
+        })
         .catch((error: IResponseError) => {
           // 에러추가
           reject(error);
@@ -187,146 +197,59 @@ export default actionConstructor;</pre
                           >
                         </li>
                         <li>
-                          <b>결과</b>
+                          <b>API/url.ts</b>
                           <pre class="prettyprint linenums">
-&lt;div&gt;
-  &lt;header&gt;
-    &lt;h1&gt;모달 제목&lt;/h1&gt;
-    &lt;button&gt;닫기&lt;/button&gt;
-  &lt;/header&gt;
-  &lt;div&gt;
-    &lt;p&gt;모달의 컨텐츠입니다.&lt;/p&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</pre
-                          >
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+const CUSTOMER_PREFIX = '/web/sct';
 
-            <div class="widget-box">
-              <div class="widget-header widget-header-flat">
-                <h4 class="smaller">
-                  (기존방식) slot-scope (자식 컴포넌트에서 데이터를 부모로 넘겨줘서 내부 element에서 그 데이터를 사용하는 방법)
-                </h4>
-              </div>
-
-              <div class="widget-body">
-                <div class="widget-main">
-                  <div class="row">
-                    <div class="col-sm-12">
-                      <ul>
-                        <li>
-                          <b>자식 컴포넌트</b>
-                          <ul class="list-unstyled">
-                            <li>
-                              <i class="ace-icon fa fa-caret-right blue"></i>
-                              자식 컴포넌트의 childData라는 데이터 변수를 아래와 같이 hello라는 이름으로 넘겨준다.
-                            </li>
-                          </ul>
-                          <pre class="prettyprint linenums">
-&lt;slot name="header" :hello="childData" :close="close"&gt;
-    &lt;strong&gt;기본 타이틀&lt;/strong&gt;
-    &lt;button&gt;기본 버튼&lt;/button&gt;
-&lt;/slot&gt;</pre
-                          >
-                        </li>
-                        <li>
-                          <b>부모 컴포넌트</b>
-                          <ul class="list-unstyled">
-                            <li>
-                              <i class="ace-icon fa fa-caret-right blue"></i>
-                              자식 컴포넌트에서 넘겨 받은 데이터를 slot-scop으로 아무 이름이나 정하여 적어준 다음 아무이름.childData 와 같은 방법으로 사용한다.
-                            </li>
-                          </ul>
-                          <pre class="prettyprint linenums">
-&lt;div&gt;
-  &lt;BaseModal&gt;
-    &lt;template slot="header" slot-scope="slotProps"&gt;
-      &lt;h1&gt;모달 제목&lt;/h1&gt;
-      &lt;button @click="slotProps.close"&gt;닫기&lt;/button&gt;
-      &#123;&#123; slotProps &#125;&#125; &lt;!-- { hello: 'hello' } --&gt;
-    &lt;/template&gt;
-    &lt;p slot="content"&gt;모달의 컨텐츠입니다.&lt;/p&gt;
-  &lt;/BaseModal&gt;
-&lt;/div&gt;</pre
-                          >
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="widget-box">
-              <div class="widget-header widget-header-flat">
-                <h4 class="smaller">
-                  ★(중요) v-slot (2.6.0부터 추가됨. 되도록이면 이 방법으로 사용하도록 권장.)
-                </h4>
-              </div>
-
-              <div class="widget-body">
-                <div class="widget-main">
-                  <div class="row">
-                    <div class="col-sm-12">
-                      <ul>
-                        <li>
-                          <b>자식 컴포넌트는 변화 없음.</b>
-                        </li>
-                        <li>
-                          <b>부모 컴포넌트</b>
-                          <ul class="list-unstyled">
-                            <li>
-                              <i class="ace-icon fa fa-caret-right blue"></i>
-                              named-slot, slot-scope을 모두 합쳐놓은 방법
-                            </li>
-                            <li>
-                              <i class="ace-icon fa fa-caret-right blue"></i>
-                              named-slot처럼 사용할때는 v-slot:header 나 축약된 형식 #header 이렇게 사용.
-                            </li>
-                            <li>
-                              <i class="ace-icon fa fa-caret-right blue"></i>
-                              slot-scope처럼 자식데이터를 넘겨받아 사용하고자 할때는 #header="slotProps" 이렇게 사용.
-                            </li>
-                            <li>
-                              <i class="ace-icon fa fa-caret-right blue"></i>
-                              '[]'을 사용하여 이름을 변수로 가져와 쓸 수 있다. #[변수명]
-                            </li>
-                          </ul>
-                          <pre class="prettyprint linenums">
-&lt;template&gt;
-  &lt;div&gt;
-    &lt;BaseModal&gt;
-      &lt;template #header="slotProps"&gt; &lt;!-- #으로 단축해서 사용 --&gt;
-        &lt;h1&gt;모달 제목&lt;/h1&gt;
-        &lt;button @click="slotProps.close"&gt;닫기&lt;/button&gt;
-        &#123;&#123; slotProps &#125;&#125; &lt;!-- { hello: 'hello' } --&gt;
-      &lt;/template&gt;
-      &lt;template #[slotName]&gt; &lt;!-- 동적인 슬롯명 사용 --&gt;
-        &lt;p&gt;모달의 컨텐츠입니다.&lt;/p&gt;
-      &lt;/template&gt;
-    &lt;/BaseModal&gt;
-  &lt;/div&gt;
-&lt;/template&gt;
-
-&lt;script&gt;
-import BaseModal from '~/components/BaseModal.vue'
 export default {
-  components: {
-    BaseModal
-  },
-  data() {
+  SCT000: `${CUSTOMER_PREFIX}/aa/SCT000.do`,
+}</pre
+                          >
+                        </li>
+                        <li>
+                          <b>API/commonInterface.ts</b>
+                          <pre class="prettyprint linenums">
+import { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
+import { Indexable } from '@/types';
+
+export type IRequest&lt;DataType extends Indexable|void = Indexable&gt; = DataType;
+
+export interface IResponseHeader {
+  rsltCd: string;
+  rsltMsg: string;
+}
+
+export interface IResponse&lt;DataType extends Indexable|void = Indexable&gt; {
+  hdr: IResponseHeader;
+  bdy: DataType;
+}
+
+export interface IResponseError extends AxiosError {
+  hdr?: IResponseHeader;
+}
+export class ResponseError implements IResponseError {
+  public name: string = 'Error';
+  public message: string = 'Error';
+  public config: AxiosRequestConfig;
+  public hdr?: IResponseHeader;
+
+  constructor(config: AxiosRequestConfig, request?: AxiosResponse, hdr?: IResponseHeader) {
+    this.config = config;
+    this.request: request;
+    this.hdr = hdr;
+  }
+
+  public toJSON(): object {
     return {
-      slotName: 'content'
-    }
+      message: this.message,
+      name: this.name,
+      config: this.config,
+      code: this.code,
+      hdr: this.hdr,
+    };
   }
 }
-&lt;/script&gt;</pre
-                          >
+                          </pre>
                         </li>
                       </ul>
                     </div>
