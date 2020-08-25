@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Alert from '@/components/rayui/alert/index.js';
+import PopupManager from './plugin/PopupManager';
 
 const components = [Alert];
 
@@ -23,6 +24,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 Vue.use(install);
+Vue.use(PopupManager);
 
 export default {
   version: '1.0.0',

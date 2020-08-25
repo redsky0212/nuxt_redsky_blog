@@ -3,8 +3,8 @@
     <div class="modal-mask">
       <div class="modal-wrapper">
         <div class="modal-container">
-          <div class="modal-header"></div>
-          <div class="modal-body"></div>
+          <div class="modal-header">{{ msg }}</div>
+          <div class="modal-body">팝업 테스트</div>
           <div class="modal-footer">
             <button class="modal-default-button" @click="close">확인</button>
           </div>
@@ -17,6 +17,7 @@
 <script>
 export default {
   name: 'Alert',
+  props: ['msg'],
   data() {
     return {
       isShowModal: false,
@@ -32,6 +33,7 @@ export default {
     },
     close() {
       this.isShowModal = false;
+      this.$popupManager.close(this);
     },
   },
 };
