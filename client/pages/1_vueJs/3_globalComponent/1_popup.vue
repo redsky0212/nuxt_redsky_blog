@@ -59,7 +59,7 @@ export default {
   },
   methods: {
     onOpen() {
-      this.$popupManager.open(popUi, { msg: '팝업열기 테스트!' });
+      this.$popupManager.open(popUi, { msg: '팝업열기 테스트!' + Math.floor(Math.random() * (100 - 0 + 1)) + 0 });
     },
   },
 };
