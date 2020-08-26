@@ -69,6 +69,9 @@
 import popUi from '@/components/rayui/alert/src/ui.vue';
 
 export default {
+  asyncData(context) {
+    context.app.$testPlugin('asyncData 호출!');
+  },
   data() {
     return {
       testPluginVal: '',
