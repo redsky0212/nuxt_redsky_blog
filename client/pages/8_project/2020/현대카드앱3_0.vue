@@ -251,6 +251,213 @@ export class ResponseError implements IResponseError {
 }
                           </pre>
                         </li>
+                        <li>
+                          <b>store/actionConstructor.ts</b>
+                          <pre class="prettyprint linenums">
+import { AxiosResponse } from 'axios';
+import { IRequest, IResponse, IResponseError } from '@/API/commonInterface';
+
+export type ApiResult&lt;T&gt; = Promise&lt;AxiosResponse&lt;IResponse&lt;T&gt;&gt;&gt;;
+// Actions 제네릭에 들어있는 키값이 ActionConstructor 내부에서 method로 반드시 구현되어야 함
+export type ActionTree&lt;State, Actions extends Key&gt; = {
+  [K in Actions] : Action&lt;State, RootState&gt;
+};
+// State 모듈화 가능성이 있으므로 state도 제너릭으로 받을 수 있도록
+export type ActionConstructor&lt;State, Actions extends Key&gt; = (api: AxiosApi) => ActionTree&lt;State, Actions&gt;;
+                          </pre>
+                        </li>
+                        <li>
+                          <b>store/request.ts</b>
+                          <pre class="prettyprint linenums">
+import { AxiosRequestConfig } from 'axios';
+import { CommonRequestHeader, CommonRequestConfig } from '@/API';
+
+export type RequestMethod = 'post' | 'get';
+type ExclusiveProperties = Omit&lt;CommonRequestConfig, keyof AxiosRequestConfig&gt;;
+export interface RequestConfigOptions extends ExclusiveProperties {
+  headers?: CommonRequestHeader;
+  method?: RequestMethod;
+}
+
+function makeRequestConfig&lt;RequestData&gt;(
+  url: string,
+  data: RequestData,
+): CommonRequestConfig;
+function makeRequestConfig&lt;RequestData&gt;(
+  url: string,
+  data: RequestData,
+  timeout: number,
+): CommonRequestConfig;
+function makeRequestConfig&lt;RequestData&gt;(
+  url: string,
+  data: RequestData,
+  method: RequestMethod,
+): CommonRequestConfig;
+function makeRequestConfig&lt;RequestData&gt;(
+  url: string,
+  data: RequestData,
+  isStatic: boolean,
+): CommonRequestConfig;
+function makeRequestConfig&lt;RequestData&gt;(
+  url: string,
+  data: RequestData,
+  options: RequestConfigOptions,
+): CommonRequestConfig;
+function makeRequestConfig&lt;RequestData&gt;(
+  url: string,
+  data: RequestData,
+  options?: any,
+): CommonRequestConfig {
+  const reqConfig: CommonRequestConfig = {
+    url,
+    data: {
+      ...data,
+    },
+  };
+
+  let pMethod: RequestMethod = 'post';
+  let pTimeout: number = 0;
+  let pIsStatic: boolean = false;
+  let pAllowDuplicate: boolean = false;
+  let pSkipCommonPopup: boolean = false;
+  let pDisableLoadingSpinner: boolean = false;
+
+  if (options === 'post' || options === 'get') {
+    pMethod = options;
+  } else if (typeof options === 'number' && options > 0) {
+    pTimeout = options;
+  } else if (typeof options === 'boolean') {
+    pIsStatic = options;
+  } else if (typeof options === 'object') {
+    const {
+      method,
+      timeout,
+      isStatic,
+      headers,
+      allowDuplicate,
+      skipCommonPopup,
+      disableLoadingSpinner,
+    } = options;
+    if (method === 'post' || method === 'get') {
+      pMethod = method;
+    }
+    if (typeof timeout === 'number' && timeout > 0) {
+      pTimeout = timeout;
+    }
+    if (typeof isStatic === 'boolean') {
+      pIsStatic = isStatic;
+    }
+    if (typeof headers === 'object') {
+      reqConfig.headers = headers;
+    }
+    if (typeof allowDuplicate === 'boolean') {
+      pAllowDuplicate = allowDuplicate;
+    }
+    if (typeof skipCommonPopup === 'boolean') {
+      pSkipCommonPopup = skipCommonPopup;
+    }
+    if (typeof disableLoadingSpinner === 'boolean') {
+      pDisableLoadingSpinner = disableLoadingSpinner;
+    }
+  }
+
+  reqConfig.method = pMethod;
+  reqConfig.isStatic = pIsStatic;
+  reqConfig.allowDuplicate = pAllowDuplicate;
+  reqConfig.skipCommonPopup = pSkipCommonPopup;
+  reqConfig.disableLoadingSpinner = pDisableLoadingSpinner;
+  if (pTimeout > 0) {
+    reqConfig.timeout = pTimeout;
+  }
+
+  return reqConfig;
+}
+
+export default makeRequestConfig;
+                          </pre>
+                        </li>
+                        <li>
+                          <b>store/commit.ts</b>
+                          <pre class="prettyprint linenums">
+import { ActionContext } from 'vuex';
+import { RootState } from '@/store/types';
+
+function commit(
+  store: ActionContext&lt;any, RootState&gt;,
+  key: string,
+  data?: any,
+): void;
+function commit(
+  store: ActionContext&lt;any, RootState&gt;,
+  path: string,
+  key: string,
+  data?: any,
+): void;
+function commit(
+  store: ActionContext&lt;any, RootState&gt;,
+  param1: string,
+  param2?: any,
+  param3?: any,
+): void {
+  if (typeof param2 === 'string' && param3 !== undefined) {
+    let path = param1;
+    const key = param2;
+    const data = param3;
+
+    if (path.toLowerCase() === 'root' || path === '/') {
+      store.commit(key, data, { root: true });
+    } else {
+      if (path.charAt(path.length - 1) !== '/') {
+        path += '/';
+      }
+      if (data === 'EMPTY_DATA') {
+        store.commit(`${path}${key}`, undefined, { root: true });
+      } else {
+        store.commit(`${path}${key}`, data, { root: true });
+      }
+    }
+  } else {
+    const key = param1;
+    const data = param2;
+
+    if (data === 'EMPTY_DATA') {
+      store.commit(key, undefined);
+    } else {
+      store.commit(key, data);
+    }
+  }
+}
+export default commit;
+                          </pre>
+                        </li>
+                        <li>
+                          <b>API/Common/interface/customer/SCT000.ts</b>
+                          <pre class="prettyprint linenums">
+import { RP, Iaatype } from '@/types/Common/customer';
+
+export interface Request&lt;IS_API extends boolean = false&gt; {
+  ctgrCd: string;
+  iqryCn: string;
+  pushDlvYn: 'Y'|'N';
+}
+export type Response&lt;IS_API extends boolean = false&gt; = void;
+// export interface Response&lt;IS_API extends boolean = false&gt; {
+//  aaabbb: RP&lt;IS_API, boolean&gt;
+//  ccaa: Array&lt;Iaatype&gt;
+// }
+                          </pre>
+                        </li>
+                        <li>
+                          <b>types/Common/customer/index.ts</b>
+                          <pre class="prettyprint linenums">
+export type RP&lt;IS_API extends boolean, R&gt; = IS_API extends true ? string : R;
+
+export interface Iaatype {
+  aa: string;
+  bb: string;
+}
+                          </pre>
+                        </li>
                       </ul>
                     </div>
                   </div>
