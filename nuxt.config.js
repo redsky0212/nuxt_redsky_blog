@@ -26,6 +26,7 @@ module.exports = {
     { src: '@/plugins/js/ace.min.js', mode: 'client' },
     { src: '@/plugins/js/prettify.min.js', mode: 'client' },
     '@/plugins/rayui/index.js',
+    '~/plugins/rayui/plugin/testPlugin.js',
   ],
   router: {
     // 빌드 후 router url이 특정 디렉토리 일때 추가.
