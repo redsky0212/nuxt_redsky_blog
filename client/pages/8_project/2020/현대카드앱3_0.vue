@@ -59,6 +59,14 @@
                           <b>TypeScript적용</b>
                           <p>TypeScript코딩 시 javascript로 했을때와 차이, 장단점?</p>
                           <p>vue-property-decorator, class, 데코레이터 방식의 코딩</p>
+                          <b>TypeScript를 사용했을때 장점</b>
+                          <ul class="list-unstyled">
+                            <li>
+                              <i class="ace-icon fa fa-caret-right blue"></i>
+                              <span>안정성 : 런타임 에러 감소, 코드 어시스트가 잘됨.</span>
+                            </li>
+                          </ul>
+                          <br />
                         </li>
                         <li>
                           <b>ssr은 고려되지 않음.</b>

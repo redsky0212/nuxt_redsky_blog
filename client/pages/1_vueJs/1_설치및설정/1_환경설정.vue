@@ -142,6 +142,7 @@
         <div class="row">
           <div class="col-xs-12">
             <h2>Nuxt로 프로젝트 설치 다양한 방법</h2>
+            <p>참조 : <a href="https://ko.nuxtjs.org/api/context/" target="_blank">https://ko.nuxtjs.org/api/context/</a></p>
             <hr />
             <div class="widget-box">
               <div class="widget-header widget-header-flat">

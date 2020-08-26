@@ -44,6 +44,8 @@
                       <ul>
                         <li>
                           <button @click="onOpen">popupManager열기</button>
+                          <input type="text" v-model="testPluginVal" />
+                          <button @click="onTestPlugin">testPlugin테스트</button>
                         </li>
                         <li>
                           <b>....</b>
@@ -67,12 +69,20 @@
 import popUi from '@/components/rayui/alert/src/ui.vue';
 
 export default {
+  data() {
+    return {
+      testPluginVal: '',
+    };
+  },
   mounted() {
     const a = '';
   },
   methods: {
     onOpen() {
       this.$popupManager.open(popUi, { msg: '팝업열기 테스트!' + Math.floor(Math.random() * (100 - 0 + 1)) + 0 });
+    },
+    onTestPlugin() {
+      this.$testPlugin(this.testPluginVal);
     },
   },
 };
