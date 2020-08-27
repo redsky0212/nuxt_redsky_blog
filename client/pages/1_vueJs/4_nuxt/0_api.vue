@@ -15,12 +15,12 @@
         <!-- PAGE CONTENT BEGINS -->
         <div class="row">
           <div class="col-xs-12">
-            <h3>Title</h3>
+            <h3>Nuxt에서 참조할 사항 URL</h3>
 
             <div class="widget-box">
               <div class="widget-header widget-header-flat">
                 <h4 class="smaller">
-                  context
+                  참조
                 </h4>
               </div>
 
@@ -30,7 +30,10 @@
                     <div class="col-sm-12">
                       <ul>
                         <li>
-                          <button @click="onOpen">popupManager열기</button>
+                          <b>Vue.component()에서 render시 createElement관련 참조 : </b>
+                          <a href="https://vuejs.org/v2/guide/render-function.html#The-Data-Object-In-Depth" target="_blank">
+                            https://vuejs.org/v2/guide/render-function.html#The-Data-Object-In-Depth
+                          </a>
                         </li>
                         <li>
                           <b>....</b>

@@ -1,6 +1,6 @@
 <template>
   <transition name="modal">
-    <div class="modal-mask">
+    <div class="modal-mask g-popup-mask">
       <div class="modal-wrapper">
         <div class="modal-container">
           <div class="modal-header">{{ msg }}</div>
@@ -33,7 +33,7 @@ export default {
     },
     close() {
       this.isShowModal = false;
-      this.$popupManager.close(this);
+      this.$PM.close(this);
     },
   },
 };

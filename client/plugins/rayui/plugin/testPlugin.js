@@ -1,11 +1,7 @@
 import Vue from 'vue';
 
 export default (context, inject) => {
-  console.log(context);
-  // inject('testPlugin', (string) => {
-  //  console.log('testPlugin ----> ', string);
-  // });
-
+  // console.log(context);
   const popupStatusValue = {
     key: 0, // 팝업 생성시 고유의 키값을 생성하기 위한 일련번호
     list: [], // 생성된 팝업 컴포넌트들을 저장하는 리스트
@@ -14,7 +10,6 @@ export default (context, inject) => {
 
   const popupManager = {
     open(component, params) {
-      debugger;
       const key = `popupManager_key_${popupStatusValue.key++}`; // 키 생성
       // 열고자 하는 컴포넌트팝업을 리스트에 추가한다.
       popupStatusValue.list.push({
@@ -66,7 +61,7 @@ export default (context, inject) => {
           },
         });
       });
-      return createElement('div', children);
+      return createElement('div', { class: 'g-popup-container', style: 'z-index:9999999;' }, children);
     },
   });
 };
