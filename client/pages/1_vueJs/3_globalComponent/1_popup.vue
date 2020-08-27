@@ -70,7 +70,7 @@ import popUi from '@/components/rayui/alert/src/ui.vue';
 
 export default {
   asyncData(context) {
-    context.app.$testPlugin('asyncData 호출!');
+    // context.app.$testPlugin('asyncData 호출!');
   },
   data() {
     return {
@@ -82,10 +82,10 @@ export default {
   },
   methods: {
     onOpen() {
-      this.$popupManager.open(popUi, { msg: '팝업열기 테스트!' + Math.floor(Math.random() * (100 - 0 + 1)) + 0 });
+      this.$PM.open(popUi, { msg: '팝업열기 테스트!' + Math.floor(Math.random() * (100 - 0 + 1)) + 0 });
     },
     onTestPlugin() {
-      this.$testPlugin(this.testPluginVal);
+      // this.$testPlugin(this.testPluginVal);
     },
   },
 };

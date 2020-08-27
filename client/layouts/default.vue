@@ -13,6 +13,7 @@
       </div>
       <footer-bar />
     </div>
+    <popup-container></popup-container>
   </div>
 </template>
 
