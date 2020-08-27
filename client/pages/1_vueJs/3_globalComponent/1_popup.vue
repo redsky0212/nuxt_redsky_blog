@@ -33,7 +33,7 @@
             <div class="widget-box">
               <div class="widget-header widget-header-flat">
                 <h4 class="smaller">
-                  this.$popupManager 열기 테스트
+                  this.$PM.open() 열기 테스트
                 </h4>
               </div>
 
@@ -48,7 +48,7 @@
                           <button @click="onTestPlugin">testPlugin테스트</button>
                         </li>
                         <li>
-                          <b>....</b>
+                          <b>this.$rayui.alert(), this.$rayui.confirm(), this.$rayui.popup()</b>
                           <pre class="prettyprint linenums">// ...</pre>
                         </li>
                       </ul>
