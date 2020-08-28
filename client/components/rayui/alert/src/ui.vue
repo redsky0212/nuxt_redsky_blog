@@ -1,11 +1,11 @@
 <template>
   <transition name="modal">
     <div class="modal-mask g-popup-mask">
-      <div class="modal-wrapper">
-        <div class="modal-container">
+      <div class="modal-wrapper g-popup-centered">
+        <div class="modal-container shadow border-none radius-2">
           <div class="modal-header">{{ msg }}</div>
-          <div class="modal-body">팝업 테스트</div>
-          <div class="modal-footer">
+          <div class="modal-body text-center">팝업 테스트</div>
+          <div class="modal-footer bg-white justify-content-between">
             <button class="modal-default-button" @click="close">확인</button>
           </div>
         </div>
