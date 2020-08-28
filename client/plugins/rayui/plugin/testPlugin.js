@@ -42,7 +42,7 @@ export default (context, inject) => {
     },
   };
 
-  inject('PM', popupManager);
+  // inject('PM', popupManager);
 
   Vue.component('popup-container', {
     name: 'PopupContainer',
@@ -64,4 +64,6 @@ export default (context, inject) => {
       return createElement('div', { class: 'g-popup-container', style: 'z-index:9999999;' }, children);
     },
   });
+
+  return popupManager;
 };

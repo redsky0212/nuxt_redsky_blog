@@ -82,7 +82,8 @@ export default {
   },
   methods: {
     onOpen() {
-      this.$PM.open(popUi, { msg: '팝업열기 테스트!' + Math.floor(Math.random() * (100 - 0 + 1)) + 0 });
+      console.log(this.$rayui);
+      this.$rayui.alert.open(popUi, { msg: '팝업열기 테스트!' + Math.floor(Math.random() * (100 - 0 + 1)) + 0 });
     },
     onTestPlugin() {
       // this.$testPlugin(this.testPluginVal);
