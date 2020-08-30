@@ -22,6 +22,7 @@ export default {
     return {
       message: '',
       modalAnimate: 'modal-show',
+      vm: this,
     };
   },
   mounted() {
@@ -29,6 +30,8 @@ export default {
     // window.setTimeout(() => {
     //   this.modalAnimate = 'modal-close';
     // }, 3000);
+    this.vm = this;
+    console.log('this ---> ', this);
   },
   methods: {
     close() {

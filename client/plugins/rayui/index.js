@@ -1,5 +1,7 @@
 import Vue from 'vue';
 import alert from '@/components/rayui/alert/index.js';
+import alert2 from '@/components/rayui/alert/indexClass.js';
+import confirm from '@/components/rayui/confirm/index.js';
 
 export default (context, inject) => {
   // 전역 alert관련 코드 (BEGIN) ===========================
@@ -35,5 +37,6 @@ export default (context, inject) => {
   inject('rayui', {
     popupStatusValue, // 전역팝업 상태값
     alert, // 전역 alert 컴포넌트 객체
+    confirm, // 전역 confirm 컴포넌트 객체
   });
 };

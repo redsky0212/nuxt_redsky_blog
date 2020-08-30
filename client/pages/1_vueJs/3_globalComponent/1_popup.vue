@@ -43,7 +43,10 @@
                     <div class="col-sm-12">
                       <ul>
                         <li>
-                          <button @click="onOpen">popupManager열기</button>
+                          <button @click="onOpen">alert열기</button>
+                          <br />
+                          <button @click="onConfirm">confirm 열기</button>
+                          <br />
                           <input type="text" v-model="testPluginVal" />
                           <button @click="onTestPlugin">testPlugin테스트</button>
                         </li>
@@ -87,7 +90,11 @@ export default {
         title: 'alert 테스트 타이틀',
       };
       // this.$rayui.alert('팝업열기 테스트!' + Math.floor(Math.random() * (100 - 0 + 1)) + 0, opt);
-      this.$rayui.alert('rayui의 alert열기 테스트 입니다.');
+      this.$rayui.alert('rayui의 alert열기 테스트 입니다.', opt);
+    },
+    onConfirm() {
+      console.log('this.$rayui.confirm()');
+      this.$rayui.confirm();
     },
     onTestPlugin() {
       // this.$testPlugin(this.testPluginVal);
