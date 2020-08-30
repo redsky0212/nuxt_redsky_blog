@@ -15,7 +15,7 @@
         <!-- PAGE CONTENT BEGINS -->
         <div class="row">
           <div class="col-xs-12">
-            <h3>Title</h3>
+            <h3>Alert, Confirm, Popup</h3>
 
             <div class="alert alert-info hidden-sm hidden-xs">
               <button type="button" class="close" data-dismiss="alert">
