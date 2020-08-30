@@ -1,3 +1,4 @@
+// 팝업매니져 참고 소스
 export default function install(Vue, opts = {}) {
   let nextKey = 0;
   const popupList = [];

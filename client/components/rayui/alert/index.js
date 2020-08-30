@@ -1,6 +1,7 @@
 import Vue from 'vue';
+import popUi from '@/components/rayui/alert/src/ui.vue';
 
-export default {
+const alertObject = {
   open(component, params) {
     const key = `popupManager_key_${window.$nuxt.$rayui.popupStatusValue.key++}`; // 키 생성
     // 열고자 하는 컴포넌트팝업을 리스트에 추가한다.
@@ -32,4 +33,17 @@ export default {
       }
     });
   },
+};
+
+export default (message, option = {}) => {
+  if (!message) {
+    return alertObject;
+  }
+  if (option.close) {
+    alertObject.close(option.close);
+  } else {
+    alertObject.open(popUi, { msg: message, title: option.title });
+  }
+
+  return alertObject;
 };

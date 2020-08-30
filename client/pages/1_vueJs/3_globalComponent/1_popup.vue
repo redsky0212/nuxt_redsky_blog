@@ -83,7 +83,11 @@ export default {
   methods: {
     onOpen() {
       console.log(this.$rayui);
-      this.$rayui.alert.open(popUi, { msg: '팝업열기 테스트!' + Math.floor(Math.random() * (100 - 0 + 1)) + 0 });
+      const opt = {
+        title: 'alert 테스트 타이틀',
+      };
+      // this.$rayui.alert('팝업열기 테스트!' + Math.floor(Math.random() * (100 - 0 + 1)) + 0, opt);
+      this.$rayui.alert('rayui의 alert열기 테스트 입니다.');
     },
     onTestPlugin() {
       // this.$testPlugin(this.testPluginVal);

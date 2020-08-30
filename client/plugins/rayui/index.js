@@ -2,12 +2,13 @@ import Vue from 'vue';
 import alert from '@/components/rayui/alert/index.js';
 
 export default (context, inject) => {
+  // 전역 alert관련 코드 (BEGIN) ===========================
   const popupStatusValue = {
     key: 0, // 팝업 생성시 고유의 키값을 생성하기 위한 일련번호
     list: [], // 생성된 팝업 컴포넌트들을 저장하는 리스트
     popupContainerVm: null, // 팝업이 열릴 컨테이너 div의 인스턴스
   };
-
+  // alert, confirm, popup이 띄워질 container div 태그 만들기.
   Vue.component('popup-container', {
     name: 'PopupContainer',
     created() {
@@ -28,42 +29,11 @@ export default (context, inject) => {
       return createElement('div', { class: 'g-popup-container', style: 'z-index:9999999;' }, children);
     },
   });
+  // 전역 alert관련 코드 (END) ==============================
 
+  // $root, context 모두 플러그인 주입 방식
   inject('rayui', {
-    popupStatusValue,
-    alert,
+    popupStatusValue, // 전역팝업 상태값
+    alert, // 전역 alert 컴포넌트 객체
   });
 };
-
-/*
-const components = [Alert];
-
-const install = (Vue, opts = {}) => {
-  components.forEach((component) => {
-    Vue.component(component.name, component);
-  });
-
-  Vue.prototype.$rayui = {
-    size: opts.size || '',
-    zIndex: opts.zIndex || 2000,
-    alert: Alert,
-  };
-
-  Vue.prototype.$alert = (string) => {
-    window.alert(string);
-  };
-};
-
-if (typeof window !== 'undefined' && window.Vue) {
-  install(window.Vue);
-}
-
-Vue.use(install);
-Vue.use(PopupManager);
-
-export default {
-  version: '1.0.0',
-  install,
-  Alert,
-};
-*/

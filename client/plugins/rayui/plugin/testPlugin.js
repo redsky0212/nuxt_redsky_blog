@@ -1,3 +1,4 @@
+// 소스 테스트용 파일
 import Vue from 'vue';
 
 export default (context, inject) => {

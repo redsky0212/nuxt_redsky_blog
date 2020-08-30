@@ -3,12 +3,14 @@ module.exports = {
   mode: 'spa',
   srcDir: 'client/',
   css: [
+    '@/assets/sass/rayui/index.scss',
     '@/assets/sass/global.scss',
     '~assets/css/bootstrap.min.css',
     '~assets/css/all.min.css',
     '~assets/css/ace.min.css',
     '~assets/font-awesome/4.5.0/css/font-awesome.min.css',
     '~assets/css/prettify.min.css',
+    '~assets/css/animate.min.css',
   ],
   head: {
     titleTemplate: '%s - redsky',

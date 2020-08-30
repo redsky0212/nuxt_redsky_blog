@@ -2,11 +2,11 @@
   <transition name="modal">
     <div class="modal-mask g-popup-mask">
       <div class="modal-wrapper g-popup-centered">
-        <div class="modal-container shadow border-none radius-2">
-          <div class="modal-header">{{ msg }}</div>
-          <div class="modal-body text-center">팝업 테스트</div>
+        <div class="modal-container shadow border-none radius-2" :class="[modalAnimate]" @animationend="animationend">
+          <div class="modal-header" v-if="title" v-html="title"></div>
+          <div class="modal-body text-center" v-html="msg"></div>
           <div class="modal-footer bg-white justify-content-between">
-            <button class="modal-default-button" @click="close">확인</button>
+            <button class="modal-default-button rayui-styled rayui-confirm" @click="close">확인</button>
           </div>
         </div>
       </div>
@@ -17,23 +17,25 @@
 <script>
 export default {
   name: 'Alert',
-  props: ['msg'],
+  props: ['msg', 'title'],
   data() {
     return {
-      isShowModal: false,
-      title: '알림',
       message: '',
+      modalAnimate: 'modal-show',
     };
   },
+  mounted() {
+    this.modalAnimate = 'modal-show';
+  },
   methods: {
-    show(title, message) {
-      this.isShowModal = true;
-      this.title = title;
-      this.message = message;
-    },
     close() {
-      this.isShowModal = false;
-      this.$PM.close(this);
+      this.modalAnimate = 'modal-close';
+    },
+    animationend(event) {
+      if (this.modalAnimate === 'modal-close') {
+        event.currentTarget.style.opacity = 0;
+        this.$rayui.alert().close(this);
+      }
     },
   },
 };

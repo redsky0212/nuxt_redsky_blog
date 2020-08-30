@@ -21,6 +21,7 @@ module.exports = {
     'vue/multiline-html-element-content-newline': 'off',
     'no-debugger': 'off',
     'vue/html-closing-bracket-newline': 'off',
+    'vue/no-v-html': 'off',
     'prettier/prettier': [
       'error',
       {
