@@ -26,6 +26,9 @@ export default {
   },
   mounted() {
     this.modalAnimate = 'modal-show';
+    // window.setTimeout(() => {
+    //   this.modalAnimate = 'modal-close';
+    // }, 3000);
   },
   methods: {
     close() {
