@@ -33,7 +33,7 @@
             <div class="widget-box">
               <div class="widget-header widget-header-flat">
                 <h4 class="smaller">
-                  this.$PM.open() 열기 테스트
+                  this.$rayui.alert() 열기 테스트
                 </h4>
               </div>
 
