@@ -15,7 +15,7 @@ const alertObject = {
     if (window.$nuxt.$rayui.popupStatusValue.popupContainerVm) {
       window.$nuxt.$rayui.popupStatusValue.popupContainerVm.$forceUpdate(); // 팝업컨테이너가 새롭게 render하도록 한다.
     }
-
+    console.log('open!!!');
     return { key };
   },
   close(inst) {
