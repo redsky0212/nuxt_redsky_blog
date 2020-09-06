@@ -1,49 +1,64 @@
 import Vue from 'vue';
 import popUi from '@/components/rayui/alert/src/ui.vue';
 
-const alertObject = {
+export class Alert {
+  constructor(statusValue = {}) {
+    this._statusValue = statusValue;
+  }
+
+  notify(param) {
+    const data = param;
+
+    return new Promise((resolve) => {
+      data.resolve = resolve;
+    }).then((result) => {
+      return result;
+    });
+  }
+
   open(component, params) {
-    const key = `popupManager_key_${window.$nuxt.$rayui.popupStatusValue.key++}`; // 키 생성
+    // 키 생성 (open시에만 일시적으로 생성해서 사용하므로 open함수 내에서 변수로 만들어 사용)
+    const key = `popupManager_key_${this._statusValue.key++}`;
     // 열고자 하는 컴포넌트팝업을 리스트에 추가한다.
-    window.$nuxt.$rayui.popupStatusValue.list.push({
+    this._statusValue.list.push({
       component,
       params,
       key,
       componentInstance: null,
+      resolve: null,
     });
 
-    if (window.$nuxt.$rayui.popupStatusValue.popupContainerVm) {
-      window.$nuxt.$rayui.popupStatusValue.popupContainerVm.$forceUpdate(); // 팝업컨테이너가 새롭게 render하도록 한다.
+    if (this._statusValue.popupContainerVm) {
+      this._statusValue.popupContainerVm.$forceUpdate(); // 팝업컨테이너가 새롭게 render하도록 한다.
     }
-    console.log('open!!!');
-    return { key };
-  },
+    return this.notify(this._statusValue);
+  }
+
   close(inst) {
     if (!inst) {
       return;
     }
 
-    window.$nuxt.$rayui.popupStatusValue.list.some((item, index) => {
-      if ((inst instanceof Vue && window.$nuxt.$rayui.popupStatusValue.list[index].componentInstance === inst) || inst.key === window.$nuxt.$rayui.popupStatusValue.list[index].key) {
-        window.$nuxt.$rayui.popupStatusValue.list.splice(index, 1);
-        if (window.$nuxt.$rayui.popupStatusValue.popupContainerVm) {
-          window.$nuxt.$rayui.popupStatusValue.popupContainerVm.$forceUpdate();
+    this._statusValue.list.some((item, index) => {
+      if ((inst instanceof Vue && this._statusValue.list[index].componentInstance === inst) || inst.key === this._statusValue.list[index].key) {
+        this._statusValue.list.splice(index, 1);
+        if (this._statusValue.popupContainerVm) {
+          this._statusValue.popupContainerVm.$forceUpdate();
         }
-        return true;
+        this._statusValue.resolve(this._statusValue);
       }
     });
-  },
-};
+  }
+}
 
 export default (message, option = {}) => {
+  const _inst = new Alert(window.$nuxt.$rayui.popupStatusValue);
   if (!message) {
-    return alertObject;
+    return _inst;
   }
   if (option.close) {
-    alertObject.close(option.close);
+    return _inst.close(option.close);
   } else {
-    alertObject.open(popUi, { msg: message, title: option.title });
+    return _inst.open(popUi, { msg: message, title: option.title });
   }
-
-  return alertObject;
 };

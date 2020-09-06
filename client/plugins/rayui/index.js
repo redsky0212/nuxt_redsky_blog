@@ -1,7 +1,6 @@
 import Vue from 'vue';
-import alert from '@/components/rayui/alert/index.js';
-import alert2 from '@/components/rayui/alert/indexClass.js';
-import confirm from '@/components/rayui/confirm/index.js';
+import alert from '@/components/rayui/alert';
+import confirm from '@/components/rayui/confirm';
 
 export default (context, inject) => {
   // 전역 alert관련 코드 (BEGIN) ===========================
