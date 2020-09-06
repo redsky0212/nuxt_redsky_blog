@@ -85,7 +85,7 @@ export default {
   },
   methods: {
     onOpen() {
-      console.log(this.$rayui);
+      console.log('call this.$rayui.alert()');
       const opt = {
         title: 'alert 테스트 타이틀',
       };
@@ -94,8 +94,13 @@ export default {
       });
     },
     onConfirm() {
-      console.log('this.$rayui.confirm()');
-      this.$rayui.confirm();
+      console.log('call this.$rayui.confirm()');
+      const opt = {
+        title: 'confirm 테스트 타이틀',
+      };
+      this.$rayui.confirm('rayui의 confirm 확인?', opt).then((result) => {
+        console.log('confirm then --------->', result);
+      });
     },
     onTestPlugin() {
       // this.$testPlugin(this.testPluginVal);
