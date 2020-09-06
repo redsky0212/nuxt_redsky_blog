@@ -20,7 +20,7 @@ export default {
   name: 'Confirm',
   props: {
     /**
-     * alert에 표시될 내용 문구를 입력합니다.
+     * confirm에 표시될 내용 문구를 입력합니다.
      * @type {String||''}
      */
     msg: {
@@ -28,7 +28,7 @@ export default {
       default: '',
     },
     /**
-     * alert에 표시될 타이틀 문구를 입력합니다.
+     * confirm에 표시될 타이틀 문구를 입력합니다.
      * @type {String||''}
      */
     title: {
