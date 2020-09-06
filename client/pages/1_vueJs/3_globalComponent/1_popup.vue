@@ -64,13 +64,10 @@
         </div>
       </div>
     </div>
-    <popup-anchor></popup-anchor>
   </div>
 </template>
 
 <script>
-import popUi from '@/components/rayui/alert/src/ui.vue';
-
 export default {
   asyncData(context) {
     // context.app.$testPlugin('asyncData 호출!');

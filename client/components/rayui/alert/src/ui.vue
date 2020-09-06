@@ -17,7 +17,24 @@
 <script>
 export default {
   name: 'Alert',
-  props: ['msg', 'title'],
+  props: {
+    /**
+     * alert에 표시될 내용 문구를 입력합니다.
+     * @type {String||''}
+     */
+    msg: {
+      type: String,
+      default: '',
+    },
+    /**
+     * alert에 표시될 타이틀 문구를 입력합니다.
+     * @type {String||''}
+     */
+    title: {
+      type: String,
+      default: '',
+    },
+  },
   data() {
     return {
       message: '',
@@ -25,7 +42,7 @@ export default {
       vm: this,
     };
   },
-  mounted() {
+  created() {
     this.modalAnimate = 'modal-show';
     // window.setTimeout(() => {
     //   this.modalAnimate = 'modal-close';
