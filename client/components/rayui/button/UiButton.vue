@@ -54,7 +54,7 @@ export default {
       buttonleave(buttonPath, buttonSpan);
     },
     onClick(event) {
-      this.$emit('onclick', event);
+      this.$emit('click', event);
     },
   },
 };
