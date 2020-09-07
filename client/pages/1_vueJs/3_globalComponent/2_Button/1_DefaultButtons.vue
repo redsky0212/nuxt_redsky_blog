@@ -51,7 +51,10 @@
                         </li>
                         <li>
                           <b>preview</b>
-                          <ui-button>버튼</ui-button>
+                          <div class="thumbnail">
+                            <!-- <ui-button @onclick="onClickBtn">버튼</ui-button> -->
+                            <ui-button>버튼</ui-button>
+                          </div>
                         </li>
                       </ul>
                     </div>
@@ -98,8 +101,8 @@ export default {
         console.log('confirm then --------->', result);
       });
     },
-    onTestPlugin() {
-      // this.$testPlugin(this.testPluginVal);
+    onClickBtn(event) {
+      this.$rayui.alert('버튼 클릭!' + event.currentTarget.tagName);
     },
   },
 };
