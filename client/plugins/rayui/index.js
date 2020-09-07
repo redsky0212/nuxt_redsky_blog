@@ -1,9 +1,10 @@
 import Vue from 'vue';
 import alert from '@/components/rayui/alert';
 import confirm from '@/components/rayui/confirm';
+import UiButton from '@/components/rayui/button/UiButton.vue';
 
 export default (context, inject) => {
-  // 전역 alert관련 코드 (BEGIN) ===========================
+  // 전역 Dialog관련 코드 (BEGIN) ===========================
   const popupStatusValue = {
     key: 0, // 팝업 생성시 고유의 키값을 생성하기 위한 일련번호
     list: [], // 생성된 팝업 컴포넌트들을 저장하는 리스트
@@ -30,7 +31,10 @@ export default (context, inject) => {
       return createElement('div', { class: 'g-popup-container', style: 'z-index:9999999;' }, children);
     },
   });
-  // 전역 alert관련 코드 (END) ==============================
+  // 전역 Dialog관련 코드 (END) ==============================
+
+  // 전역 rayui 컴포넌트 등록 ================================
+  Vue.component('ui-button', UiButton);
 
   // $root, context 모두 플러그인 주입 방식
   inject('rayui', {
