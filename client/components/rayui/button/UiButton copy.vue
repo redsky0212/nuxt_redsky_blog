@@ -1,7 +1,19 @@
 <template>
-  <button @click="onClick" class="ui-btn ui-btn-size-default" :class="classObject">
-    <slot></slot>
-  </button>
+  <div class="inline-display">
+    <a v-if="type === 'type1'" class="button green" @mouseover="buttonEnter" @mouseout="buttonLeave" @click="onClick">
+      <svg viewBox="0 0 180 60">
+        <path
+          d="M10,10 C10,10 50,9.98999977 90,9.98999977 C130,9.98999977 170,10 170,10 C170,10 170.009995,20 170.009995,30 C170.009995,40 170,50 170,50 C170,50 130,50.0099983 90,50.0099983 C50,50.0099983 10,50 10,50 C10,50 9.98999977,40 9.98999977,30 C9.98999977,20 10,10 10,10 Z"
+        />
+      </svg>
+      <span>
+        <slot></slot>
+      </span>
+    </a>
+    <button v-else-if="type === 'type2'" @click="onClick" class="ui-btn ui-btn-size-default" :class="classObject">
+      <slot></slot>
+    </button>
+  </div>
 </template>
 
 <script>
@@ -26,14 +38,6 @@ export default {
       default: false,
     },
     /**
-     * UiButton의 모서리가 둥근 스타일 적용.
-     * @type {Boolean}
-     */
-    rounded: {
-      type: Boolean,
-      default: false,
-    },
-    /**
      * UiButton의 클릭 이벤트
      * @type {Function}
      */
@@ -52,17 +56,23 @@ export default {
       const obj = {
         'ui-btn-full': this.full,
       };
-      // color props
+
       const colorType = `ui-btn-${this.color}`;
       obj[colorType] = true;
-      // rounded props
-      if (this.rounded) {
-        obj['radius-round'] = true;
-      }
       return obj;
     },
   },
   methods: {
+    buttonEnter(event) {
+      const buttonPath = event.currentTarget.querySelector('path');
+      const buttonSpan = event.currentTarget.querySelector('span');
+      buttonEnter(buttonPath, buttonSpan);
+    },
+    buttonLeave(event) {
+      const buttonPath = event.currentTarget.querySelector('path');
+      const buttonSpan = event.currentTarget.querySelector('span');
+      buttonleave(buttonPath, buttonSpan);
+    },
     onClick(event) {
       this.$emit('click', event);
     },
@@ -71,6 +81,44 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+// type1 ===================================
+a {
+  text-align: center;
+  &.button {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 180px;
+    height: 60px;
+    text-decoration: none;
+    cursor: default;
+    margin: 0 auto;
+
+    svg {
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      stroke-width: 1.5;
+      fill: none;
+      fill-rule: evenodd;
+      stroke: currentColor;
+    }
+  }
+  &.green {
+    color: #3eb373;
+  }
+}
+
+// type2 ====================================
+.inline-display {
+  display: inline-block;
+}
+.full-width {
+  width: 100%;
+}
 button {
   appearance: button;
   -webkit-writing-mode: horizontal-tb !important;
@@ -140,17 +188,6 @@ button {
     position: relative;
     -webkit-font-smoothing: antialiased;
   }
-  &.ui-btn:active {
-    top: 2px;
-  }
-  &.ui-btn:hover {
-    opacity: 0.9;
-  }
-
-  /* Button round */
-  &.radius-round {
-    border-radius: 4rem !important;
-  }
 
   /* Button width */
   &.ui-btn-full {
@@ -200,126 +237,6 @@ button {
     color: #5d6069;
     background-color: #f8f9fb;
     border-color: #d4d7dd;
-  }
-  &.ui-btn-outline-primary {
-    color: #1b74bf;
-    border-color: #64a0d3;
-    background-color: transparent;
-    &:hover {
-      color: #fff;
-      background-color: #007bff;
-      border-color: #007bff;
-    }
-  }
-  &.ui-btn-outline-secondary {
-    color: #4e748d;
-    border-color: #86a0b2;
-    background-color: transparent;
-    &:hover {
-      color: #fff;
-      background-color: #678497;
-      border-color: #678497;
-    }
-  }
-  &.ui-btn-outline-info {
-    color: #00799b;
-    border-color: #52a4bb;
-    background-color: transparent;
-    &:hover {
-      color: #fff;
-      background-color: #008bb2;
-      border-color: #008bb2;
-    }
-  }
-  &.ui-btn-outline-success {
-    color: #2c812c;
-    border-color: #6faa6f;
-    background-color: transparent;
-    &:hover {
-      color: #fff;
-      background-color: #3f923f;
-      border-color: #3f923f;
-    }
-  }
-  &.ui-btn-outline-warning {
-    color: #c86800;
-    border-color: #e6b461;
-    background-color: transparent;
-    &:hover {
-      color: #22190b;
-      background-color: #ffbe50;
-      border-color: #ffbe50;
-    }
-  }
-  &.ui-btn-outline-danger {
-    color: #d53114;
-    border-color: #e2735f;
-    background-color: transparent;
-    &:hover {
-      color: #fff;
-      background-color: #df4b30;
-      border-color: #df4b30;
-    }
-  }
-  &.ui-btn-outline-dark {
-    color: #42474e;
-    border-color: #7e8287;
-    background-color: transparent;
-    &:hover {
-      color: #fff;
-      background-color: #42474e;
-      border-color: #42474e;
-    }
-  }
-  &.ui-btn-outline-light {
-    color: #91969b;
-    border-color: #d4d7dd;
-    background-color: transparent;
-    &:hover {
-      color: #5d6069;
-      background-color: #f8f9fb;
-      border-color: #d4d7dd;
-    }
-  }
-  &.ui-btn-light-primary {
-    color: #1766a8;
-    background-color: #dbebf8;
-    border-color: #a0c9eb;
-  }
-  &.ui-btn-light-secondary {
-    color: #4c6778;
-    background-color: #e6eaed;
-    border-color: #bfc8cf;
-  }
-  &.ui-btn-light-info {
-    color: #00708f;
-    background-color: #d7f4fc;
-    border-color: #7cd9f4;
-  }
-  &.ui-btn-light-success {
-    color: #2f732f;
-    background-color: #e1f1e1;
-    border-color: #a7d5a7;
-  }
-  &.ui-btn-light-warning {
-    color: #8d5f13;
-    background-color: #fceed7;
-    border-color: #f4c67a;
-  }
-  &.ui-btn-light-danger {
-    color: #b0341e;
-    background-color: #f9dfda;
-    border-color: #eeafa4;
-  }
-  &.ui-btn-light-dark {
-    color: #35393e;
-    background-color: #e2e3e4;
-    border-color: #aaacaf;
-  }
-  &.ui-btn-light-light {
-    color: #6e7074;
-    background-color: #fefeff;
-    border-color: #d9d9e6;
   }
 
   /* Button Size */

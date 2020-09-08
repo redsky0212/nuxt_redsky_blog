@@ -11,7 +11,7 @@ module.exports = {
   plugins: ['vue'],
   rules: {
     // semi: [2, 'never'],
-    'no-unused-vars': 1,
+    'no-unused-vars': 0,
     'vue/singleline-html-element-content-newline': 'off',
     'vue/html-self-closing': 'off',
     'no-console': 'off',

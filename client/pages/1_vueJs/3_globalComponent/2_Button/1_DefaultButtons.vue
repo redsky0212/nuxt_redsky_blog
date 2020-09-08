@@ -81,8 +81,84 @@
                           <ul class="list-unstyled">
                             <li>
                               <i class="ace-icon fa fa-caret-right blue"></i>
+                              <b class="text-success lead">color</b>
+                              <p class="alert alert-success">
+                                버튼의 색 지정.<br />
+                                <b>타입: </b> String<br />
+                                <b>기본값: </b>'primary'<br />
+                                <b>값 종류: </b>
+                                <span>'primary', 'secondary', 'info', 'success', 'warning', 'danger', 'dark', 'light'</span>
+                                <span>'outline-primary', 'outline-secondary', 'outline-info', 'outline-success', 'outline-warning', 'outline-danger', 'outline-dark', 'outline-light'</span>
+                                <span>'light-primary', 'light-secondary', 'light-info', 'light-success', 'light-warning', 'light-danger', 'light-dark', 'light-light'</span>
+                              </p>
+                              <pre class="prettyprint linenums">
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;ui-button&gt;primary&lt;/ui-button&gt;
+    &lt;ui-button color="secondary"&gt;secondary&lt;/ui-button&gt;
+    &lt;ui-button color="info"&gt;info&lt;/ui-button&gt;
+    &lt;ui-button color="success"&gt;success&lt;/ui-button&gt;
+    &lt;ui-button color="warning"&gt;warning&lt;/ui-button&gt;
+    &lt;ui-button color="danger"&gt;danger&lt;/ui-button&gt;
+    &lt;ui-button color="dark"&gt;dark&lt;/ui-button&gt;
+    &lt;ui-button color="light"&gt;light&lt;/ui-button&gt;
+    &lt;br /&gt;
+    &lt;br /&gt;
+    &lt;ui-button color="outline-primary"&gt;primary&lt;/ui-button&gt;
+    &lt;ui-button color="outline-secondary"&gt;secondary&lt;/ui-button&gt;
+    &lt;ui-button color="outline-info"&gt;info&lt;/ui-button&gt;
+    &lt;ui-button color="outline-success"&gt;success&lt;/ui-button&gt;
+    &lt;ui-button color="outline-warning"&gt;warning&lt;/ui-button&gt;
+    &lt;ui-button color="outline-danger"&gt;danger&lt;/ui-button&gt;
+    &lt;ui-button color="outline-dark"&gt;dark&lt;/ui-button&gt;
+    &lt;ui-button color="outline-light"&gt;light&lt;/ui-button&gt;
+    &lt;br /&gt;
+    &lt;br /&gt;
+    &lt;ui-button color="light-primary"&gt;primary&lt;/ui-button&gt;
+    &lt;ui-button color="light-secondary"&gt;secondary&lt;/ui-button&gt;
+    &lt;ui-button color="light-info"&gt;info&lt;/ui-button&gt;
+    &lt;ui-button color="light-success"&gt;success&lt;/ui-button&gt;
+    &lt;ui-button color="light-warning"&gt;warning&lt;/ui-button&gt;
+    &lt;ui-button color="light-danger"&gt;danger&lt;/ui-button&gt;
+    &lt;ui-button color="light-dark"&gt;dark&lt;/ui-button&gt;
+    &lt;ui-button color="light-light"&gt;light&lt;/ui-button&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+                              </pre>
+                              <ui-button>primary</ui-button>
+                              <ui-button color="secondary">secondary</ui-button>
+                              <ui-button color="info">info</ui-button>
+                              <ui-button color="success">success</ui-button>
+                              <ui-button color="warning">warning</ui-button>
+                              <ui-button color="danger">danger</ui-button>
+                              <ui-button color="dark">dark</ui-button>
+                              <ui-button color="light">light</ui-button>
+                              <br />
+                              <br />
+                              <ui-button color="outline-primary">primary</ui-button>
+                              <ui-button color="outline-secondary">secondary</ui-button>
+                              <ui-button color="outline-info">info</ui-button>
+                              <ui-button color="outline-success">success</ui-button>
+                              <ui-button color="outline-warning">warning</ui-button>
+                              <ui-button color="outline-danger">danger</ui-button>
+                              <ui-button color="outline-dark">dark</ui-button>
+                              <ui-button color="outline-light">light</ui-button>
+                              <br />
+                              <br />
+                              <ui-button color="light-primary">primary</ui-button>
+                              <ui-button color="light-secondary">secondary</ui-button>
+                              <ui-button color="light-info">info</ui-button>
+                              <ui-button color="light-success">success</ui-button>
+                              <ui-button color="light-warning">warning</ui-button>
+                              <ui-button color="light-danger">danger</ui-button>
+                              <ui-button color="light-dark">dark</ui-button>
+                              <ui-button color="light-light">light</ui-button>
+                              <hr />
+                            </li>
+                            <li>
+                              <i class="ace-icon fa fa-caret-right blue"></i>
                               <b class="text-success lead">full</b>
-                              <p class="alert alert-success">버튼의 넓이값(width)값을 부모의 넓이 전체에 맞춘다.</p>
+                              <p class="alert alert-success">버튼의 넓이값(width)을 부모의 넓이 전체에 맞춘다.</p>
                               <pre class="prettyprint linenums">
 &lt;template&gt;
   &lt;div&gt;
@@ -91,6 +167,20 @@
 &lt;/template&gt;
                               </pre>
                               <ui-button full>버튼</ui-button>
+                              <hr />
+                            </li>
+                            <li>
+                              <i class="ace-icon fa fa-caret-right blue"></i>
+                              <b class="text-success lead">rounded</b>
+                              <p class="alert alert-success">버튼의 모서리를 둥글게 처리한다.</p>
+                              <pre class="prettyprint linenums">
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;ui-button rounded&gt;버튼&lt;/ui-button&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+                              </pre>
+                              <ui-button rounded>버튼</ui-button>
                               <hr />
                             </li>
                             <li>
