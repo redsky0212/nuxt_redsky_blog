@@ -1,5 +1,5 @@
 <template>
-  <button @click="onClick" class="ui-btn ui-btn-size-default" :class="classObject">
+  <button @click="onClick" class="ui-btn" :class="classObject" :disabled="disabled ? 'disabled' : false">
     <slot></slot>
   </button>
 </template>
@@ -18,6 +18,14 @@ export default {
       default: 'primary',
     },
     /**
+     * UiButton의 비활성화 여부
+     * @type {Boolean||String}
+     */
+    disabled: {
+      type: [Boolean, String],
+      default: false,
+    },
+    /**
      * UiButton의 width 전체 맞추기
      * @type {Boolean}
      */
@@ -30,6 +38,30 @@ export default {
      * @type {Boolean}
      */
     rounded: {
+      type: Boolean,
+      default: false,
+    },
+    /**
+     * UiButton의 사이즈 속성.
+     * @type {Boolean}
+     */
+    xsmall: {
+      type: Boolean,
+      default: false,
+    },
+    small: {
+      type: Boolean,
+      default: false,
+    },
+    default: {
+      type: Boolean,
+      default: false,
+    },
+    large: {
+      type: Boolean,
+      default: false,
+    },
+    xlarge: {
       type: Boolean,
       default: false,
     },
@@ -58,6 +90,24 @@ export default {
       // rounded props
       if (this.rounded) {
         obj['radius-round'] = true;
+      }
+      // button size props
+      if (this.xsmall) {
+        obj['ui-btn-size-x-small'] = true;
+      } else if (this.small) {
+        obj['ui-btn-size-small'] = true;
+      } else if (this.default) {
+        obj['ui-btn-size-default'] = true;
+      } else if (this.large) {
+        obj['ui-btn-size-large'] = true;
+      } else if (this.xlarge) {
+        obj['ui-btn-size-x-large'] = true;
+      } else {
+        obj['ui-btn-size-default'] = true;
+      }
+      /* button 비활성화 props */
+      if (this.disabled) {
+        obj['ui-btn-disabled'] = true;
       }
       return obj;
     },
@@ -97,6 +147,7 @@ button {
 
   &.ui-btn {
     border: 1px solid transparent;
+    border-radius: 4px;
     font-family: inherit;
     font-size: inherit;
     color: inherit;
@@ -113,6 +164,14 @@ button {
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
     transition: all 0.3s;
+  }
+
+  &.ui-btn-disabled {
+    cursor: pointer;
+    border-style: none;
+    box-shadow: none;
+    pointer-events: none;
+    background-color: rgba(0, 0, 0, 0.12) !important;
   }
 
   &.ui-btn:after {
@@ -163,8 +222,8 @@ button {
   /* Button Color */
   &.ui-btn-primary {
     color: #fff;
-    background-color: #007bff;
-    border-color: #007bff;
+    background-color: #2c86d1;
+    border-color: #2c86d1;
   }
   &.ui-btn-secondary {
     color: #fff;
@@ -207,8 +266,8 @@ button {
     background-color: transparent;
     &:hover {
       color: #fff;
-      background-color: #007bff;
-      border-color: #007bff;
+      background-color: #2c86d1;
+      border-color: #2c86d1;
     }
   }
   &.ui-btn-outline-secondary {
@@ -323,10 +382,30 @@ button {
   }
 
   /* Button Size */
+  &.ui-btn-size-x-small {
+    height: 20px;
+    min-width: 36px;
+    padding: 0 8.8888888889px;
+  }
+  &.ui-btn-size-small {
+    height: 28px;
+    min-width: 50px;
+    padding: 0 12.4444444444px;
+  }
   &.ui-btn-size-default {
     height: 36px;
     min-width: 64px;
     padding: 0 16px;
+  }
+  &.ui-btn-size-large {
+    height: 44px;
+    min-width: 78px;
+    padding: 0 19.5555555556px;
+  }
+  &.ui-btn-size-x-large {
+    height: 52px;
+    min-width: 92px;
+    padding: 0 23.1111111111px;
   }
 
   /* Button 1 */
@@ -471,5 +550,11 @@ button {
     background: transparent;
     color: #226fbe;
   }
+}
+
+button:disabled {
+  color: -internal-light-dark(rgba(16, 16, 16, 0.3), rgb(170, 170, 170));
+  background-color: -internal-light-dark(rgba(239, 239, 239, 0.3), rgba(19, 1, 1, 0.3));
+  border-color: -internal-light-dark(rgba(118, 118, 118, 0.3), rgba(195, 195, 195, 0.3));
 }
 </style>

@@ -157,6 +157,20 @@
                             </li>
                             <li>
                               <i class="ace-icon fa fa-caret-right blue"></i>
+                              <b class="text-success lead">disabled</b>
+                              <p class="alert alert-success">버튼을 비활성화 시킬때 적용</p>
+                              <pre class="prettyprint linenums">
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;ui-button disabled&gt;버튼&lt;/ui-button&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+                              </pre>
+                              <ui-button disabled>disabled</ui-button>
+                              <hr />
+                            </li>
+                            <li>
+                              <i class="ace-icon fa fa-caret-right blue"></i>
                               <b class="text-success lead">full</b>
                               <p class="alert alert-success">버튼의 넓이값(width)을 부모의 넓이 전체에 맞춘다.</p>
                               <pre class="prettyprint linenums">
@@ -187,21 +201,79 @@
                               <i class="ace-icon fa fa-caret-right blue"></i>
                               <b class="text-success lead">Sizing 속성</b>
                               <p class="alert alert-success">
-                                버튼의 크기를 조정하는 다양한 속성들이 있습니다.<br />
-                                <b>기본값: </b>null<br />
-                                <b>종류: </b> small, large
+                                버튼의 크기를 조정하는 속성.<br />
+                                <b>기본값: </b>'default'<br />
+                                <b>속성 종류: </b> 'xsmall', 'small', 'default', 'large', 'xlarge'
                               </p>
                               <pre class="prettyprint linenums">
 &lt;template&gt;
   &lt;div&gt;
+    &lt;ui-button&gt;버튼&lt;/ui-button&gt;
+    &lt;ui-button xsmall&gt;버튼&lt;/ui-button&gt;
     &lt;ui-button small&gt;버튼&lt;/ui-button&gt;
+    &lt;ui-button default&gt;버튼&lt;/ui-button&gt;
+    &lt;ui-button large&gt;버튼&lt;/ui-button&gt;
+    &lt;ui-button xlarge&gt;버튼&lt;/ui-button&gt;
   &lt;/div&gt;
 &lt;/template&gt;
                               </pre>
-                              <ui-button full>버튼</ui-button>
+                              <ui-button>버튼</ui-button>
+                              <ui-button xsmall>버튼</ui-button>
+                              <ui-button small>버튼</ui-button>
+                              <ui-button default>버튼</ui-button>
+                              <ui-button large>버튼</ui-button>
+                              <ui-button xlarge>버튼</ui-button>
                               <hr />
                             </li>
                           </ul>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="widget-box">
+              <div class="widget-header">
+                <h4 class="smaller">
+                  <b>Event</b>
+                  <small><span class="label">ui-button</span> 컴포넌트에 이벤트를 적용하는 방법.</small>
+                </h4>
+              </div>
+
+              <div class="widget-body">
+                <div class="widget-main">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <ul>
+                        <li>
+                          <h4><b>Click</b></h4>
+                          <b><span class="bolder green">&lt;ui-button&gt;</span>에 click이벤트 적용.</b>
+                          <pre class="prettyprint linenums">
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;ui-button @click="onClick"&gt;버튼&lt;/ui-button&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+export default {
+  methods: {
+    onClick(event) {
+      this.$rayui.alert('버튼 클릭!');
+    },
+  },
+}
+&lt;/script&gt;
+                          </pre>
+                          <ui-button
+                            @click="
+                              () => {
+                                $rayui.alert('버튼 클릭!');
+                              }
+                            "
+                          >
+                            버튼
+                          </ui-button>
                         </li>
                       </ul>
                     </div>
