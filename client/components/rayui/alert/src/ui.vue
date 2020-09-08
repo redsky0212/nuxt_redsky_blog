@@ -6,7 +6,7 @@
           <div class="modal-header" v-if="title" v-html="title"></div>
           <div class="modal-body text-center" v-html="msg"></div>
           <div class="modal-footer bg-white justify-content-between">
-            <button class="modal-default-button rayui-styled rayui-confirm" @click="close">확인</button>
+            <ui-button @click="close">확인</ui-button>
           </div>
         </div>
       </div>
