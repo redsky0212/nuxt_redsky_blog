@@ -1,7 +1,8 @@
 import Vue from 'vue';
 import alert from '@/components/rayui/alert';
 import confirm from '@/components/rayui/confirm';
-import UiButton from '@/components/rayui/button/UiButton.vue';
+import UiButton from '@/components/rayui/button/src/UiButton.vue';
+import UiTabs from '@/components/rayui/tabs/src/UiTabs.vue';
 
 export default (context, inject) => {
   // 전역 Dialog관련 코드 (BEGIN) ===========================
@@ -35,6 +36,7 @@ export default (context, inject) => {
 
   // 전역 rayui 컴포넌트 등록 ================================
   Vue.component('ui-button', UiButton);
+  Vue.component('ui-tabs', UiTabs);
 
   // $root, context 모두 플러그인 주입 방식
   inject('rayui', {
