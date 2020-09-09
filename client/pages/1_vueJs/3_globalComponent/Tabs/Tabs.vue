@@ -92,7 +92,6 @@
   &lt;/div&gt;
 &lt;/template&gt;
                               </pre>
-                              <ui-tabs>primary</ui-tabs>
                               <hr />
                             </li>
                           </ul>
