@@ -29,13 +29,17 @@ export default {
   },
   mounted() {
     console.log(this.$nuxt.$router.options.routes);
-    this.createMenuList(this.menuList, this.routes, 1);
+    this.createMenuList();
   },
   methods: {
     createMenuList() {
       const obj = {};
       const depth = 1;
       this.routes.sort((a, b) => (a.name > b.name ? 1 : b.name > a.name ? -1 : 0));
+      // this.routes.sort((a, b) => {
+      //   return Number(a.name.match(/(\d+)/g)) - Number(b.name.match(/(\d+)/g));
+      // });
+
       this.routes.forEach((item, index) => {
         const itemArr = item.path.split('/');
         itemArr.shift();
@@ -72,7 +76,7 @@ export default {
           });
         }
       } else {
-        let stlectIdx = null;
+        let selectIdx = null;
         if (!obj[itemArr[depth - 1]]) {
           obj[itemArr[depth - 1]] = {
             name: itemArr[depth - 1],
@@ -89,10 +93,10 @@ export default {
         }
         menu.forEach((menuItem, idx) => {
           if (menuItem.name === itemArr[depth - 1]) {
-            stlectIdx = idx;
+            selectIdx = idx;
           }
         });
-        this.createMenuItem(obj[itemArr[depth - 1]].sub, menu[stlectIdx].sub, item, itemArr, depth + 1, index);
+        this.createMenuItem(obj[itemArr[depth - 1]].sub, menu[selectIdx].sub, item, itemArr, depth + 1, index);
       }
     },
   },
