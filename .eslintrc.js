@@ -22,6 +22,7 @@ module.exports = {
     'no-debugger': 'off',
     'vue/html-closing-bracket-newline': 'off',
     'vue/no-v-html': 'off',
+    'linebreak-style': ['error', 'windows'],
     'prettier/prettier': [
       'error',
       {
@@ -31,6 +32,8 @@ module.exports = {
         endOfLine: 'auto',
         singleQuote: true,
         tabWidth: 2,
+        bracketSpacing: true,
+        useTabs: false,
       },
     ],
   },

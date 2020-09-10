@@ -3,6 +3,8 @@ import alert from '@/components/rayui/alert';
 import confirm from '@/components/rayui/confirm';
 import UiButton from '@/components/rayui/button/src/UiButton.vue';
 import UiTabs from '@/components/rayui/tabs/src/UiTabs.vue';
+import UiTab from '@/components/rayui/tabs/src/UiTab.vue';
+import UiTabpanel from '@/components/rayui/tabs/src/UiTabpanel.vue';
 
 export default (context, inject) => {
   // 전역 Dialog관련 코드 (BEGIN) ===========================
@@ -34,14 +36,24 @@ export default (context, inject) => {
   });
   // 전역 Dialog관련 코드 (END) ==============================
 
+  // 전역 Tabs관련 코드 (BEGIN) ==============================
+  const tabsStatusValue = {
+    key: 0,
+    list: [],
+  };
+  // 전역 Tabs관련 코드 (END) ==============================
+
   // 전역 rayui 컴포넌트 등록 ================================
   Vue.component('ui-button', UiButton);
   Vue.component('ui-tabs', UiTabs);
+  Vue.component('ui-tab', UiTab);
+  Vue.component('ui-tabpanel', UiTabpanel);
 
   // $root, context 모두 플러그인 주입 방식
   inject('rayui', {
     popupStatusValue, // 전역팝업 상태값
     alert, // 전역 alert 컴포넌트 객체
     confirm, // 전역 confirm 컴포넌트 객체
+    tabsStatusValue, // 전역 Tabs 컴포넌트의 상태값
   });
 };

@@ -23,9 +23,12 @@
                 <i class="ace-icon fa fa-times"></i>
               </button>
               <i class="ace-icon fa fa-check bigger-110 green"></i>
-              <span class="bolder">참조</span><br />
+              <span class="bolder">참조링크</span><br />
               <span class="blue bolder">접근성 관련 참조 : </span>
               <a href="https://mulder21c.github.io/2018/06/04/how-to-make-accessible-tab-content/" target="_blank">https://mulder21c.github.io/2018/06/04/how-to-make-accessible-tab-content/</a>
+              <br />
+              <span class="blue bolder">구문 하이라이터 : </span>
+              <a href="https://prismjs.com/plugins/line-numbers/" target="_blank">https://prismjs.com/plugins/line-numbers/</a>
             </div>
 
             <div class="widget-box">
@@ -46,7 +49,11 @@
                           <pre class="prettyprint linenums">
 &lt;template&gt;
   &lt;div&gt;
-    &lt;ui-tabs&gt;&lt;/ui-tabs&gt;
+    &lt;ui-tabs&gt;
+      &lt;ui-tab href="tab-1"&gt;Home&lt;/ui-tab&gt;
+      &lt;ui-tab&gt;Profile&lt;/ui-tab&gt;
+      &lt;ui-tab&gt;More&lt;/ui-tab&gt;
+    &lt;/ui-tabs&gt;
   &lt;/div&gt;
 &lt;/template&gt;
                           </pre>
@@ -54,7 +61,24 @@
                         <li>
                           <b>preview</b>
                           <div class="thumbnail">
-                            <ui-tabs></ui-tabs>
+                            <div style="border: 1px solid #e2e2e2;">
+                              <ui-tabs>
+                                <ui-tab v-for="(item, index) in tabData" :key="index">
+                                  {{ item.title }}
+                                </ui-tab>
+                                <ui-tabpanel v-for="(item, index) in tabData" :key="index">
+                                  {{ item.title }}
+                                </ui-tabpanel>
+                              </ui-tabs>
+                              <ui-tabs>
+                                <ui-tab v-for="(item, index) in tabData" :key="index">
+                                  {{ item.title }}
+                                </ui-tab>
+                                <ui-tabpanel v-for="(item, index) in tabData" :key="index">
+                                  {{ item.title }}
+                                </ui-tabpanel>
+                              </ui-tabs>
+                            </div>
                           </div>
                         </li>
                       </ul>
@@ -117,6 +141,7 @@ export default {
   data() {
     return {
       testPluginVal: '',
+      tabData: [{ title: 'Home' }, { title: 'Profile' }, { title: 'More' }],
     };
   },
   mounted() {
