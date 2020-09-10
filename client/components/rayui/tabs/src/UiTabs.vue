@@ -4,13 +4,10 @@
       <div class="ui-tabs-bar-slide-group-prev">prev</div>
       <div class="ui-tabs-bar-slide-group-wrapper">
         <div class="ui-tabs-bar-slide-group-content">
-          <div class="ui-tabs-bar-slide-wrapper" style="background-color: #39b689 !important; border: 0 solid #39b689; height: 3px; top: 0; left: 0px; width: 90px;">
+          <div class="ui-tabs-bar-slide-wrapper" :style="changeSliderStyle" style="background-color: #39b689 !important; border: 0 solid #39b689; height: 3px; top: 0;">
             <div class="ui-tabs-bar-slider"></div>
           </div>
           <slot name="tabs"></slot>
-          <a href="#tab-1" id="tab1" aria-selected="true" role="tab" aria-controls="tab-1" class="ui-tab ui-tab-active">Home</a>
-          <a href="#tab-2" id="tab2" aria-selected="false" role="tab" aria-controls="tab-2" class="ui-tab">Profile</a>
-          <a href="#tab-3" id="tab3" aria-selected="false" role="tab" aria-controls="tab-3" class="ui-tab">More</a>
         </div>
       </div>
       <div class="ui-tabs-bar-slide-group-next">next</div>
@@ -18,44 +15,65 @@
     <div class="ui-tabs-items">
       <div class="ui-tabs-items-container" style="padding: 1.25rem !important;">
         <slot name="tabpanel"></slot>
-        <div class="ui-tabs-item ui-tabs-item-active" id="tab-1" role="tabpanel" aria-labelledby="tab1">tab 1 item</div>
-        <div class="ui-tabs-item" id="tab-2" role="tabpanel" aria-labelledby="tab2">tab 2 item</div>
-        <div class="ui-tabs-item" id="tab-3" role="tabpanel" aria-labelledby="tab3">tab 3 item</div>
       </div>
     </div>
   </div>
 </template>
 <script>
 export default {
+  props: {
+    selectedIndex: {
+      type: String,
+      default: '0',
+    },
+  },
   data() {
     return {
+      key: 0,
       tabKey: '',
       g_tabsStatusValue: window.$nuxt.$rayui.tabsStatusValue,
     };
   },
-  beforeMount() {
-    // tab, tabpanel 의 slot위치 조정.
-    this.changeSlot();
-    this.createTabsKey();
+  computed: {
+    changeSliderStyle: function () {
+      const obj = {};
+      const w = window.$nuxt.$rayui.tabsStatusValue.list[this.key].tabWidth;
+      const l = window.$nuxt.$rayui.tabsStatusValue.list[this.key].offsetLeft;
+      obj['width'] = w ? `${w}px` : '90px';
+      obj['left'] = `${l}px`;
+      return obj;
+    },
   },
-  mounted() {
-    document.getElementById('tab1').setAttribute('tabindex', '0');
+  beforeMount() {
+    // tabs 초기 생성시 초기화
+    this.init();
   },
   beforeDestroy() {
     this.removeTabsKey();
   },
   methods: {
+    init() {
+      // tab, tabpanel 의 slot위치 조정.
+      this.changeSlot();
+      this.createTabsKey();
+    },
     changeSlot() {
       const s = this.$slots.default;
       const arrTab = [];
       const arrTabpanel = [];
       s.forEach((element) => {
         if (RegExp('ui-tab', 'g').test(element.tag) && !RegExp('ui-tabpanel', 'g').test(element.tag)) {
-          element.data.attrs = { tabIndex: arrTab.length };
+          element.data.attrs = {
+            tabIdx: arrTab.length,
+            tabsIdx: this.g_tabsStatusValue.key,
+          };
           arrTab.push(element);
         }
         if (RegExp('ui-tabpanel', 'g').test(element.tag)) {
-          element.data.attrs = { tabIndex: arrTabpanel.length };
+          element.data.attrs = {
+            tabIdx: arrTabpanel.length,
+            tabsIdx: this.g_tabsStatusValue.key,
+          };
           arrTabpanel.push(element);
         }
       });
@@ -64,12 +82,18 @@ export default {
       delete this.$slots.default;
     },
     createTabsKey() {
+      this.key = this.g_tabsStatusValue.key;
       this.tabKey = `ui_tabs_key_${this.g_tabsStatusValue.key++}`;
-      this.g_tabsStatusValue.list.push(this.tabKey);
+      this.g_tabsStatusValue.list.push({
+        tabKey: this.tabKey,
+        selectedIndex: this.selectedIndex,
+        tabWidth: 0,
+        offsetLeft: 0,
+      });
     },
     removeTabsKey() {
       this.g_tabsStatusValue.list.some((item, index) => {
-        if (this.tabKey === this.g_tabsStatusValue.list[index]) {
+        if (this.tabKey === this.g_tabsStatusValue.list[index].tabKey) {
           this.g_tabsStatusValue.list.splice(index, 1);
           this.g_tabsStatusValue.key--;
         }
@@ -91,7 +115,7 @@ export default {
       flex: 1 1 auto;
       overflow: hidden;
       touch-action: none;
-      margin-bottom: -1px;
+      // margin-bottom: -1px;
       .ui-tabs-bar-slide-group-content {
         display: flex;
         flex: 1 0 auto;

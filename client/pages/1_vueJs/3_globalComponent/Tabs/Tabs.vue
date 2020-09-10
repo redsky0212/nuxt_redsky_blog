@@ -46,13 +46,18 @@
                       <ul>
                         <li>
                           <b>템플릿에 <span class="bolder green">&lt;ui-tabs&gt;</span>을 삽입해서 사용.</b>
+                          <br />
+                          <p>&lt;ui-tab&gt;의 갯수 index와 &lt;ui-tabpanel&gt;의 갯수 index가 짝지어져 열립니다.</p>
                           <pre class="prettyprint linenums">
 &lt;template&gt;
   &lt;div&gt;
     &lt;ui-tabs&gt;
-      &lt;ui-tab href="tab-1"&gt;Home&lt;/ui-tab&gt;
+      &lt;ui-tab&gt;Home&lt;/ui-tab&gt;
       &lt;ui-tab&gt;Profile&lt;/ui-tab&gt;
       &lt;ui-tab&gt;More&lt;/ui-tab&gt;
+      &lt;ui-tabpanel&gt;Home&lt;/ui-tabpanel&gt;
+      &lt;ui-tabpanel&gt;Profile&lt;/ui-tabpanel&gt;
+      &lt;ui-tabpanel&gt;More&lt;/ui-tabpanel&gt;
     &lt;/ui-tabs&gt;
   &lt;/div&gt;
 &lt;/template&gt;
@@ -62,7 +67,7 @@
                           <b>preview</b>
                           <div class="thumbnail">
                             <div style="border: 1px solid #e2e2e2;">
-                              <ui-tabs>
+                              <ui-tabs selected-index="2">
                                 <ui-tab v-for="(item, index) in tabData" :key="index">
                                   {{ item.title }}
                                 </ui-tab>
@@ -70,6 +75,8 @@
                                   {{ item.title }}
                                 </ui-tabpanel>
                               </ui-tabs>
+                            </div>
+                            <div style="border: 1px solid #e2e2e2;">
                               <ui-tabs>
                                 <ui-tab v-for="(item, index) in tabData" :key="index">
                                   {{ item.title }}
@@ -141,7 +148,7 @@ export default {
   data() {
     return {
       testPluginVal: '',
-      tabData: [{ title: 'Home' }, { title: 'Profile' }, { title: 'More' }],
+      tabData: [{ title: 'Home test text width' }, { title: 'Profile' }, { title: 'More' }],
     };
   },
   mounted() {

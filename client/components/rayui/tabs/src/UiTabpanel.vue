@@ -1,5 +1,5 @@
 <template>
-  <div class="ui-tabs-item ui-tabs-item-active" :id="tabpanelId" role="tabpanel" :aria-labelledby="tabId">
+  <div class="ui-tabs-item" :class="changeActive" :id="tabpanelId" role="tabpanel" :aria-labelledby="tabId">
     <slot></slot>
   </div>
 </template>
@@ -9,15 +9,25 @@ export default {
     return {
       tabId: '',
       tabpanelId: '',
-      index: 0,
-      tabKey: '',
+      index: this.$attrs.tabIdx,
+      tabKey: this.$parent.tabKey,
+      selectedIndex: window.$nuxt.$rayui.tabsStatusValue.list[this.$attrs.tabsIdx].selectedIndex,
     };
   },
+  computed: {
+    changeActive: function () {
+      const obj = {};
+      if (String(this.index) === window.$nuxt.$rayui.tabsStatusValue.list[this.$attrs.tabsIdx].selectedIndex) {
+        obj['ui-tabs-item-active'] = true;
+      } else {
+        obj['ui-tabs-item-active'] = false;
+      }
+      return obj;
+    },
+  },
   mounted() {
-    this.index = this.$attrs.tabIndex;
-    this.tabKey = this.$parent.tabKey;
-    this.tabId = `tab-${this.$parent.tabKey + this.$attrs.tabIndex}`;
-    this.tabpanelId = `tabpanel-${this.$parent.tabKey + this.$attrs.tabIndex}`;
+    this.tabId = `tab-${this.$parent.tabKey + this.$attrs.tabIdx}`;
+    this.tabpanelId = `tabpanel-${this.$parent.tabKey + this.$attrs.tabIdx}`;
   },
 };
 </script>
