@@ -3,7 +3,7 @@
     <div class="ui-tabs-bar ui-tabs-bar-slide-group" role="tablist" style="background-color: #e0e5e8 !important; color: #42474e;">
       <div class="ui-tabs-bar-slide-group-prev">prev</div>
       <div class="ui-tabs-bar-slide-group-wrapper">
-        <div class="ui-tabs-bar-slide-group-content">
+        <div :class="{ 'ui-tabs-bar-slide-group-content': true, 'ui-tabs-bar-slide-group-content-fixed': fixedTabs }">
           <div class="ui-tabs-bar-slide-wrapper" :style="changeSliderStyle" style="background-color: #39b689 !important; border: 0 solid #39b689; height: 3px; top: 0;">
             <div class="ui-tabs-bar-slider"></div>
           </div>
@@ -22,6 +22,18 @@
 <script>
 export default {
   props: {
+    /**
+     * 각각의 탭 간격을 균등하게 채워 표현
+     * @type {Boolean}
+     */
+    fixedTabs: {
+      type: Boolean,
+      default: false,
+    },
+    /**
+     * 최초 선택 되어져야 할 탭 index값 설정한다
+     * @type {String}
+     */
     selectedIndex: {
       type: String,
       default: '0',
@@ -37,6 +49,10 @@ export default {
   computed: {
     changeSliderStyle: function () {
       const obj = {};
+
+      if (window.$nuxt.$rayui.tabsStatusValue.list[this.key] === undefined) {
+        return obj;
+      }
       const w = window.$nuxt.$rayui.tabsStatusValue.list[this.key].tabWidth;
       const l = window.$nuxt.$rayui.tabsStatusValue.list[this.key].offsetLeft;
       obj['width'] = w ? `${w}px` : '90px';
@@ -66,6 +82,7 @@ export default {
           element.data.attrs = {
             tabIdx: arrTab.length,
             tabsIdx: this.g_tabsStatusValue.key,
+            fixedTabs: this.fixedTabs,
           };
           arrTab.push(element);
         }
@@ -73,10 +90,12 @@ export default {
           element.data.attrs = {
             tabIdx: arrTabpanel.length,
             tabsIdx: this.g_tabsStatusValue.key,
+            fixedTabs: this.fixedTabs,
           };
           arrTabpanel.push(element);
         }
       });
+
       this.$slots['tabs'] = arrTab;
       this.$slots['tabpanel'] = arrTabpanel;
       delete this.$slots.default;
@@ -122,6 +141,9 @@ export default {
         position: relative;
         transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
         white-space: nowrap;
+        &.ui-tabs-bar-slide-group-content-fixed {
+          flex: 1 0 auto;
+        }
         .ui-tabs-bar-slide-wrapper {
           bottom: 0;
           margin: 0 !important;
@@ -146,7 +168,7 @@ export default {
           letter-spacing: 0.0892857143em;
           line-height: normal;
           min-width: 90px;
-          max-width: 360px;
+          // max-width: 360px;
           outline: none;
           padding: 0 16px;
           position: relative;
@@ -160,6 +182,9 @@ export default {
           user-select: none;
           margin-right: 2px;
           border-bottom: 1px solid #e0e5e8;
+          &:last-child {
+            margin-right: 0;
+          }
           &:before {
             background-color: currentColor;
             bottom: 0;
@@ -187,6 +212,10 @@ export default {
             color: #606060;
             background-color: #fff;
             border-color: #c5c5c5;
+          }
+          &.ui-tab-fixed {
+            flex: 1 1 auto;
+            width: 100%;
           }
         }
       }

@@ -17,10 +17,13 @@ export default {
   computed: {
     changeActive: function () {
       const obj = {};
-      if (String(this.index) === window.$nuxt.$rayui.tabsStatusValue.list[this.$attrs.tabsIdx].selectedIndex) {
-        obj['ui-tabs-item-active'] = true;
-      } else {
-        obj['ui-tabs-item-active'] = false;
+
+      if (window.$nuxt.$rayui.tabsStatusValue.list[this.$attrs.tabsIdx] !== undefined) {
+        if (String(this.index) === window.$nuxt.$rayui.tabsStatusValue.list[this.$attrs.tabsIdx].selectedIndex) {
+          obj['ui-tabs-item-active'] = true;
+        } else {
+          obj['ui-tabs-item-active'] = false;
+        }
       }
       return obj;
     },

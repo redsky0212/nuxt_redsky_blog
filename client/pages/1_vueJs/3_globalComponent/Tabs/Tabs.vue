@@ -45,47 +45,42 @@
                     <div class="col-sm-12">
                       <ul>
                         <li>
-                          <b>템플릿에 <span class="bolder green">&lt;ui-tabs&gt;</span>을 삽입해서 사용.</b>
+                          <b>템플릿에 <span class="bolder green">&lt;ui-tabs&gt;</span>컴퍼넌트를 삽입해서 사용.</b>
                           <br />
-                          <p>&lt;ui-tab&gt;의 갯수 index와 &lt;ui-tabpanel&gt;의 갯수 index가 짝지어져 열립니다.</p>
-                          <pre class="prettyprint linenums">
-&lt;template&gt;
-  &lt;div&gt;
-    &lt;ui-tabs&gt;
-      &lt;ui-tab&gt;Home&lt;/ui-tab&gt;
-      &lt;ui-tab&gt;Profile&lt;/ui-tab&gt;
-      &lt;ui-tab&gt;More&lt;/ui-tab&gt;
-      &lt;ui-tabpanel&gt;Home&lt;/ui-tabpanel&gt;
-      &lt;ui-tabpanel&gt;Profile&lt;/ui-tabpanel&gt;
-      &lt;ui-tabpanel&gt;More&lt;/ui-tabpanel&gt;
-    &lt;/ui-tabs&gt;
-  &lt;/div&gt;
-&lt;/template&gt;
-                          </pre>
-                        </li>
-                        <li>
-                          <b>preview</b>
-                          <div class="thumbnail">
-                            <div style="border: 1px solid #e2e2e2;">
-                              <ui-tabs selected-index="2">
-                                <ui-tab v-for="(item, index) in tabData" :key="index">
-                                  {{ item.title }}
-                                </ui-tab>
-                                <ui-tabpanel v-for="(item, index) in tabData" :key="index">
-                                  {{ item.title }}
-                                </ui-tabpanel>
-                              </ui-tabs>
-                            </div>
-                            <div style="border: 1px solid #e2e2e2;">
-                              <ui-tabs>
-                                <ui-tab v-for="(item, index) in tabData" :key="index">
-                                  {{ item.title }}
-                                </ui-tab>
-                                <ui-tabpanel v-for="(item, index) in tabData" :key="index">
-                                  {{ item.title }}
-                                </ui-tabpanel>
-                              </ui-tabs>
-                            </div>
+                          <p><span class="bolder green">&lt;ui-tab&gt;</span>의 개수와 <span class="bolder green">&lt;ui-tabpanel&gt;</span>의 개수 index가 짝지어져 각각의 탭이 열립니다.</p>
+                          <div style="border: 1px solid #e2e2e2;">
+                            <ui-tabs>
+                              <ui-tab>Source</ui-tab>
+                              <ui-tab>Demo</ui-tab>
+                              <ui-tabpanel>
+                                <pre class="prettyprint linenums">
+  &lt;template&gt;
+    &lt;div&gt;
+      &lt;ui-tabs&gt;
+        &lt;ui-tab&gt;Home&lt;/ui-tab&gt;
+        &lt;ui-tab&gt;Profile&lt;/ui-tab&gt;
+        &lt;ui-tab&gt;More&lt;/ui-tab&gt;
+        &lt;ui-tabpanel&gt;Home panel&lt;/ui-tabpanel&gt;
+        &lt;ui-tabpanel&gt;Profile panel&lt;/ui-tabpanel&gt;
+        &lt;ui-tabpanel&gt;More panel&lt;/ui-tabpanel&gt;
+      &lt;/ui-tabs&gt;
+    &lt;/div&gt;
+  &lt;/template&gt;
+                                </pre>
+                              </ui-tabpanel>
+                              <ui-tabpanel>
+                                <div class="thumbnail">
+                                  <ui-tabs selected-index="2">
+                                    <ui-tab v-for="(item, index) in tabData" :key="index">
+                                      {{ item.title }}
+                                    </ui-tab>
+                                    <ui-tabpanel v-for="(item, index) in tabData" :key="index">
+                                      {{ item.content }}
+                                    </ui-tabpanel>
+                                  </ui-tabs>
+                                </div>
+                              </ui-tabpanel>
+                            </ui-tabs>
                           </div>
                         </li>
                       </ul>
@@ -148,7 +143,11 @@ export default {
   data() {
     return {
       testPluginVal: '',
-      tabData: [{ title: 'Home test text width' }, { title: 'Profile' }, { title: 'More' }],
+      tabData: [
+        { title: 'Home', content: 'Home panel' },
+        { title: 'Profile', content: 'Profile panel' },
+        { title: 'More', content: 'More panel' },
+      ],
     };
   },
   mounted() {
