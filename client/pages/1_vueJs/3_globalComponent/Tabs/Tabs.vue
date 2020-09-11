@@ -107,17 +107,90 @@
                           <ul class="list-unstyled">
                             <li>
                               <i class="ace-icon fa fa-caret-right blue"></i>
-                              <b class="text-success lead">aaaaaaa</b>
+                              <b class="text-success lead">fixed-tabs</b>
                               <p class="alert alert-success">
-                                aaaaaaaaaaaaaaaaa
+                                탭 버튼의 간격을 균등하게 채워서 전체 넓이 표현.<br />
+                                <b>타입: </b> Boolean<br />
+                                <b>기본값: </b> false<br />
                               </p>
-                              <pre class="prettyprint linenums">
-&lt;template&gt;
-  &lt;div&gt;
-    &lt;ui-tabs&gt;&lt;/ui-tabs&gt;
-  &lt;/div&gt;
-&lt;/template&gt;
-                              </pre>
+                              <div style="border: 1px solid #e2e2e2;">
+                                <ui-tabs>
+                                  <ui-tab>Source</ui-tab>
+                                  <ui-tab>Demo</ui-tab>
+                                  <ui-tabpanel>
+                                    <pre class="prettyprint linenums">
+  &lt;template&gt;
+    &lt;div&gt;
+      &lt;ui-tabs fixed-tabs&gt;
+        &lt;ui-tab&gt;Home&lt;/ui-tab&gt;
+        &lt;ui-tab&gt;Profile&lt;/ui-tab&gt;
+        &lt;ui-tab&gt;More&lt;/ui-tab&gt;
+        &lt;ui-tabpanel&gt;Home panel&lt;/ui-tabpanel&gt;
+        &lt;ui-tabpanel&gt;Profile panel&lt;/ui-tabpanel&gt;
+        &lt;ui-tabpanel&gt;More panel&lt;/ui-tabpanel&gt;
+      &lt;/ui-tabs&gt;
+    &lt;/div&gt;
+  &lt;/template&gt;
+                                    </pre>
+                                  </ui-tabpanel>
+                                  <ui-tabpanel>
+                                    <div class="thumbnail">
+                                      <ui-tabs fixed-tabs>
+                                        <ui-tab v-for="(item, index) in tabData" :key="index">
+                                          {{ item.title }}
+                                        </ui-tab>
+                                        <ui-tabpanel v-for="(item, index) in tabData" :key="index">
+                                          {{ item.content }}
+                                        </ui-tabpanel>
+                                      </ui-tabs>
+                                    </div>
+                                  </ui-tabpanel>
+                                </ui-tabs>
+                              </div>
+                              <hr />
+                            </li>
+                            <li>
+                              <i class="ace-icon fa fa-caret-right blue"></i>
+                              <b class="text-success lead">selected-index</b>
+                              <p class="alert alert-success">
+                                최초 선택 되어져야 할 탭 index를 설정.<br />
+                                <b>타입: </b> Number<br />
+                                <b>기본값: </b> 0<br />
+                              </p>
+                              <div style="border: 1px solid #e2e2e2;">
+                                <ui-tabs>
+                                  <ui-tab>Source</ui-tab>
+                                  <ui-tab>Demo</ui-tab>
+                                  <ui-tabpanel>
+                                    <pre class="prettyprint linenums">
+  &lt;template&gt;
+    &lt;div&gt;
+      &lt;ui-tabs selected-index="2"&gt;
+        &lt;ui-tab&gt;Home&lt;/ui-tab&gt;
+        &lt;ui-tab&gt;Profile&lt;/ui-tab&gt;
+        &lt;ui-tab&gt;More&lt;/ui-tab&gt;
+        &lt;ui-tabpanel&gt;Home panel&lt;/ui-tabpanel&gt;
+        &lt;ui-tabpanel&gt;Profile panel&lt;/ui-tabpanel&gt;
+        &lt;ui-tabpanel&gt;More panel&lt;/ui-tabpanel&gt;
+      &lt;/ui-tabs&gt;
+    &lt;/div&gt;
+  &lt;/template&gt;
+                                    </pre>
+                                  </ui-tabpanel>
+                                  <ui-tabpanel>
+                                    <div class="thumbnail">
+                                      <ui-tabs selected-index="2">
+                                        <ui-tab v-for="(item, index) in tabData" :key="index">
+                                          {{ item.title }}
+                                        </ui-tab>
+                                        <ui-tabpanel v-for="(item, index) in tabData" :key="index">
+                                          {{ item.content }}
+                                        </ui-tabpanel>
+                                      </ui-tabs>
+                                    </div>
+                                  </ui-tabpanel>
+                                </ui-tabs>
+                              </div>
                               <hr />
                             </li>
                           </ul>
