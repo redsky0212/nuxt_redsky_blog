@@ -59,14 +59,14 @@
                                 <pre class="prettyprint linenums">
   &lt;template&gt;
     &lt;div&gt;
-      &lt;ui-accordion&gt;&lt;/ui-accordion&gt;
+      &lt;ui-accordions&gt;&lt;/ui-accordions&gt;
     &lt;/div&gt;
   &lt;/template&gt;
                                 </pre>
                               </ui-tabpanel>
                               <ui-tabpanel>
                                 <div class="thumbnail">
-                                  ...
+                                  <ui-accordions></ui-accordions>
                                 </div>
                               </ui-tabpanel>
                             </ui-tabs>

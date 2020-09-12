@@ -5,6 +5,7 @@ import UiButton from '@/components/rayui/button/src/UiButton.vue';
 import UiTabs from '@/components/rayui/tabs/src/UiTabs.vue';
 import UiTab from '@/components/rayui/tabs/src/UiTab.vue';
 import UiTabpanel from '@/components/rayui/tabs/src/UiTabpanel.vue';
+import UiAccordions from '@/components/rayui/accordions/src/UiAccordions.vue';
 
 export default (context, inject) => {
   // 전역 Dialog관련 코드 (BEGIN) ===========================
@@ -48,6 +49,7 @@ export default (context, inject) => {
   Vue.component('ui-tabs', UiTabs);
   Vue.component('ui-tab', UiTab);
   Vue.component('ui-tabpanel', UiTabpanel);
+  Vue.component('ui-accordions', UiAccordions);
 
   // $root, context 모두 플러그인 주입 방식
   inject('rayui', {
