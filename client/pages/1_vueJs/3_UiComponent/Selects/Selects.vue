@@ -2,10 +2,10 @@
   <div>
     <div class="page-header">
       <h1>
-        Accordion
+        UI Selects
         <small>
           <i class="ace-icon fa fa-angle-double-right"></i>
-          확장/축소를 토글할 수 있는 여러 개의 요소가 하나의 그룹으로 묶여 있는 영역 컴포넌트.
+          옵션 목록중에서 사용자가 하나 또는 멀티 선택하여 값을 가져오는 컴포넌트.
         </small>
       </h1>
     </div>
@@ -15,7 +15,7 @@
         <!-- PAGE CONTENT BEGINS -->
         <div class="row">
           <div class="col-xs-12">
-            <h3 class="header smaller bolder green">Ui Accordion</h3>
+            <h3 class="header smaller bolder green">Ui Selects</h3>
 
             <div class="alert alert-info hidden-sm hidden-xs">
               <button type="button" class="close" data-dismiss="alert">
@@ -24,13 +24,16 @@
               <i class="ace-icon fa fa-check bigger-110 green"></i>
               <span class="bolder">참조링크</span><br />
               <span class="blue bolder">Vuetify 참조 : </span>
-              <a href="https://vuetifyjs.com/ko/components/expansion-panels/" target="_blank">https://vuetifyjs.com/ko/components/expansion-panels/</a>
+              <a href="https://vuetifyjs.com/en/components/selects/" target="_blank">https://vuetifyjs.com/en/components/selects/</a>
               <br />
-              <span class="blue bolder">접근성 관련 참조 : </span>
-              <a href="https://mulder21c.github.io/2018/06/04/how-to-make-accessible-tab-content/" target="_blank">https://mulder21c.github.io/2018/06/04/how-to-make-accessible-tab-content/</a>
+              <span class="blue bolder">웹접근성 유지 select 참조!! : </span>
+              <a href="https://webclub.tistory.com/235" target="_blank">https://webclub.tistory.com/235</a>
               <br />
-              <span class="blue bolder">accordion접근성 관련 참조 : </span>
-              <a href="https://nuli.navercorp.com/community/article/1132889?email=true" target="_blank">https://nuli.navercorp.com/community/article/1132889?email=true</a>
+              <span class="blue bolder">jquery select 참조 : </span>
+              <a href="http://selectric.js.org/index.html" target="_blank">http://selectric.js.org/index.html</a>
+              <br />
+              <span class="blue bolder">select tag 접근성 관련 참조 : </span>
+              <a href="https://joke00.tistory.com/225" target="_blank">https://joke00.tistory.com/225</a>
               <br />
             </div>
 
@@ -38,7 +41,7 @@
               <div class="widget-header">
                 <h4 class="smaller">
                   <b>기본 사용방법</b>
-                  <small>전역 공통 <span class="label">ui-accordion</span> 컴포넌트</small>
+                  <small>전역 공통 <span class="label">ui-selects</span> 컴포넌트</small>
                 </h4>
               </div>
 
@@ -48,7 +51,7 @@
                     <div class="col-sm-12">
                       <ul>
                         <li>
-                          <b>템플릿에 <span class="bolder green">&lt;ui-accordion&gt;</span>컴퍼넌트를 삽입해서 사용.</b>
+                          <b>템플릿에 <span class="bolder green">&lt;ui-selects&gt;</span>컴퍼넌트를 삽입해서 사용.</b>
                           <br />
                           <p><span class="bolder green">&lt;ui-...&gt;</span>의 개수와 <span class="bolder green">&lt;ui-...&gt;</span>의 개수 index가 짝지어져 각각의 탭이 열립니다.</p>
                           <div style="border: 1px solid #e2e2e2;">
@@ -59,34 +62,14 @@
                                 <pre class="prettyprint linenums">
   &lt;template&gt;
     &lt;div&gt;
-      &lt;ui-accordions&gt;
-        &lt;ui-accordion&gt;
-          &lt;ui-accordion-header&gt;Home&lt;/ui-accordion-header&gt;
-          &lt;ui-accordion-content&gt;Home Content&lt;/ui-accordion-content&gt;
-        &lt;/ui-accordion&gt;
-        &lt;ui-accordion&gt;
-          &lt;ui-accordion-header&gt;Profile&lt;/ui-accordion-header&gt;
-          &lt;ui-accordion-content&gt;Profile Content&lt;/ui-accordion-content&gt;
-        &lt;/ui-accordion&gt;
-        &lt;ui-accordion&gt;
-          &lt;ui-accordion-header&gt;More&lt;/ui-accordion-header&gt;
-          &lt;ui-accordion-content&gt;More Content&lt;/ui-accordion-content&gt;
-        &lt;/ui-accordion&gt;
-      &lt;/ui-accordions&gt;
-    &lt;/div&gt;
-  &lt;/template&gt;
-  &lt;template&gt;
-    &lt;div&gt;
-      &lt;ui-accordions&gt;
-        &lt;ui-accordion :data="accordionData"&gt;&lt;/ui-accordion&gt;
-      &lt;/ui-accordions&gt;
+      &lt;ui-accordions :data="selectData"&gt;&lt;/ui-accordions&gt;
     &lt;/div&gt;
   &lt;/template&gt;
   &lt;script&gt;
   export default {
     data() {
       return {
-        accordionData: [
+        selectData: [
           { header: 'Home', content: 'Home Content...html' },
           { header: 'Profile', content: 'Profile Content...html' },
           { header: 'More', content: 'More Content...' },
@@ -113,7 +96,7 @@
               <div class="widget-header">
                 <h4 class="smaller">
                   <b>API</b>
-                  <small>ui-accordion의 속성</small>
+                  <small>ui-selects의 속성</small>
                 </h4>
               </div>
 
