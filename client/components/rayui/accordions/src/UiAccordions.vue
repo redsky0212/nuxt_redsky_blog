@@ -186,6 +186,7 @@
           -ms-flex-positive: 1;
           flex-grow: 1;
           line-height: normal;
+          margin-top: 0;
           margin-bottom: 0;
           .ui-accordion-toggle {
             display: block;
