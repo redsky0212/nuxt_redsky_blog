@@ -1,7 +1,7 @@
 <template>
   <div class="ui-accordion-header">
     <h2 class="ui-accordion-title">
-      <a href="#ac1" class="ui-accordion-toggle" id="ah1" role="button" aria-controls="ac1" aria-expanded="false" @click="onClick">
+      <a :href="`#${contentId}`" class="ui-accordion-toggle" :id="headerId" role="button" :aria-controls="contentId" aria-expanded="false" @click="onClick">
         title 1
         <span class="ui-accordion-toggle-icon" style="margin-right: 1rem !important;">
           <svg
@@ -41,6 +41,20 @@
 </template>
 <script>
 export default {
+  data() {
+    return {
+      g_accordionsStatusValue: window.$nuxt.$rayui.accordionsStatusValue,
+      accordionIndex: this.$attrs.accordionIdx,
+    };
+  },
+  computed: {
+    headerId: function () {
+      return `ui-accordion-header-${this.g_accordionsStatusValue.key}-${this.accordionIndex}`;
+    },
+    contentId: function () {
+      return `ui-accordion-content-${this.g_accordionsStatusValue.key}-${this.accordionIndex}`;
+    },
+  },
   methods: {
     onClick(event) {},
   },

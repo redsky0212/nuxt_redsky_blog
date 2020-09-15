@@ -31,7 +31,20 @@ export default {
   methods: {
     init() {
       // accordion 의 key생성.
+      this.setSlot();
       this.createAccordionsKey();
+    },
+    setSlot() {
+      const s = this.$slots.default;
+      const arrAccordion = [];
+      s.forEach((element) => {
+        if (RegExp('ui-accordion', 'g').test(element.tag)) {
+          element.data.attrs = {
+            accordionIdx: arrAccordion.length,
+          };
+          arrAccordion.push(element);
+        }
+      });
     },
     createAccordionsKey() {
       this.key = this.g_accordionsStatusValue.key;

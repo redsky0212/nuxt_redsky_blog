@@ -5,13 +5,29 @@
 </template>
 <script>
 export default {
-  beforeMounted() {
-    const a = '';
+  data() {
+    return {
+      accordionIndex: this.$attrs.accordionIdx,
+    };
+  },
+  beforeMount() {
+    // Accordion 초기 생성시 초기화
+    this.init();
   },
   methods: {
     init() {
       // tab, tabpanel 의 slot위치 조정.
-      // this.setSlot();
+      this.setSlot();
+    },
+    setSlot() {
+      const s = this.$slots.default;
+      s.forEach((element) => {
+        if (RegExp('ui-accordion-header', 'g').test(element.tag) || RegExp('ui-accordion-content', 'g').test(element.tag)) {
+          element.data.attrs = {
+            accordionIdx: this.accordionIndex,
+          };
+        }
+      });
     },
   },
 };
