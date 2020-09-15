@@ -6,6 +6,9 @@ import UiTabs from '@/components/rayui/tabs/src/UiTabs.vue';
 import UiTab from '@/components/rayui/tabs/src/UiTab.vue';
 import UiTabpanel from '@/components/rayui/tabs/src/UiTabpanel.vue';
 import UiAccordions from '@/components/rayui/accordions/src/UiAccordions.vue';
+import UiAccordion from '@/components/rayui/accordions/src/UiAccordion.vue';
+import UiAccordionHeader from '@/components/rayui/accordions/src/UiAccordionHeader.vue';
+import UiAccordionContent from '@/components/rayui/accordions/src/UiAccordionContent.vue';
 
 export default (context, inject) => {
   // 전역 Dialog관련 코드 (BEGIN) ===========================
@@ -42,7 +45,13 @@ export default (context, inject) => {
     key: 0,
     list: [],
   };
-  // 전역 Tabs관련 코드 (END) ==============================
+  // 전역 Tabs관련 코드 (END) ================================
+  // 전역 Accordions관련 코드 (BEGIN) ========================
+  const accordionsStatusValue = {
+    key: 0,
+    list: [],
+  };
+  // 전역 Accordions관련 코드 (END) ==========================
 
   // 전역 rayui 컴포넌트 등록 ================================
   Vue.component('ui-button', UiButton);
@@ -50,6 +59,9 @@ export default (context, inject) => {
   Vue.component('ui-tab', UiTab);
   Vue.component('ui-tabpanel', UiTabpanel);
   Vue.component('ui-accordions', UiAccordions);
+  Vue.component('ui-accordion', UiAccordion);
+  Vue.component('ui-accordion-header', UiAccordionHeader);
+  Vue.component('ui-accordion-content', UiAccordionContent);
 
   // $root, context 모두 플러그인 주입 방식
   inject('rayui', {
@@ -57,5 +69,6 @@ export default (context, inject) => {
     alert, // 전역 alert 컴포넌트 객체
     confirm, // 전역 confirm 컴포넌트 객체
     tabsStatusValue, // 전역 Tabs 컴포넌트의 상태값
+    accordionsStatusValue, // 전역 Accordions 컴포넌트의 상태값
   });
 };

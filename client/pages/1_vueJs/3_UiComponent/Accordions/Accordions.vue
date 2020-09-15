@@ -98,7 +98,20 @@
                                 </pre>
                               </ui-tabpanel>
                               <ui-tabpanel>
-                                <ui-accordions></ui-accordions>
+                                <ui-accordions>
+                                  <ui-accordion>
+                                    <ui-accordion-header>Home</ui-accordion-header>
+                                    <ui-accordion-content>Home Content</ui-accordion-content>
+                                  </ui-accordion>
+                                  <ui-accordion>
+                                    <ui-accordion-header>Profile</ui-accordion-header>
+                                    <ui-accordion-content>Profile Content</ui-accordion-content>
+                                  </ui-accordion>
+                                  <ui-accordion>
+                                    <ui-accordion-header>More</ui-accordion-header>
+                                    <ui-accordion-content>More Content</ui-accordion-content>
+                                  </ui-accordion>
+                                </ui-accordions>
                               </ui-tabpanel>
                             </ui-tabs>
                           </div>
