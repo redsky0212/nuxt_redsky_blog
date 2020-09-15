@@ -7,12 +7,12 @@
       <a v-if="item.link === ''" href="javascript:void(0)" @click="onMenuClick">
         <!-- dropdown-toggle -->
         <i class="menu-icon fa fa-caret-right"></i>
-        {{ item.name }}
+        <span class="bolder">{{ item.name }}</span>
         <b v-if="item.sub.length > 0" class="arrow fa fa-angle-down"></b>
       </a>
       <router-link v-else :to="item.link" @click.native="onMenuClick">
         <i class="menu-icon fa fa-caret-right"></i>
-        {{ item.name }}
+        <span class="bolder">{{ item.name }}</span>
         <b v-if="item.sub.length > 0" class="arrow fa fa-angle-down"></b>
       </router-link>
 
