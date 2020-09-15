@@ -74,6 +74,10 @@
         }
       }
       .ui-accordion-collapse {
+				display: none;
+				&.ui-accordion-content-active {
+					display: block;
+				}
         .ui-accordion-collapse-body {
           &:last-child {
             border-bottom-left-radius: inherit;

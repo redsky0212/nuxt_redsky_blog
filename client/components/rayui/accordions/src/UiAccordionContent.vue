@@ -1,6 +1,6 @@
 <template>
-  <div class="ui-accordion-collapse" style="display: none;">
-    <div class="ui-accordion-collapse-body" :arial-labelledby="headerId" :id="contentId">내용 들어갈 부분</div>
+  <div class="ui-accordion-collapse" :class="changeActive">
+    <div class="ui-accordion-collapse-body" :arial-labelledby="headerId" :id="contentId" style="padding: 1.25rem;">내용 들어갈 부분</div>
   </div>
 </template>
 <script>
@@ -17,6 +17,18 @@ export default {
     },
     contentId: function () {
       return `ui-accordion-content-${this.g_accordionsStatusValue.key}-${this.accordionIndex}`;
+    },
+    changeActive: function () {
+      const obj = {};
+
+      if (window.$nuxt.$rayui.accordionsStatusValue.list[this.$attrs.accordionsIdx] !== undefined) {
+        if (String(this.accordionIndex) === window.$nuxt.$rayui.accordionsStatusValue.list[this.$attrs.accordionsIdx].selectedIndex) {
+          obj['ui-accordion-content-active'] = true;
+        } else {
+          obj['ui-accordion-content-active'] = false;
+        }
+      }
+      return obj;
     },
   },
 };

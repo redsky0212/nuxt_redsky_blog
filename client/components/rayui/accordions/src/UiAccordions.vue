@@ -41,6 +41,7 @@ export default {
         if (RegExp('ui-accordion', 'g').test(element.tag)) {
           element.data.attrs = {
             accordionIdx: arrAccordion.length,
+            accordionsKey: this.g_accordionsStatusValue.key,
           };
           arrAccordion.push(element);
         }

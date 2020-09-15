@@ -1,7 +1,7 @@
 <template>
   <div class="ui-accordion-header">
     <h2 class="ui-accordion-title">
-      <a :href="`#${contentId}`" class="ui-accordion-toggle" :id="headerId" role="button" :aria-controls="contentId" aria-expanded="false" @click="onClick">
+      <a :href="`#${contentId}`" :idx="accordionIndex" class="ui-accordion-toggle" :id="headerId" role="button" :aria-controls="contentId" aria-expanded="false" @click.prevent="onClick">
         title 1
         <span class="ui-accordion-toggle-icon" style="margin-right: 1rem !important;">
           <svg
@@ -45,6 +45,7 @@ export default {
     return {
       g_accordionsStatusValue: window.$nuxt.$rayui.accordionsStatusValue,
       accordionIndex: this.$attrs.accordionIdx,
+      selectedIndex: window.$nuxt.$rayui.accordionsStatusValue.list[this.$attrs.accordionsIdx].selectedIndex,
     };
   },
   computed: {
@@ -54,9 +55,14 @@ export default {
     contentId: function () {
       return `ui-accordion-content-${this.g_accordionsStatusValue.key}-${this.accordionIndex}`;
     },
+    // TODO: aria-expanded 작업 처리 해야함
   },
   methods: {
-    onClick(event) {},
+    onClick(event) {
+      const idx = event.currentTarget.getAttribute('idx');
+      window.$nuxt.$rayui.accordionsStatusValue.list[this.$attrs.accordionsIdx].selectedIndex = idx;
+      this.selectedIndex = idx;
+    },
   },
 };
 </script>

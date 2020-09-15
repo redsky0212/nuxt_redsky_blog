@@ -8,6 +8,7 @@ export default {
   data() {
     return {
       accordionIndex: this.$attrs.accordionIdx,
+      accordionsKey: this.$attrs.accordionsKey,
     };
   },
   beforeMount() {
@@ -25,6 +26,7 @@ export default {
         if (RegExp('ui-accordion-header', 'g').test(element.tag) || RegExp('ui-accordion-content', 'g').test(element.tag)) {
           element.data.attrs = {
             accordionIdx: this.accordionIndex,
+            accordionsIdx: this.accordionsKey,
           };
         }
       });
