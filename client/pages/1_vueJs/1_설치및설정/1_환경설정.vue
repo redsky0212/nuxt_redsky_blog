@@ -62,10 +62,10 @@
                             <li>
                               <i class="ace-icon fa fa-caret-right blue"></i>
                               VSCode에서 사용하면 좋은 extensions<br />
-                              * Auto Close Tag<br />
-                              * Import Cost<br />
-                              * GitLens<br />
-                              * TODO Highlight<br />
+                              * <span class="green bolder">Auto Close Tag</span> : 태그 코딩시 자동으로 닫힘 태그가 생성되는 기능<br />
+                              * <span class="green bolder">Import Cost</span> : import하는 모듈의 사이즈를 보여줌.<br />
+                              *<span class="green bolder"> GitLens</span> : 최종 커밋한 사람과 날짜 등을 가이드 해주는 기능<br />
+                              * <span class="green bolder">TODO Highlight</span> : 주석처리시 TODO : 이렇게 시작하는 text를 입력하면 색깔로 반전시켜주는 기능<br />
                             </li>
                           </ul>
                         </li>
@@ -128,6 +128,10 @@
                               <i class="ace-icon fa fa-caret-right blue"></i>
                               git remote add origin 깃주소
                             </li>
+                            <li>
+                              <i class="ace-icon fa fa-caret-right blue"></i>
+                              git log --branches --graph --oneline (커밋한 history 로그를 보기좋게 줄로 표현해서 보여주는 명령어)
+                            </li>
                           </ul>
                         </li>
                       </ul>
@@ -143,6 +147,7 @@
           <div class="col-xs-12">
             <h2>Nuxt로 프로젝트 설치 다양한 방법</h2>
             <p>참조 : <a href="https://ko.nuxtjs.org/api/context/" target="_blank">https://ko.nuxtjs.org/api/context/</a></p>
+            <p class="red bolder">(되도록이면 'nuxt단일설치'를 사용)</p>
             <hr />
             <div class="widget-box">
               <div class="widget-header widget-header-flat">
@@ -193,16 +198,16 @@
             </div>
             <hr />
 
-            <h4>Vue CLI란?</h4>
-            <p>
-              Vue CLI 는 커맨드라인 인터페이스 기반의 Vue 프로젝트 생성 도구입니다. Vue 애플리케이션을 개발할 때 기본적인 폴더 구조, 라이브러리 등을 설정해줍니다.<br />
-              <a href="https://cli.vuejs.org/guide/" target="_blank">링크 : Vue CLI 공식문서</a>
-            </p>
             <div class="widget-box">
               <div class="widget-header widget-header-flat">
                 <h4 class="smaller">
                   Vue CLI 로 설치하기
                 </h4>
+                <h5 style="color: black;">* Vue CLI란?</h5>
+                <p style="color: black;">
+                  Vue CLI 는 커맨드라인 인터페이스 기반의 Vue 프로젝트 생성 도구입니다. Vue 애플리케이션을 개발할 때 기본적인 폴더 구조, 라이브러리 등을 설정해줍니다.<br />
+                  <a href="https://cli.vuejs.org/guide/" target="_blank">링크 : Vue CLI 공식문서</a>
+                </p>
               </div>
 
               <div class="widget-body">
