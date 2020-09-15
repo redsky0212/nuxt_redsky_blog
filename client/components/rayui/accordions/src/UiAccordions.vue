@@ -14,7 +14,7 @@ export default {
      */
     selectedIndex: {
       type: String,
-      default: '0',
+      default: '',
     },
   },
   data() {

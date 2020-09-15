@@ -2,7 +2,7 @@
   <div class="ui-accordion-header">
     <h2 class="ui-accordion-title">
       <a :href="`#${contentId}`" :idx="accordionIndex" class="ui-accordion-toggle" :id="headerId" role="button" :aria-controls="contentId" aria-expanded="false" @click.prevent="onClick">
-        title 1
+        <slot></slot>
         <span class="ui-accordion-toggle-icon" style="margin-right: 1rem !important;">
           <svg
             enable-background="new 0 0 24 24"

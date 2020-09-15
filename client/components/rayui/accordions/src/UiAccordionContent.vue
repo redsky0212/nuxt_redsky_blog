@@ -1,6 +1,8 @@
 <template>
   <div class="ui-accordion-collapse" :class="changeActive">
-    <div class="ui-accordion-collapse-body" :arial-labelledby="headerId" :id="contentId" style="padding: 1.25rem;">내용 들어갈 부분</div>
+    <div class="ui-accordion-collapse-body" :arial-labelledby="headerId" :id="contentId" style="padding: 1.25rem;">
+      <slot></slot>
+    </div>
   </div>
 </template>
 <script>

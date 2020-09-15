@@ -112,6 +112,20 @@
                                     <ui-accordion-content>More Content</ui-accordion-content>
                                   </ui-accordion>
                                 </ui-accordions>
+                                <ui-accordions>
+                                  <ui-accordion>
+                                    <ui-accordion-header>Home2</ui-accordion-header>
+                                    <ui-accordion-content>Home Content2</ui-accordion-content>
+                                  </ui-accordion>
+                                  <ui-accordion>
+                                    <ui-accordion-header>Profile2</ui-accordion-header>
+                                    <ui-accordion-content>Profile Content2</ui-accordion-content>
+                                  </ui-accordion>
+                                  <ui-accordion>
+                                    <ui-accordion-header>More2</ui-accordion-header>
+                                    <ui-accordion-content>More Content2</ui-accordion-content>
+                                  </ui-accordion>
+                                </ui-accordions>
                               </ui-tabpanel>
                             </ui-tabs>
                           </div>
