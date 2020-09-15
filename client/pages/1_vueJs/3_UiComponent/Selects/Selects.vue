@@ -81,7 +81,7 @@
                                 </pre>
                               </ui-tabpanel>
                               <ui-tabpanel>
-                                <ui-accordions></ui-accordions>
+                                <!-- <ui-accordions></ui-accordions> -->
                               </ui-tabpanel>
                             </ui-tabs>
                           </div>
