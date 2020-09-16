@@ -35,6 +35,12 @@
               <span class="blue bolder">JSDoc 참조 : </span>
               <a href="https://jsdoc.app/index.html#block-tags" target="_blank">https://jsdoc.app/index.html#block-tags</a>
               <br />
+              <span class="blue bolder">UI Component 참조 : </span>
+              <a href="https://material.io/develop/web/components/lists" target="_blank">https://material.io/develop/web/components/lists</a>
+              <br />
+              <span class="blue bolder">CSS flex grid 참조 : </span>
+              <a href="https://studiomeal.com/archives/533" target="_blank">https://studiomeal.com/archives/533</a>
+              <br />
             </div>
 
             <div class="widget-box">
@@ -78,7 +84,11 @@
       &lt;ui-accordions&gt;
         &lt;ui-accordion&gt;
           &lt;ui-accordion-header&gt;Home&lt;/ui-accordion-header&gt;
-          &lt;ui-accordion-content&gt;Home Content&lt;/ui-accordion-content&gt;
+          &lt;ui-accordion-content&gt;
+            Home Content
+            &lt;br /&gt;
+            &lt;input type="text" placeholder="text 입력상자 테스트" /&gt;
+          &lt;/ui-accordion-content&gt;
         &lt;/ui-accordion&gt;
         &lt;ui-accordion&gt;
           &lt;ui-accordion-header&gt;Profile&lt;/ui-accordion-header&gt;
@@ -97,29 +107,19 @@
                                 <ui-accordions>
                                   <ui-accordion>
                                     <ui-accordion-header>Home</ui-accordion-header>
-                                    <ui-accordion-content>Home Content</ui-accordion-content>
+                                    <ui-accordion-content background-color="#f4f9fd">
+                                      Home Content
+                                      <br />
+                                      <input type="text" placeholder="text 입력상자 테스트" />
+                                    </ui-accordion-content>
                                   </ui-accordion>
                                   <ui-accordion>
                                     <ui-accordion-header>Profile</ui-accordion-header>
-                                    <ui-accordion-content>Profile Content</ui-accordion-content>
+                                    <ui-accordion-content background-color="#f4f9fd">Profile Content</ui-accordion-content>
                                   </ui-accordion>
                                   <ui-accordion>
                                     <ui-accordion-header>More</ui-accordion-header>
-                                    <ui-accordion-content>More Content</ui-accordion-content>
-                                  </ui-accordion>
-                                </ui-accordions>
-                                <ui-accordions>
-                                  <ui-accordion>
-                                    <ui-accordion-header>Home2</ui-accordion-header>
-                                    <ui-accordion-content>Home Content2</ui-accordion-content>
-                                  </ui-accordion>
-                                  <ui-accordion>
-                                    <ui-accordion-header>Profile2</ui-accordion-header>
-                                    <ui-accordion-content>Profile Content2</ui-accordion-content>
-                                  </ui-accordion>
-                                  <ui-accordion>
-                                    <ui-accordion-header>More2</ui-accordion-header>
-                                    <ui-accordion-content>More Content2</ui-accordion-content>
+                                    <ui-accordion-content background-color="#f4f9fd">More Content</ui-accordion-content>
                                   </ui-accordion>
                                 </ui-accordions>
                               </ui-tabpanel>

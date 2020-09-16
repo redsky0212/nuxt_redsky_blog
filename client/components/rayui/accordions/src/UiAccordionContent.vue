@@ -1,5 +1,5 @@
 <template>
-  <div ref="refAccordionBody" class="ui-accordion-collapse" :class="changeActive">
+  <div ref="refAccordionBody" :style="bodyStyle" class="ui-accordion-collapse" :class="changeActive">
     <div class="ui-accordion-collapse-body" :arial-labelledby="headerId" :id="contentId" style="padding: 1.25rem;">
       <slot></slot>
     </div>
@@ -7,6 +7,16 @@
 </template>
 <script>
 export default {
+  props: {
+    /**
+     * content부분의 배경색을 지정한다.
+     * @type {String}
+     */
+    backgroundColor: {
+      type: String,
+      default: '#fff',
+    },
+  },
   data() {
     return {
       g_accordionsStatusValue: window.$nuxt.$rayui.accordionsStatusValue,
@@ -19,6 +29,13 @@ export default {
     },
     contentId: function () {
       return `ui-accordion-content-${this.g_accordionsStatusValue.key}-${this.accordionIndex}`;
+    },
+    bodyStyle: function () {
+      const obj = {};
+
+      obj['backgroundColor'] = this.backgroundColor;
+
+      return obj;
     },
     changeActive: function () {
       const obj = {};
