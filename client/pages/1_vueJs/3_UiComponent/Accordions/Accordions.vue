@@ -154,11 +154,11 @@
                           <ul class="list-unstyled">
                             <li>
                               <i class="ace-icon fa fa-caret-right blue"></i>
-                              <b class="text-success lead">...</b>
+                              <b class="text-success lead">selected-index</b>
                               <p class="alert alert-success">
-                                ....<br />
-                                <b>타입: </b> ...<br />
-                                <b>기본값: </b> ...<br />
+                                최초 선택 되어져야 할 Accordion의 index값을 설정한다.<br />
+                                <b>타입: </b> Number<br />
+                                <b>기본값: </b> null<br />
                               </p>
                               <div style="border: 1px solid #e2e2e2;">
                                 <ui-tabs>
@@ -166,11 +166,20 @@
                                   <ui-tab>Demo</ui-tab>
                                   <ui-tabpanel>
                                     <pre class="prettyprint linenums">
-  &lt;template&gt;
-    &lt;div&gt;
-      &lt;ui-accordion&gt;&lt;/ui-accordion&gt;
-    &lt;/div&gt;
-  &lt;/template&gt;
+&lt;ui-accordions selected-index="1"&gt;
+  &lt;ui-accordion&gt;
+    &lt;ui-accordion-header&gt;Home&lt;/ui-accordion-header&gt;
+    &lt;ui-accordion-content&gt;Home Content&lt;/ui-accordion-content&gt;
+  &lt;/ui-accordion&gt;
+  &lt;ui-accordion&gt;
+    &lt;ui-accordion-header&gt;Profile&lt;/ui-accordion-header&gt;
+    &lt;ui-accordion-content&gt;Profile Content&lt;/ui-accordion-content&gt;
+  &lt;/ui-accordion&gt;
+  &lt;ui-accordion&gt;
+    &lt;ui-accordion-header&gt;More&lt;/ui-accordion-header&gt;
+    &lt;ui-accordion-content&gt;More Content&lt;/ui-accordion-content&gt;
+  &lt;/ui-accordion&gt;
+&lt;/ui-accordions&gt;
                                     </pre>
                                   </ui-tabpanel>
                                   <ui-tabpanel>
