@@ -1,7 +1,17 @@
 <template>
   <div class="ui-accordion-header">
     <h2 class="ui-accordion-title">
-      <a :href="`#${contentId}`" :idx="accordionIndex" class="ui-accordion-toggle" :id="headerId" role="button" :aria-controls="contentId" :aria-expanded="isExpand" @click.prevent="onClick">
+      <a
+        :href="`#${contentId}`"
+        :idx="accordionIndex"
+        class="ui-accordion-toggle"
+        :id="headerId"
+        role="button"
+        :aria-controls="contentId"
+        :aria-expanded="isExpand"
+        @click.prevent="onClick"
+        @keyup.space="onClick"
+      >
         <slot></slot>
         <span class="ui-accordion-toggle-icon" style="margin-right: 1rem !important;">
           <svg
