@@ -1,0 +1,90 @@
+.ui-accordions-container {
+  // TODO : font-size가 rem으로 되어있어서 root에 영향이 있으므로 추 후 조정이 필요할듯.
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  border-radius: 0.25rem;
+  border-width: 0;
+  background-color: #fff;
+  position: relative;
+  .ui-accordions {
+    overflow-anchor: none;
+    .ui-accordion {
+      position: relative;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      min-width: 0;
+      word-wrap: break-word;
+      background-color: #fff;
+      background-clip: border-box;
+      border: 1px solid rgba(0, 0, 0, 0.125);
+      border-radius: 0.25rem;
+      overflow: hidden;
+      &:not(:first-of-type) {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+      }
+      &:not(:last-of-type) {
+        border-bottom: 0;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+      .ui-accordion-header {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        border-bottom-color: transparent;
+        background-color: #fff;
+        padding: 0;
+        border: 0px solid #fff;
+        &:first-child {
+          border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
+        }
+        .ui-accordion-title {
+          font-size: 1rem;
+          color: #106cb6;
+          -ms-flex-positive: 1;
+          flex-grow: 1;
+          line-height: normal;
+          margin-top: 0;
+          margin-bottom: 0;
+          .ui-accordion-toggle {
+            display: block;
+            width: 100%;
+            text-align: left;
+            border-width: 0;
+            font-weight: 600;
+            padding: 0.75rem 1.25rem 0.875rem;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            .ui-accordion-toggle-icon {
+              position: absolute !important;
+              right: 0;
+              top: 50%;
+              padding-right: 3px !important;
+              padding-left: 3px !important;
+              -webkit-transform: translateY(-50%);
+              transform: translateY(-50%);
+              transition: opacity 120ms, visibility 0s;
+              transition-delay: 0s;
+            }
+          }
+        }
+      }
+      .ui-accordion-collapse {
+				display: none;
+				&.ui-accordion-content-active {
+					display: block;
+				}
+        .ui-accordion-collapse-body {
+          &:last-child {
+            border-bottom-left-radius: inherit;
+            border-bottom-right-radius: inherit;
+          }
+        }
+      }
+    }
+  }
+}
