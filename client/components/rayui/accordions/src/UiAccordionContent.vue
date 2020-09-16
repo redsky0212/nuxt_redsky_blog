@@ -7,6 +7,7 @@
 </template>
 <script>
 export default {
+  // TODO: content로 html tag가 들어올경우 닫혀 있는데도 focus가 이동 되는 이슈가 있음.
   props: {
     /**
      * content부분의 배경색을 지정한다.
