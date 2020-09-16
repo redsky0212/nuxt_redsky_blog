@@ -41,7 +41,13 @@
               <div class="widget-header">
                 <h4 class="smaller">
                   <b>기본 사용방법</b>
-                  <small>전역 공통 <span class="label">ui-accordion</span> 컴포넌트</small>
+                  <small>
+                    <span class="label">ui-accordions</span>
+                    <span class="label">ui-accordion</span>
+                    <span class="label">ui-accordion-header</span>
+                    <span class="label">ui-accordion-content</span>
+                    를 이용한 accordion 컴포넌트 사용방법.
+                  </small>
                 </h4>
               </div>
 
@@ -51,9 +57,16 @@
                     <div class="col-sm-12">
                       <ul>
                         <li>
-                          <b>템플릿에 <span class="bolder green">&lt;ui-accordion&gt;</span>컴퍼넌트를 삽입해서 사용.</b>
+                          <b>템플릿에 <span class="bolder green">&lt;ui-accordions&gt;</span>컴퍼넌트를 입력해서 컴퍼넌트의 위치를 정합니다. container역할을 합니다.</b>
                           <br />
-                          <p><span class="bolder green">&lt;ui-...&gt;</span>의 개수와 <span class="bolder green">&lt;ui-...&gt;</span>의 개수 index가 짝지어져 각각의 탭이 열립니다.</p>
+                          <p>
+                            <span class="bolder green">&lt;ui-accordion&gt;</span>으로 원하는 개수의 accordion list를 입력합니다.
+                            <br />
+                            <span class="bolder green">&lt;ui-accordion&gt;</span>내부에 <span class="bolder green">&lt;ui-accordion-header&gt;</span>와
+                            <span class="bolder green">&lt;ui-accordion-content&gt;</span>를 입력하여 title부분과 content부분으로 나눕니다.
+                            <br />
+                            <b>header</b>와 <b>content</b>에는 원하는 형태의 html tag나 text를 채워서 보여줍니다.
+                          </p>
                           <div style="border: 1px solid #e2e2e2;">
                             <ui-tabs>
                               <ui-tab>Source</ui-tab>
@@ -78,26 +91,6 @@
       &lt;/ui-accordions&gt;
     &lt;/div&gt;
   &lt;/template&gt;
-  &lt;template&gt;
-    &lt;div&gt;
-      &lt;ui-accordions&gt;
-        &lt;ui-accordion :data="accordionData"&gt;&lt;/ui-accordion&gt;
-      &lt;/ui-accordions&gt;
-    &lt;/div&gt;
-  &lt;/template&gt;
-  &lt;script&gt;
-  export default {
-    data() {
-      return {
-        accordionData: [
-          { header: 'Home', content: 'Home Content...html' },
-          { header: 'Profile', content: 'Profile Content...html' },
-          { header: 'More', content: 'More Content...' },
-        ],
-      };
-    },
-  };
-  &lt;/script&gt;
                                 </pre>
                               </ui-tabpanel>
                               <ui-tabpanel>
