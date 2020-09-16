@@ -1,5 +1,5 @@
 <template>
-  <div class="ui-accordion-collapse" :class="changeActive">
+  <div ref="refAccordionBody" class="ui-accordion-collapse" :class="changeActive">
     <div class="ui-accordion-collapse-body" :arial-labelledby="headerId" :id="contentId" style="padding: 1.25rem;">
       <slot></slot>
     </div>
@@ -26,11 +26,26 @@ export default {
       if (window.$nuxt.$rayui.accordionsStatusValue.list[this.$attrs.accordionsIdx] !== undefined) {
         if (String(this.accordionIndex) === window.$nuxt.$rayui.accordionsStatusValue.list[this.$attrs.accordionsIdx].selectedIndex) {
           obj['ui-accordion-content-active'] = true;
+          this.changeHeight(true);
         } else {
           obj['ui-accordion-content-active'] = false;
+          this.changeHeight(false);
         }
       }
       return obj;
+    },
+  },
+  methods: {
+    // accordion body의 height값을 셋팅하기 위한 메서드
+    changeHeight(isShow) {
+      const body = this.$refs.refAccordionBody;
+      if (body) {
+        if (isShow) {
+          body.style.height = body.scrollHeight + 'px';
+        } else {
+          body.style.height = '0';
+        }
+      }
     },
   },
 };

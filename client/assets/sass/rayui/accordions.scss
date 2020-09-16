@@ -61,6 +61,8 @@
             text-decoration: none;
             .ui-accordion-toggle-icon {
               position: absolute !important;
+              align-items: center;
+              display: flex;
               right: 0;
               top: 50%;
               padding-right: 3px !important;
@@ -69,14 +71,26 @@
               transform: translateY(-50%);
               transition: opacity 120ms, visibility 0s;
               transition-delay: 0s;
+              .toggle-arrow-down {
+                transition: -webkit-transform .15s;
+                transition: transform .15s;
+                transition: transform .15s,-webkit-transform .15s;
+              }
+            }
+            &[aria-expanded=true] {
+              .toggle-arrow-down {
+                -webkit-transform: rotate(-180deg);
+                transform: rotate(-180deg);
+              }
             }
           }
         }
       }
       .ui-accordion-collapse {
-				display: none;
+        height: 0px;
+        transition: height .35s ease;
 				&.ui-accordion-content-active {
-					display: block;
+          overflow: hidden;
 				}
         .ui-accordion-collapse-body {
           &:last-child {

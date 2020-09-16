@@ -32,6 +32,9 @@
               <span class="blue bolder">accordion접근성 관련 참조 : </span>
               <a href="https://nuli.navercorp.com/community/article/1132889?email=true" target="_blank">https://nuli.navercorp.com/community/article/1132889?email=true</a>
               <br />
+              <span class="blue bolder">JSDoc 참조 : </span>
+              <a href="https://jsdoc.app/index.html#block-tags" target="_blank">https://jsdoc.app/index.html#block-tags</a>
+              <br />
             </div>
 
             <div class="widget-box">
