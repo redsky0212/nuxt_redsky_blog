@@ -28,6 +28,9 @@ export default {
     // Accordions 초기 생성시 초기화
     this.init();
   },
+  beforeDestroy() {
+    this.removeAccordionsKey();
+  },
   methods: {
     init() {
       // accordion 의 key생성.
