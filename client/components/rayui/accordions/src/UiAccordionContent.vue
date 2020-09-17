@@ -1,6 +1,6 @@
 <template>
   <div ref="refAccordionBody" :style="bodyStyle" class="ui-accordion-collapse" :class="changeActive">
-    <div class="ui-accordion-collapse-body" :arial-labelledby="headerId" :id="contentId" style="padding: 1.25rem;">
+    <div class="ui-accordion-collapse-body" :arial-labelledby="headerId" role="region" :id="contentId" style="padding: 1.25rem;">
       <slot></slot>
     </div>
   </div>
