@@ -82,10 +82,17 @@ export default {
           if (this.$rayui.utils.isNumber(idx)) {
             if (contentList[idx]) {
               contentList[idx].expanded = true;
+              // 멀티선택, selectedIndex값이 array가 아니면 array로 저장하기
+              this.setSelectedIndex([idx]);
             }
+          } else {
+            this.setSelectedIndex([]);
           }
         }
       }
+    },
+    setSelectedIndex(value) {
+      this.$rayui.accordionsStatusValue.list[this.g_accordionsStatusValue.key - 1].selectedIndex = value;
     },
     createAccordionsKey() {
       this.key = this.g_accordionsStatusValue.key;

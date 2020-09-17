@@ -50,12 +50,14 @@ export default {
       if (this.$rayui.accordionsStatusValue.list[this.$attrs.accordionsIdx] === undefined) {
         return obj;
       }
-      // if (String(this.accordionIndex) === this.$rayui.accordionsStatusValue.list[this.$attrs.accordionsIdx].selectedIndex) {
-      //   const h = this.$rayui.accordionsStatusValue.list[this.$attrs.accordionsIdx].contentHeight;
-      //   obj['height'] = `${h}px`;
-      // } else {
-      //   obj['height'] = 0;
-      // }
+
+      if (this.multiSelect) {
+        if (this.contentList[this.accordionIndex].expanded) {
+          obj['height'] = `${this.contentList[this.accordionIndex].contentHeight}px`;
+        } else {
+          obj['height'] = 0;
+        }
+      }
 
       return obj;
     },
@@ -64,10 +66,14 @@ export default {
       if (this.$rayui.accordionsStatusValue.list[this.$attrs.accordionsIdx] !== undefined) {
         if (String(this.accordionIndex) === this.selectedIndex) {
           obj['ui-accordion-content-active'] = true;
-          this.changeHeight(true);
+          if (!this.multiSelect) {
+            this.changeHeight(true);
+          }
         } else {
           obj['ui-accordion-content-active'] = false;
-          this.changeHeight(false);
+          if (!this.multiSelect) {
+            this.changeHeight(false);
+          }
         }
       }
       return obj;
@@ -78,7 +84,6 @@ export default {
     this.observeSize();
   },
   methods: {
-    // TODO: 최초 selectedIndex값을 셋팅할때는 펼쳐지지 않는 버그가 있음.
     // accordion body의 height값을 셋팅하기 위한 메서드
     changeHeight(isShow) {
       const body = this.$refs.refAccordionBody;
@@ -93,12 +98,7 @@ export default {
     },
     currentSelectHeight(height) {
       if (this.$rayui.accordionsStatusValue.list[this.$attrs.accordionsIdx] !== undefined) {
-        if (this.multiSelect) {
-          //
-        } else {
-          // 다중선택이 아닐경우
-          this.contentList[this.$attrs.accordionIdx].contentHeight = height;
-        }
+        this.contentList[this.$attrs.accordionIdx].contentHeight = height;
       }
     },
     // display none 되었을때 dom 감지를 위한 함수

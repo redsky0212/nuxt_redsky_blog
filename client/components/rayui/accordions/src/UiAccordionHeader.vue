@@ -93,12 +93,13 @@ export default {
     setSelectedIndex(value) {
       this.$rayui.accordionsStatusValue.list[this.$attrs.accordionsIdx].selectedIndex = value;
     },
-    setContentList(selectedIdxVal, currentIdx) {
+    // 멀티선택 옵션을 적용했을때 선택값 전역변수에 저장하기
+    setContentList(currentIdx) {
       const contentList = this.contentList;
-      const selectVal = selectedIdxVal;
+      const selectVal = this.selectedIndex;
       let select = true;
 
-      if (this.$rayui.utils.isArray(this.selectedIndex)) {
+      if (this.$rayui.utils.isArray(selectVal)) {
         selectVal.some((item, index) => {
           const idx = Number(item);
           if (this.$rayui.utils.isNumber(idx)) {
@@ -111,32 +112,27 @@ export default {
         if (select) {
           selectVal.push(currentIdx);
         }
+        this.setSelectedIndex(selectVal);
+        this.setContentExpanded();
       }
-
-      this.setSelectedIndex(selectVal);
-      this.setContentExpanded();
     },
     // 멀티선택 옵션을 적용했을때를 위하여 전역에 contentList값을 셋팅해서 관리한다.
     setContentExpanded() {
-      const list = this.$rayui.accordionsStatusValue.list[this.$attrs.accordionsIdx].contentList;
+      const contentList = this.$rayui.accordionsStatusValue.list[this.$attrs.accordionsIdx].contentList;
 
       if (this.multiSelect) {
         if (this.$rayui.utils.isArray(this.selectedIndex)) {
-          this.selectedIndex.forEach((item) => {
+          contentList.some((item) => {
+            item.expanded = false;
+          });
+          this.selectedIndex.some((item) => {
             const idx = Number(item);
             if (this.$rayui.utils.isNumber(idx)) {
-              if (list[idx]) {
-                list[idx].expanded = true;
+              if (contentList[idx]) {
+                contentList[idx].expanded = true;
               }
             }
           });
-        } else {
-          const idx = Number(this.selectedIndex);
-          if (this.$rayui.utils.isNumber(idx)) {
-            if (list[idx]) {
-              list[idx].expanded = true;
-            }
-          }
         }
       }
     },
@@ -146,7 +142,7 @@ export default {
       const idx = event.currentTarget.getAttribute('idx');
 
       if (this.multiSelect) {
-        this.setContentList(this.selectedIndex, Number(idx));
+        this.setContentList(Number(idx));
       } else {
         // 선택 되어있지 않은 경우 선택하여 펼치기
         if (this.selectedIndex === '') {
