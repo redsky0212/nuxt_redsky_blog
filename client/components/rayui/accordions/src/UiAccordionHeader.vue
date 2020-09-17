@@ -54,7 +54,7 @@
 export default {
   data() {
     return {
-      g_accordionsStatusValue: window.$nuxt.$rayui.accordionsStatusValue,
+      g_accordionsStatusValue: this.$rayui.accordionsStatusValue,
       accordionIndex: this.$attrs.accordionIdx,
     };
   },
@@ -65,46 +65,55 @@ export default {
     contentId: function () {
       return `ui-accordion-content-${this.g_accordionsStatusValue.key}-${this.accordionIndex}`;
     },
+    // 전역 accordion 변수의 selectedIndex값 가져오기
+    selectedIndex: function () {
+      return this.$rayui.accordionsStatusValue.list[this.$attrs.accordionsIdx].selectedIndex;
+    },
+    // 전역 accordion 변수의 multiSelect값 가져오기
+    multiSelect: function () {
+      return this.$rayui.accordionsStatusValue.list[this.$attrs.accordionsIdx].multiSelect;
+    },
+    // 전역 accordion 변수의 contentList값 가져오기
+    contentList: function () {
+      return this.$rayui.accordionsStatusValue.list[this.$attrs.accordionsIdx].contentList;
+    },
     isExpand: function () {
       if (this.multiSelect) {
-        return this.$rayui.accordionsStatusValue.list[this.$attrs.accordionsIdx].contentList[this.accordionIndex].expanded;
+        return this.contentList[this.accordionIndex].expanded;
       } else {
-        if (String(this.accordionIndex) === this.getSelectedIndex()) {
+        if (String(this.accordionIndex) === this.selectedIndex) {
           return 'true';
         } else {
           return 'false';
         }
       }
     },
-    multiSelect: function () {
-      return this.$rayui.accordionsStatusValue.list[this.$attrs.accordionsIdx].multiSelect;
-    },
   },
   methods: {
-    // 전역 accordion 변수의 selectedIndex값 가져오기
-    getSelectedIndex() {
-      return this.$rayui.accordionsStatusValue.list[this.$attrs.accordionsIdx].selectedIndex;
+    setSelectedIndex(value) {
+      this.$rayui.accordionsStatusValue.list[this.$attrs.accordionsIdx].selectedIndex = value;
     },
-    setSelectedIndex(idx) {
-      this.$rayui.accordionsStatusValue.list[this.$attrs.accordionsIdx].selectedIndex = idx;
-    },
-    setGlobalMultiSelectedValue(selectedIdxVal, currentIdx) {
-      const list = this.$rayui.accordionsStatusValue.list[this.$attrs.accordionsIdx].contentList;
-      const arr = selectedIdxVal;
+    setContentList(selectedIdxVal, currentIdx) {
+      const contentList = this.contentList;
+      const selectVal = selectedIdxVal;
       let select = true;
-      arr.some((item, index) => {
-        const idx = Number(item);
-        if (this.$rayui.utils.isNumber(idx)) {
-          if (idx === currentIdx) {
-            arr.splice(index, 1);
-            select = false;
+
+      if (this.$rayui.utils.isArray(this.selectedIndex)) {
+        selectVal.some((item, index) => {
+          const idx = Number(item);
+          if (this.$rayui.utils.isNumber(idx)) {
+            if (idx === currentIdx) {
+              selectVal.splice(index, 1);
+              select = false;
+            }
           }
+        });
+        if (select) {
+          selectVal.push(currentIdx);
         }
-      });
-      if (select) {
-        arr.push(currentIdx);
       }
-      this.setSelectedIndex(arr);
+
+      this.setSelectedIndex(selectVal);
       this.setContentExpanded();
     },
     // 멀티선택 옵션을 적용했을때를 위하여 전역에 contentList값을 셋팅해서 관리한다.
@@ -135,19 +144,18 @@ export default {
     // accordion header클릭 이벤트
     onClick(event) {
       const idx = event.currentTarget.getAttribute('idx');
-      const g_listSelIdx = this.getSelectedIndex();
 
       if (this.multiSelect) {
-        this.setGlobalMultiSelectedValue(g_listSelIdx, Number(idx));
+        this.setContentList(this.selectedIndex, Number(idx));
       } else {
-        // 선택 되어있지 않다면 선택하여 펼치기
-        if (g_listSelIdx === '') {
+        // 선택 되어있지 않은 경우 선택하여 펼치기
+        if (this.selectedIndex === '') {
           this.setSelectedIndex(idx);
         } else {
-          // 선택 되어있는 아코디언 index와 현재 선택한 index가 같다면 숨기기
-          if (g_listSelIdx === idx) {
+          // 이미 선택 되어있는 아코디언 index와 현재 선택한 index가 같다면 숨기기
+          if (this.selectedIndex === idx) {
             this.setSelectedIndex('');
-            // 선택 되어있는 아코디언 index와 현재 선택한 index가 다르다면 현재선택한 index를 펼치기
+            // 이미 선택 되어있는 아코디언 index와 현재 선택한 index가 다르다면 현재선택한 index를 펼치기
           } else {
             this.setSelectedIndex(idx);
           }

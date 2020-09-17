@@ -31,6 +31,18 @@ export default {
     contentId: function () {
       return `ui-accordion-content-${this.g_accordionsStatusValue.key}-${this.accordionIndex}`;
     },
+    // 전역 accordion 변수의 selectedIndex값 가져오기
+    selectedIndex: function () {
+      return this.$rayui.accordionsStatusValue.list[this.$attrs.accordionsIdx].selectedIndex;
+    },
+    // 전역 accordion 변수의 multiSelect값 가져오기
+    multiSelect: function () {
+      return this.$rayui.accordionsStatusValue.list[this.$attrs.accordionsIdx].multiSelect;
+    },
+    // 전역 accordion 변수의 contentList값 가져오기
+    contentList: function () {
+      return this.$rayui.accordionsStatusValue.list[this.$attrs.accordionsIdx].contentList;
+    },
     bodyStyle: function () {
       const obj = {};
 
@@ -50,7 +62,7 @@ export default {
     changeActive: function () {
       const obj = {};
       if (this.$rayui.accordionsStatusValue.list[this.$attrs.accordionsIdx] !== undefined) {
-        if (String(this.accordionIndex) === this.$rayui.accordionsStatusValue.list[this.$attrs.accordionsIdx].selectedIndex) {
+        if (String(this.accordionIndex) === this.selectedIndex) {
           obj['ui-accordion-content-active'] = true;
           this.changeHeight(true);
         } else {
@@ -62,7 +74,7 @@ export default {
     },
   },
   mounted() {
-    this.currentSelectHeight();
+    this.currentSelectHeight(this.$refs.refAccordionBody.scrollHeight);
     this.observeSize();
   },
   methods: {
@@ -79,20 +91,29 @@ export default {
         }
       }
     },
-    currentSelectHeight() {
+    currentSelectHeight(height) {
       if (this.$rayui.accordionsStatusValue.list[this.$attrs.accordionsIdx] !== undefined) {
-        if (String(this.accordionIndex) === this.$rayui.accordionsStatusValue.list[this.$attrs.accordionsIdx].selectedIndex) {
-          this.$rayui.accordionsStatusValue.list[this.$attrs.accordionsIdx].contentHeight = this.$refs.refAccordionBody.scrollHeight;
+        if (this.multiSelect) {
+          //
+        } else {
+          // 다중선택이 아닐경우
+          this.contentList[this.$attrs.accordionIdx].contentHeight = height;
         }
       }
     },
+    // display none 되었을때 dom 감지를 위한 함수
     observeSize() {
-      const ro = new ResizeObserver((entries) => {
-        console.log(entries);
+      const ro = new this.$rayui.ResizeObserver((entries) => {
         entries.some((entry) => {
           console.log(`accordion content height : ${entry.target.scrollHeight}`);
           if (entry.target.scrollHeight > 0) {
-            this.currentSelectHeight();
+            this.currentSelectHeight(entry.target.scrollHeight);
+            if (String(this.accordionIndex) === this.selectedIndex) {
+              this.changeHeight(true);
+            } else {
+              this.changeHeight(false);
+            }
+            ro.disconnect();
           }
         });
       });
