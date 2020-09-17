@@ -10,10 +10,10 @@ export default {
   props: {
     /**
      * Accordion 이 펼쳐질때 하나가 아닌 여러개 펼쳐지게 해주는 옵션.
-     * @type {Boolean||String}
+     * @type {Boolean}
      */
     multiSelect: {
-      type: [Boolean, String],
+      type: Boolean,
       default: false,
     },
     /**
@@ -58,12 +58,18 @@ export default {
         }
       });
     },
+    // getSelectedIndex() {
+    //   if (this.multiSelect) {
+    //     if (typeof this.selectedIndex === )
+    //   }
+    // },
     createAccordionsKey() {
       this.key = this.g_accordionsStatusValue.key;
       this.accordionKey = `ui_accordions_key_${this.g_accordionsStatusValue.key++}`;
       this.g_accordionsStatusValue.list.push({
         accordionKey: this.accordionKey,
         selectedIndex: this.selectedIndex,
+        multiSelect: this.multiSelect,
         contentHeight: 0,
       });
     },

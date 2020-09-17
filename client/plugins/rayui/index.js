@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import utils from '@/components/rayui/utils';
 import alert from '@/components/rayui/alert';
 import confirm from '@/components/rayui/confirm';
 import UiButton from '@/components/rayui/button/src/UiButton.vue';
@@ -65,6 +66,7 @@ export default (context, inject) => {
 
   // $root, context 모두 플러그인 주입 방식
   inject('rayui', {
+    utils,
     popupStatusValue, // 전역팝업 상태값
     alert, // 전역 alert 컴포넌트 객체
     confirm, // 전역 confirm 컴포넌트 객체
