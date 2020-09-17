@@ -38,12 +38,12 @@ export default {
       if (this.$rayui.accordionsStatusValue.list[this.$attrs.accordionsIdx] === undefined) {
         return obj;
       }
-      if (String(this.accordionIndex) === this.$rayui.accordionsStatusValue.list[this.$attrs.accordionsIdx].selectedIndex) {
-        const h = this.$rayui.accordionsStatusValue.list[this.$attrs.accordionsIdx].contentHeight;
-        obj['height'] = `${h}px`;
-      } else {
-        obj['height'] = 0;
-      }
+      // if (String(this.accordionIndex) === this.$rayui.accordionsStatusValue.list[this.$attrs.accordionsIdx].selectedIndex) {
+      //   const h = this.$rayui.accordionsStatusValue.list[this.$attrs.accordionsIdx].contentHeight;
+      //   obj['height'] = `${h}px`;
+      // } else {
+      //   obj['height'] = 0;
+      // }
 
       return obj;
     },
@@ -72,6 +72,7 @@ export default {
       const body = this.$refs.refAccordionBody;
       if (body) {
         if (isShow) {
+          console.log(body.scrollHeight);
           body.style.height = body.scrollHeight + 'px';
         } else {
           body.style.height = '0';
@@ -87,6 +88,7 @@ export default {
     },
     observeSize() {
       const ro = new ResizeObserver((entries) => {
+        console.log(entries);
         entries.some((entry) => {
           console.log(`accordion content height : ${entry.target.scrollHeight}`);
           if (entry.target.scrollHeight > 0) {
