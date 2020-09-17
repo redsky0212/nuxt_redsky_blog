@@ -41,6 +41,11 @@
               <span class="blue bolder">CSS flex grid 참조 : </span>
               <a href="https://studiomeal.com/archives/533" target="_blank">https://studiomeal.com/archives/533</a>
               <br />
+              <span class="blue bolder">prettify 참조 : </span>
+              <a href="https://github.com/googlearchive/code-prettify?utm_source=cdnjs&utm_medium=cdnjs_link&utm_campaign=cdnjs_library" target="_blank"
+                >https://github.com/googlearchive/code-prettify?utm_source=cdnjs&utm_medium=cdnjs_link&utm_campaign=cdnjs_library</a
+              >
+              <br />
             </div>
 
             <div class="widget-box">
@@ -78,7 +83,7 @@
                               <ui-tab>Source</ui-tab>
                               <ui-tab>Demo</ui-tab>
                               <ui-tabpanel>
-                                <pre class="prettyprint linenums">
+                                <pre class="prettyprint linenums lang-html">
   &lt;template&gt;
     &lt;div&gt;
       &lt;ui-accordions&gt;
