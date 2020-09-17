@@ -44,9 +44,9 @@
               <a href="https://studiomeal.com/archives/533" target="_blank">https://studiomeal.com/archives/533</a>
               <br />
               <span class="blue bolder">prettify 참조 : </span>
-              <a href="https://github.com/googlearchive/code-prettify?utm_source=cdnjs&utm_medium=cdnjs_link&utm_campaign=cdnjs_library" target="_blank"
-                >https://github.com/googlearchive/code-prettify?utm_source=cdnjs&utm_medium=cdnjs_link&utm_campaign=cdnjs_library</a
-              >
+              <a href="https://github.com/googlearchive/code-prettify?utm_source=cdnjs&utm_medium=cdnjs_link&utm_campaign=cdnjs_library" target="_blank">
+                https://github.com/googlearchive/code-prettify?utm_source=cdnjs&utm_medium=cdnjs_link&utm_campaign=cdnjs_library
+              </a>
               <br />
             </div>
 
@@ -86,32 +86,32 @@
                               <ui-tab>Demo</ui-tab>
                               <ui-tabpanel>
                                 <pre class="prettyprint linenums lang-html">
-  &lt;template&gt;
-    &lt;div&gt;
-      &lt;ui-accordions&gt;
-        &lt;ui-accordion&gt;
-          &lt;ui-accordion-header&gt;Home&lt;/ui-accordion-header&gt;
-          &lt;ui-accordion-content&gt;
-            Home Content
-            &lt;br /&gt;
-            &lt;input type="text" placeholder="text 입력상자 테스트" /&gt;
-          &lt;/ui-accordion-content&gt;
-        &lt;/ui-accordion&gt;
-        &lt;ui-accordion&gt;
-          &lt;ui-accordion-header&gt;Profile&lt;/ui-accordion-header&gt;
-          &lt;ui-accordion-content&gt;Profile Content&lt;/ui-accordion-content&gt;
-        &lt;/ui-accordion&gt;
-        &lt;ui-accordion&gt;
-          &lt;ui-accordion-header&gt;More&lt;/ui-accordion-header&gt;
-          &lt;ui-accordion-content&gt;More Content&lt;/ui-accordion-content&gt;
-        &lt;/ui-accordion&gt;
-      &lt;/ui-accordions&gt;
-    &lt;/div&gt;
-  &lt;/template&gt;
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;ui-accordions&gt;
+      &lt;ui-accordion&gt;
+        &lt;ui-accordion-header&gt;Home&lt;/ui-accordion-header&gt;
+        &lt;ui-accordion-content&gt;
+          Home Content
+          &lt;br /&gt;
+          &lt;input type="text" placeholder="text 입력상자 테스트" /&gt;
+        &lt;/ui-accordion-content&gt;
+      &lt;/ui-accordion&gt;
+      &lt;ui-accordion&gt;
+        &lt;ui-accordion-header&gt;Profile&lt;/ui-accordion-header&gt;
+        &lt;ui-accordion-content&gt;Profile Content&lt;/ui-accordion-content&gt;
+      &lt;/ui-accordion&gt;
+      &lt;ui-accordion&gt;
+        &lt;ui-accordion-header&gt;More&lt;/ui-accordion-header&gt;
+        &lt;ui-accordion-content&gt;More Content&lt;/ui-accordion-content&gt;
+      &lt;/ui-accordion&gt;
+    &lt;/ui-accordions&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
                                 </pre>
                               </ui-tabpanel>
                               <ui-tabpanel>
-                                <ui-accordions>
+                                <ui-accordions multi-select="true" selected-index="0">
                                   <ui-accordion>
                                     <ui-accordion-header>Home</ui-accordion-header>
                                     <ui-accordion-content background-color="#f4f9fd">

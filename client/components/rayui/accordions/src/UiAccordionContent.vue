@@ -35,14 +35,22 @@ export default {
       const obj = {};
 
       obj['backgroundColor'] = this.backgroundColor;
+      if (this.$rayui.accordionsStatusValue.list[this.$attrs.accordionsIdx] === undefined) {
+        return obj;
+      }
+      if (String(this.accordionIndex) === this.$rayui.accordionsStatusValue.list[this.$attrs.accordionsIdx].selectedIndex) {
+        const h = this.$rayui.accordionsStatusValue.list[this.$attrs.accordionsIdx].contentHeight;
+        obj['height'] = `${h}px`;
+      } else {
+        obj['height'] = 0;
+      }
 
       return obj;
     },
     changeActive: function () {
       const obj = {};
-
-      if (window.$nuxt.$rayui.accordionsStatusValue.list[this.$attrs.accordionsIdx] !== undefined) {
-        if (String(this.accordionIndex) === window.$nuxt.$rayui.accordionsStatusValue.list[this.$attrs.accordionsIdx].selectedIndex) {
+      if (this.$rayui.accordionsStatusValue.list[this.$attrs.accordionsIdx] !== undefined) {
+        if (String(this.accordionIndex) === this.$rayui.accordionsStatusValue.list[this.$attrs.accordionsIdx].selectedIndex) {
           obj['ui-accordion-content-active'] = true;
           this.changeHeight(true);
         } else {
@@ -53,7 +61,12 @@ export default {
       return obj;
     },
   },
+  mounted() {
+    this.currentSelectHeight();
+    this.observeSize();
+  },
   methods: {
+    // TODO: 최초 selectedIndex값을 셋팅할때는 펼쳐지지 않는 버그가 있음.
     // accordion body의 height값을 셋팅하기 위한 메서드
     changeHeight(isShow) {
       const body = this.$refs.refAccordionBody;
@@ -64,6 +77,25 @@ export default {
           body.style.height = '0';
         }
       }
+    },
+    currentSelectHeight() {
+      if (this.$rayui.accordionsStatusValue.list[this.$attrs.accordionsIdx] !== undefined) {
+        if (String(this.accordionIndex) === this.$rayui.accordionsStatusValue.list[this.$attrs.accordionsIdx].selectedIndex) {
+          this.$rayui.accordionsStatusValue.list[this.$attrs.accordionsIdx].contentHeight = this.$refs.refAccordionBody.scrollHeight;
+        }
+      }
+    },
+    observeSize() {
+      const ro = new ResizeObserver((entries) => {
+        entries.some((entry) => {
+          console.log(`accordion content height : ${entry.target.scrollHeight}`);
+          if (entry.target.scrollHeight > 0) {
+            this.currentSelectHeight();
+          }
+        });
+      });
+
+      ro.observe(this.$refs.refAccordionBody);
     },
   },
 };

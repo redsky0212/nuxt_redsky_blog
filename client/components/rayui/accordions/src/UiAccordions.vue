@@ -9,11 +9,19 @@
 export default {
   props: {
     /**
+     * Accordion 이 펼쳐질때 하나가 아닌 여러개 펼쳐지게 해주는 옵션.
+     * @type {Boolean||String}
+     */
+    multiSelect: {
+      type: [Boolean, String],
+      default: false,
+    },
+    /**
      * 최초 선택 되어져야 할 Accordion index값 설정한다
-     * @type {String}
+     * @type {String||Array}
      */
     selectedIndex: {
-      type: String,
+      type: [String, Array],
       default: '',
     },
   },
@@ -56,6 +64,7 @@ export default {
       this.g_accordionsStatusValue.list.push({
         accordionKey: this.accordionKey,
         selectedIndex: this.selectedIndex,
+        contentHeight: 0,
       });
     },
     removeAccordionsKey() {
