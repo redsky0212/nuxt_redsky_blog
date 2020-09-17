@@ -66,11 +66,18 @@ export default {
       return `ui-accordion-content-${this.g_accordionsStatusValue.key}-${this.accordionIndex}`;
     },
     isExpand: function () {
-      if (String(this.accordionIndex) === this.getSelectedIndex()) {
-        return 'true';
+      if (this.multiSelect) {
+        return this.$rayui.accordionsStatusValue.list[this.$attrs.accordionsIdx].contentList[this.accordionIndex].expanded;
       } else {
-        return 'false';
+        if (String(this.accordionIndex) === this.getSelectedIndex()) {
+          return 'true';
+        } else {
+          return 'false';
+        }
       }
+    },
+    multiSelect: function () {
+      return this.$rayui.accordionsStatusValue.list[this.$attrs.accordionsIdx].multiSelect;
     },
   },
   methods: {
@@ -81,22 +88,69 @@ export default {
     setSelectedIndex(idx) {
       this.$rayui.accordionsStatusValue.list[this.$attrs.accordionsIdx].selectedIndex = idx;
     },
+    setGlobalMultiSelectedValue(selectedIdxVal, currentIdx) {
+      const list = this.$rayui.accordionsStatusValue.list[this.$attrs.accordionsIdx].contentList;
+      const arr = selectedIdxVal;
+      let select = true;
+      arr.some((item, index) => {
+        const idx = Number(item);
+        if (this.$rayui.utils.isNumber(idx)) {
+          if (idx === currentIdx) {
+            arr.splice(index, 1);
+            select = false;
+          }
+        }
+      });
+      if (select) {
+        arr.push(currentIdx);
+      }
+      this.setSelectedIndex(arr);
+      this.setContentExpanded();
+    },
+    // 멀티선택 옵션을 적용했을때를 위하여 전역에 contentList값을 셋팅해서 관리한다.
+    setContentExpanded() {
+      const list = this.$rayui.accordionsStatusValue.list[this.$attrs.accordionsIdx].contentList;
+
+      if (this.multiSelect) {
+        if (this.$rayui.utils.isArray(this.selectedIndex)) {
+          this.selectedIndex.forEach((item) => {
+            const idx = Number(item);
+            if (this.$rayui.utils.isNumber(idx)) {
+              if (list[idx]) {
+                list[idx].expanded = true;
+              }
+            }
+          });
+        } else {
+          const idx = Number(this.selectedIndex);
+          if (this.$rayui.utils.isNumber(idx)) {
+            if (list[idx]) {
+              list[idx].expanded = true;
+            }
+          }
+        }
+      }
+    },
     // UiAccordions의 이벤트 목록 ===========================
     // accordion header클릭 이벤트
     onClick(event) {
       const idx = event.currentTarget.getAttribute('idx');
       const g_listSelIdx = this.getSelectedIndex();
 
-      // 선택 되어있지 않다면 선택하여 펼치기
-      if (g_listSelIdx === '') {
-        this.setSelectedIndex(idx);
+      if (this.multiSelect) {
+        this.setGlobalMultiSelectedValue(g_listSelIdx, Number(idx));
       } else {
-        // 선택 되어있는 아코디언 index와 현재 선택한 index가 같다면 숨기기
-        if (g_listSelIdx === idx) {
-          this.setSelectedIndex('');
-          // 선택 되어있는 아코디언 index와 현재 선택한 index가 다르다면 현재선택한 index를 펼치기
-        } else {
+        // 선택 되어있지 않다면 선택하여 펼치기
+        if (g_listSelIdx === '') {
           this.setSelectedIndex(idx);
+        } else {
+          // 선택 되어있는 아코디언 index와 현재 선택한 index가 같다면 숨기기
+          if (g_listSelIdx === idx) {
+            this.setSelectedIndex('');
+            // 선택 되어있는 아코디언 index와 현재 선택한 index가 다르다면 현재선택한 index를 펼치기
+          } else {
+            this.setSelectedIndex(idx);
+          }
         }
       }
     },

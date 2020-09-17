@@ -29,6 +29,7 @@ export default {
     return {
       key: 0,
       accordionKey: '',
+      arrAccordion: [],
       g_accordionsStatusValue: window.$nuxt.$rayui.accordionsStatusValue,
     };
   },
@@ -44,25 +45,48 @@ export default {
       // accordion 의 key생성.
       this.setSlot();
       this.createAccordionsKey();
+      this.setContentExpanded();
     },
     setSlot() {
       const s = this.$slots.default;
-      const arrAccordion = [];
+      this.arrAccordion = [];
       s.forEach((element) => {
         if (RegExp('ui-accordion', 'g').test(element.tag)) {
           element.data.attrs = {
-            accordionIdx: arrAccordion.length,
+            accordionIdx: this.arrAccordion.length,
             accordionsKey: this.g_accordionsStatusValue.key,
           };
-          arrAccordion.push(element);
+          this.arrAccordion.push({
+            contentHeight: 0,
+            expanded: false,
+          });
         }
       });
     },
-    // getSelectedIndex() {
-    //   if (this.multiSelect) {
-    //     if (typeof this.selectedIndex === )
-    //   }
-    // },
+    // 멀티선택 옵션을 적용했을때를 위하여 전역에 contentList값을 셋팅해서 관리한다.
+    setContentExpanded() {
+      const list = this.g_accordionsStatusValue.list[this.g_accordionsStatusValue.key - 1].contentList;
+
+      if (this.multiSelect) {
+        if (this.$rayui.utils.isArray(this.selectedIndex)) {
+          this.selectedIndex.forEach((item) => {
+            const idx = Number(item);
+            if (this.$rayui.utils.isNumber(idx)) {
+              if (list[idx]) {
+                list[idx].expanded = true;
+              }
+            }
+          });
+        } else {
+          const idx = Number(this.selectedIndex);
+          if (this.$rayui.utils.isNumber(idx)) {
+            if (list[idx]) {
+              list[idx].expanded = true;
+            }
+          }
+        }
+      }
+    },
     createAccordionsKey() {
       this.key = this.g_accordionsStatusValue.key;
       this.accordionKey = `ui_accordions_key_${this.g_accordionsStatusValue.key++}`;
@@ -70,7 +94,8 @@ export default {
         accordionKey: this.accordionKey,
         selectedIndex: this.selectedIndex,
         multiSelect: this.multiSelect,
-        contentHeight: 0,
+        contentHeight: 0, // TODO: contentList 안쪽으로 옮겨야함
+        contentList: this.arrAccordion,
       });
     },
     removeAccordionsKey() {
