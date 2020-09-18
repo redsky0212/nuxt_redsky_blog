@@ -1,10 +1,10 @@
 <template>
-  <div class="ui-input ui-text-input-container">
+  <div class="ui-input ui-text-input-container" :class="changeClassRoot">
     <div class="ui-text-input-control">
       <div class="ui-text-input-input">
         <div class="ui-text-input-wrapper">
-          <label for="inputid" class="ui-text-input-label" style="left: 0; right: auto; position: absolute;">label</label>
-          <input id="inputid" type="text" />
+          <label :for="inputKey" class="ui-text-input-label" style="left: 0; right: auto; position: absolute;">label</label>
+          <input :id="inputKey" type="text" @focus="onFocus" @blur="onBlur" />
         </div>
       </div>
       <div class="ui-text-input-detail">
@@ -39,8 +39,53 @@ export default {
   },
   data() {
     return {
-      key: 0,
+      inputKey: '',
+      g_inputStatusValue: this.$rayui.inputStatusValue,
+      isFocus: false,
     };
+  },
+  computed: {
+    changeClassRoot: function () {
+      const obj = {};
+
+      obj['ui-text-input-focus'] = this.isFocus;
+
+      return obj;
+    },
+  },
+  beforeMount() {
+    // text input 초기화
+    this.init();
+  },
+  beforeDestroy() {
+    this.removeAccordionsKey();
+  },
+  methods: {
+    init() {
+      // text input 의 key생성.
+      this.createAccordionsKey();
+    },
+    createAccordionsKey() {
+      this.inputKey = `ui_textinput_key_${this.g_inputStatusValue.key++}`;
+      this.g_inputStatusValue.list.push({
+        inputKey: this.inputKey,
+      });
+    },
+    removeAccordionsKey() {
+      this.g_inputStatusValue.list.some((item, index) => {
+        if (this.inputKey === this.g_inputStatusValue.list[index].inputKey) {
+          this.g_inputStatusValue.list.splice(index, 1);
+          this.g_inputStatusValue.key--;
+        }
+      });
+    },
+    // text input 이벤트 ====================================
+    onFocus(event) {
+      this.isFocus = true;
+    },
+    onBlur(event) {
+      this.isFocus = false;
+    },
   },
 };
 </script>

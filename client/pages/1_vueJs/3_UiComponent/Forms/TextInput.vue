@@ -35,20 +35,6 @@
               <span class="blue bolder">input text 접근성 관련 참조 : </span>
               <a href="https://neul-carpediem.tistory.com/266" target="_blank">https://neul-carpediem.tistory.com/266</a>
               <br />
-              <span class="blue bolder">JSDoc 참조 : </span>
-              <a href="https://jsdoc.app/index.html#block-tags" target="_blank">https://jsdoc.app/index.html#block-tags</a>
-              <br />
-              <span class="blue bolder">UI Component 참조 : </span>
-              <a href="https://material.io/develop/web/components/lists" target="_blank">https://material.io/develop/web/components/lists</a>
-              <br />
-              <span class="blue bolder">CSS flex grid 참조 : </span>
-              <a href="https://studiomeal.com/archives/533" target="_blank">https://studiomeal.com/archives/533</a>
-              <br />
-              <span class="blue bolder">prettify 참조 : </span>
-              <a href="https://github.com/googlearchive/code-prettify?utm_source=cdnjs&utm_medium=cdnjs_link&utm_campaign=cdnjs_library" target="_blank">
-                https://github.com/googlearchive/code-prettify?utm_source=cdnjs&utm_medium=cdnjs_link&utm_campaign=cdnjs_library
-              </a>
-              <br />
             </div>
 
             <div class="widget-box">

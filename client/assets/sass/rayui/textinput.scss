@@ -130,4 +130,15 @@
       }
     }
   }
+  &.ui-text-input-focus {
+    .ui-text-input-input {
+      &:after {
+        transform: scaleX(1);
+      }
+    }
+    .ui-text-input-label {
+      max-width: 133%;
+      transform: translateY(-18px) scale(0.75);
+    }
+  }
 }
