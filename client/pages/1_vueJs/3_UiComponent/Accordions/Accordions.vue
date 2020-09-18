@@ -111,7 +111,7 @@
                                 </pre>
                               </ui-tabpanel>
                               <ui-tabpanel>
-                                <ui-accordions multi-select selected-index="2">
+                                <ui-accordions>
                                   <ui-accordion>
                                     <ui-accordion-header>Home</ui-accordion-header>
                                     <ui-accordion-content background-color="#f4f9fd">

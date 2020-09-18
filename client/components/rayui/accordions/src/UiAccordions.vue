@@ -6,7 +6,6 @@
   </div>
 </template>
 <script>
-// TODO: multi-select를 적용하고 selected-index옵션값을 넣지 않으면 최초 첫번째가 펼쳐지는 버그 있음.
 export default {
   props: {
     /**
@@ -79,15 +78,19 @@ export default {
             }
           });
         } else {
-          const idx = Number(this.selectedIndex);
-          if (this.$rayui.utils.isNumber(idx)) {
-            if (contentList[idx]) {
-              contentList[idx].expanded = true;
-              // 멀티선택, selectedIndex값이 array가 아니면 array로 저장하기
-              this.setSelectedIndex([idx]);
-            }
-          } else {
+          if (this.selectedIndex === '') {
             this.setSelectedIndex([]);
+          } else {
+            const idx = Number(this.selectedIndex);
+            if (this.$rayui.utils.isNumber(idx)) {
+              if (contentList[idx]) {
+                contentList[idx].expanded = true;
+                // 멀티선택, selectedIndex값이 array가 아니면 array로 저장하기
+                this.setSelectedIndex([idx]);
+              }
+            } else {
+              this.setSelectedIndex([]);
+            }
           }
         }
       }
