@@ -11,6 +11,9 @@ import UiAccordions from '@/components/rayui/accordions/src/UiAccordions.vue';
 import UiAccordion from '@/components/rayui/accordions/src/UiAccordion.vue';
 import UiAccordionHeader from '@/components/rayui/accordions/src/UiAccordionHeader.vue';
 import UiAccordionContent from '@/components/rayui/accordions/src/UiAccordionContent.vue';
+import UiLists from '@/components/rayui/lists/src/UiLists.vue';
+import UiListsItem from '@/components/rayui/lists/src/UiListsItem.vue';
+import UiListsTitle from '@/components/rayui/lists/src/UiListsTitle.vue';
 
 export default (context, inject) => {
   // 전역 Dialog관련 코드 (BEGIN) ===========================
@@ -64,6 +67,9 @@ export default (context, inject) => {
   Vue.component('ui-accordion', UiAccordion);
   Vue.component('ui-accordion-header', UiAccordionHeader);
   Vue.component('ui-accordion-content', UiAccordionContent);
+  Vue.component('ui-lists', UiLists);
+  Vue.component('ui-lists-item', UiListsItem);
+  Vue.component('ui-lists-title', UiListsTitle);
 
   // $root, context 모두 플러그인 주입 방식
   inject('rayui', {

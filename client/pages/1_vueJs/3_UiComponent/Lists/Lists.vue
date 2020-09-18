@@ -69,11 +69,10 @@
   export default {
     data() {
       return {
-        listData: [
-          { header: 'Home', content: 'Home Content...html' },
-          { header: 'Profile', content: 'Profile Content...html' },
-          { header: 'More', content: 'More Content...' },
-        ],
+        listsData: {
+          title: '타이틀',
+          content: [{ title: '컨텐츠1' }, { title: '컨텐츠2' }, { title: '컨텐츠3' }],
+        },
       };
     },
   };
@@ -81,7 +80,40 @@
                                 </pre>
                               </ui-tabpanel>
                               <ui-tabpanel>
-                                <!-- <ui-accordions></ui-accordions> -->
+                                <div class="title">기본 형태</div>
+                                <ui-lists>
+                                  <ui-lists-title v-if="listsData.title" class="list-title">
+                                    <span v-html="listsData.title"></span>
+                                  </ui-lists-title>
+                                  <ui-lists-item v-for="(item, index) in listsData.content" :key="index" class="list-content">
+                                    <span v-html="item.title"></span>
+                                  </ui-lists-item>
+                                </ui-lists>
+
+                                <div class="title">체크 박스 포함 형태</div>
+                                <ui-lists>
+                                  <ui-lists-item v-for="(item, index) in listsData2.content" :key="index" class="list-content">
+                                    <div class="item-container" @click="onClickContainer">
+                                      <div class="item-checkbox"><input type="checkbox" :item-title="item.title" :item-value="item.value" @click.stop="onClickCheckbox" /></div>
+                                      <div class="item-title">{{ item.title }}</div>
+                                    </div>
+                                  </ui-lists-item>
+                                </ui-lists>
+
+                                <div class="title">복합 컨텐츠 형태</div>
+                                <ui-lists>
+                                  <ui-lists-item v-for="(item, index) in listsData2.content" :key="index" class="list-content">
+                                    <div class="item-container2">
+                                      <div class="item-image">
+                                        <img :src="item.url" />
+                                      </div>
+                                      <div class="item-container2-sub">
+                                        <div class="item-title">{{ item.title }}</div>
+                                        <div class="item-subtitle">{{ item.subtitle }}</div>
+                                      </div>
+                                    </div>
+                                  </ui-lists-item>
+                                </ui-lists>
                               </ui-tabpanel>
                             </ui-tabs>
                           </div>
@@ -161,11 +193,40 @@ export default {
   data() {
     return {
       testPluginVal: '',
-      tabData: [
-        { title: 'Home', content: 'Home panel' },
-        { title: 'Profile', content: 'Profile panel' },
-        { title: 'More', content: 'More panel' },
-      ],
+      listsData: {
+        title: '<b>타이틀</b>',
+        content: [
+          { title: '컨텐츠1<br>HTML 사용', value: '1' },
+          { title: '<b>컨텐츠2</b>', value: '2' },
+          { title: '컨텐츠3', value: '3' },
+        ],
+      },
+      listsData2: {
+        title: '타이틀2',
+        content: [
+          {
+            title: '컨텐츠1',
+            value: '1',
+            subtitle: '서브컨텐츠1',
+            url:
+              'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgZGF0YS1uYW1lPSJMYXllciAxIiBpZD0iTGF5ZXJfMSIgdmlld0JveD0iMCAwIDEwMCAxMDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHN0eWxlPi5jbHMtMXtmaWxsOiNmZWNjMDk7fS5jbHMtMntmaWxsOiMxYTE4MTg7fTwvc3R5bGU+PC9kZWZzPjx0aXRsZS8+PGNpcmNsZSBjbGFzcz0iY2xzLTEiIGN4PSI1MCIgY3k9IjUwIiByPSIzMC4zNSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTE1LjMzIDIyLjk0KSByb3RhdGUoLTIyLjUpIi8+PHBhdGggY2xhc3M9ImNscy0yIiBkPSJNNTAsOS42NUE0MC4zNSw0MC4zNSwwLDEsMCw5MC4zNSw1MCw0MC4zOSw0MC4zOSwwLDAsMCw1MCw5LjY1Wm0wLDcwLjdBMzAuMzUsMzAuMzUsMCwxLDEsODAuMzUsNTAsMzAuMzksMzAuMzksMCwwLDEsNTAsODAuMzVaIi8+PGNpcmNsZSBjbGFzcz0iY2xzLTIiIGN4PSI2MS4wMiIgY3k9IjQyLjMzIiByPSI1LjUiLz48Y2lyY2xlIGNsYXNzPSJjbHMtMiIgY3g9IjM4Ljk4IiBjeT0iNDIuMzMiIHI9IjUuNSIvPjwvc3ZnPg==',
+          },
+          {
+            title: '컨텐츠2',
+            value: '2',
+            subtitle: '서브컨텐츠2',
+            url:
+              'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgZGF0YS1uYW1lPSJMYXllciAxIiBpZD0iTGF5ZXJfMSIgdmlld0JveD0iMCAwIDEwMCAxMDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHN0eWxlPi5jbHMtMXtmaWxsOiNmZWNjMDk7fS5jbHMtMntmaWxsOiMxYTE4MTg7fTwvc3R5bGU+PC9kZWZzPjx0aXRsZS8+PGNpcmNsZSBjbGFzcz0iY2xzLTEiIGN4PSI1MCIgY3k9IjUwIiByPSIzMC4zNSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTE1LjMzIDIyLjk0KSByb3RhdGUoLTIyLjUpIi8+PHBhdGggY2xhc3M9ImNscy0yIiBkPSJNNTAsOS42NUE0MC4zNSw0MC4zNSwwLDEsMCw5MC4zNSw1MCw0MC4zOSw0MC4zOSwwLDAsMCw1MCw5LjY1Wm0wLDcwLjdBMzAuMzUsMzAuMzUsMCwxLDEsODAuMzUsNTAsMzAuMzksMzAuMzksMCwwLDEsNTAsODAuMzVaIi8+PGNpcmNsZSBjbGFzcz0iY2xzLTIiIGN4PSI2MS4wMiIgY3k9IjM5LjMzIiByPSI1LjUiLz48Y2lyY2xlIGNsYXNzPSJjbHMtMiIgY3g9IjM4Ljk4IiBjeT0iMzkuMzMiIHI9IjUuNSIvPjxyZWN0IGNsYXNzPSJjbHMtMiIgaGVpZ2h0PSIxMCIgd2lkdGg9IjMwLjU1IiB4PSIzNC43MyIgeT0iNTUuNzkiLz48L3N2Zz4=',
+          },
+          {
+            title: '컨텐츠3',
+            value: '3',
+            subtitle: '서브컨텐츠3',
+            url:
+              'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgZGF0YS1uYW1lPSJMYXllciAxIiBpZD0iTGF5ZXJfMSIgdmlld0JveD0iMCAwIDEwMCAxMDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHN0eWxlPi5jbHMtMXtmaWxsOiMxYTE4MTg7fTwvc3R5bGU+PC9kZWZzPjx0aXRsZS8+PGNpcmNsZSBjbGFzcz0iY2xzLTEiIGN4PSI2MS4wMiIgY3k9IjQyLjMzIiByPSI1LjUiLz48Y2lyY2xlIGNsYXNzPSJjbHMtMSIgY3g9IjM4Ljk4IiBjeT0iNDIuMzMiIHI9IjUuNSIvPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTUwLDkuNjVBNDAuMzUsNDAuMzUsMCwxLDAsOTAuMzUsNTAsNDAuMzksNDAuMzksMCwwLDAsNTAsOS42NVptMCw3MC43QTMwLjM1LDMwLjM1LDAsMSwxLDgwLjM1LDUwLDMwLjM5LDMwLjM5LDAsMCwxLDUwLDgwLjM1WiIvPjwvc3ZnPg==',
+          },
+        ],
+      },
     };
   },
   mounted() {
@@ -193,6 +254,87 @@ export default {
     onClickBtn(event) {
       this.$rayui.alert('버튼 클릭!' + event.currentTarget.tagName);
     },
+    onClickCheckbox(event) {
+      var target = event.currentTarget;
+      if (!target) {
+        return;
+      }
+      var checked = target.checked;
+      if (!checked) {
+        return;
+      }
+      var title = target.getAttribute('item-title');
+      var value = target.getAttribute('item-value');
+      this.$rayui.alert('value : ' + value + '<br>title : ' + title);
+    },
+    onClickContainer(event) {
+      var target = event.currentTarget;
+      if (!target) {
+        return;
+      }
+      var cbxObj = target.querySelector('.item-checkbox').children[0];
+      cbxObj.click();
+    },
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.title {
+  font-weight: bold;
+  font-size: 16px;
+  padding-top: 30px;
+}
+.title:first-child {
+  padding-top: 0px;
+}
+.list-title {
+  padding: 3px 3px;
+  // font-weight: bold;
+  background: #438eb9;
+  color: white;
+}
+.list-content {
+  border-top: 1px solid #aaaaaa;
+  padding: 3px 3px;
+}
+.list-content:last-child {
+  border-bottom: 2px solid #888888;
+}
+.list-content:hover {
+  background-color: #eeeeee;
+}
+
+.item-container {
+  display: flex;
+  flex-direction: row;
+  .item-checkbox {
+    flex-shrink: 0;
+    width: 50px;
+    text-align: center;
+  }
+  .item-title {
+    flex-grow: 1;
+  }
+}
+.item-container2 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  .item-image {
+    flex-shrink: 0;
+    width: 100px;
+    text-align: center;
+  }
+  .item-container2-sub {
+    flex-grow: 1;
+    .item-title {
+      font-size: 14px;
+      font-weight: bold;
+    }
+    .item-subtitle {
+      color: gray;
+    }
+  }
+}
+</style>
