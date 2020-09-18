@@ -4,7 +4,7 @@
       <div class="ui-text-input-input">
         <div class="ui-text-input-wrapper">
           <label :for="inputKey" class="ui-text-input-label" style="left: 0; right: auto; position: absolute;">label</label>
-          <input :id="inputKey" type="text" @focus="onFocus" @blur="onBlur" />
+          <input :id="inputKey" type="text" :value="value" @focus="onFocus" @blur="onBlur" @input="onInput" />
         </div>
       </div>
       <div class="ui-text-input-detail">
@@ -20,6 +20,10 @@
 <script>
 export default {
   props: {
+    value: {
+      type: String,
+      default: '',
+    },
     /**
      * textInput 이 펼쳐질때 하나가 아닌 여러개 펼쳐지게 해주는 옵션.
      * @type {Boolean}
@@ -85,6 +89,9 @@ export default {
     },
     onBlur(event) {
       this.isFocus = false;
+    },
+    onInput(event) {
+      // this.$emit('input', event.currentTarget.value);
     },
   },
 };

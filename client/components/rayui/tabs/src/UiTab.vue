@@ -59,11 +59,12 @@ export default {
       }
     },
     observeSize() {
-      const ro = new ResizeObserver((entries) => {
+      const ro = new this.$rayui.ResizeObserver((entries) => {
         entries.some((entry) => {
           console.log(entry.target.clientWidth);
           if (entry.target.clientWidth > 0) {
             this.currentSelectWidth();
+            ro.disconnect();
           }
         });
       });

@@ -74,7 +74,7 @@
                                 </pre>
                               </ui-tabpanel>
                               <ui-tabpanel>
-                                <ui-text-input></ui-text-input>
+                                <ui-text-input v-model="testValue"></ui-text-input>
                                 <ui-text-input></ui-text-input>
                               </ui-tabpanel>
                             </ui-tabs>
@@ -152,7 +152,7 @@ export default {
   },
   data() {
     return {
-      testPluginVal: '',
+      testValue: 'aaa',
       tabData: [
         { title: 'Home', content: 'Home panel' },
         { title: 'Profile', content: 'Profile panel' },
