@@ -209,7 +209,7 @@
                               <i class="ace-icon fa fa-caret-right blue"></i>
                               <b class="text-success lead">multi-select</b>
                               <p class="alert alert-success">
-                                아코디언 컴퍼넌트를 펼칠때 다중 펼침 옵션을 지정하여 주유롭게 펼칠 수 있습니다. 기본은 하나만 펼치게 되어있습니다.<br />
+                                아코디언 컴퍼넌트를 펼칠때 다중 펼침 옵션을 지정하여 자유롭게 펼칠 수 있습니다. 기본은 하나만 펼치게 되어있습니다.<br />
                                 <b>타입: </b> Boolean<br />
                                 <b>기본값: </b> false<br />
                               </p>
