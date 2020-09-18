@@ -6,6 +6,7 @@
   </div>
 </template>
 <script>
+// TODO: multi-select를 적용하고 selected-index옵션값을 넣지 않으면 최초 첫번째가 펼쳐지는 버그 있음.
 export default {
   props: {
     /**
