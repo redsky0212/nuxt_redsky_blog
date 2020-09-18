@@ -75,8 +75,8 @@
                           <p>
                             <span class="bolder green">&lt;ui-accordion&gt;</span>으로 원하는 개수의 accordion list를 입력합니다.
                             <br />
-                            <span class="bolder green">&lt;ui-accordion&gt;</span>내부에 <span class="bolder green">&lt;ui-accordion-header&gt;</span>와
-                            <span class="bolder green">&lt;ui-accordion-content&gt;</span>를 입력하여 title부분과 content부분으로 나눕니다.
+                            <span class="bolder green">&lt;ui-accordion&gt;</span>내부에 <span class="bolder green">&lt;ui-accordion-header&gt;</span>(제목)와
+                            <span class="bolder green">&lt;ui-accordion-content&gt;</span>(컨텐츠)를 입력하여 title부분과 content부분으로 나눕니다.
                             <br />
                             <b>header</b>와 <b>content</b>에는 원하는 형태의 html tag나 text를 채워서 보여줍니다.
                           </p>
@@ -159,7 +159,7 @@
                               <i class="ace-icon fa fa-caret-right blue"></i>
                               <b class="text-success lead">selected-index</b>
                               <p class="alert alert-success">
-                                최초 선택 되어져야 할 Accordion의 index값을 설정한다.<br />
+                                최초 선택(펼침) 되어져야 할 Accordion의 index값을 설정한다.<br />
                                 <b>타입: </b> Number<br />
                                 <b>기본값: </b> null<br />
                               </p>
@@ -186,9 +186,70 @@
                                     </pre>
                                   </ui-tabpanel>
                                   <ui-tabpanel>
-                                    <div class="thumbnail">
-                                      ...
-                                    </div>
+                                    <ui-accordions selected-index="1">
+                                      <ui-accordion>
+                                        <ui-accordion-header>Home</ui-accordion-header>
+                                        <ui-accordion-content>Home Content</ui-accordion-content>
+                                      </ui-accordion>
+                                      <ui-accordion>
+                                        <ui-accordion-header>Profile</ui-accordion-header>
+                                        <ui-accordion-content>Profile Content</ui-accordion-content>
+                                      </ui-accordion>
+                                      <ui-accordion>
+                                        <ui-accordion-header>More</ui-accordion-header>
+                                        <ui-accordion-content>More Content</ui-accordion-content>
+                                      </ui-accordion>
+                                    </ui-accordions>
+                                  </ui-tabpanel>
+                                </ui-tabs>
+                              </div>
+                              <hr />
+                            </li>
+                            <li>
+                              <i class="ace-icon fa fa-caret-right blue"></i>
+                              <b class="text-success lead">multi-select</b>
+                              <p class="alert alert-success">
+                                아코디언 컴퍼넌트를 펼칠때 다중 펼침 옵션을 지정하여 주유롭게 펼칠 수 있습니다. 기본은 하나만 펼치게 되어있습니다.<br />
+                                <b>타입: </b> Boolean<br />
+                                <b>기본값: </b> false<br />
+                              </p>
+                              <div style="border: 1px solid #e2e2e2;">
+                                <ui-tabs>
+                                  <ui-tab>Source</ui-tab>
+                                  <ui-tab>Demo</ui-tab>
+                                  <ui-tabpanel>
+                                    <pre class="prettyprint linenums">
+&lt;ui-accordions multi-select&gt;
+  &lt;ui-accordion&gt;
+    &lt;ui-accordion-header&gt;Home&lt;/ui-accordion-header&gt;
+    &lt;ui-accordion-content&gt;Home Content&lt;/ui-accordion-content&gt;
+  &lt;/ui-accordion&gt;
+  &lt;ui-accordion&gt;
+    &lt;ui-accordion-header&gt;Profile&lt;/ui-accordion-header&gt;
+    &lt;ui-accordion-content&gt;Profile Content&lt;/ui-accordion-content&gt;
+  &lt;/ui-accordion&gt;
+  &lt;ui-accordion&gt;
+    &lt;ui-accordion-header&gt;More&lt;/ui-accordion-header&gt;
+    &lt;ui-accordion-content&gt;More Content&lt;/ui-accordion-content&gt;
+  &lt;/ui-accordion&gt;
+&lt;/ui-accordions&gt;
+                                    </pre>
+                                  </ui-tabpanel>
+                                  <ui-tabpanel>
+                                    <ui-accordions multi-select>
+                                      <ui-accordion>
+                                        <ui-accordion-header>Home</ui-accordion-header>
+                                        <ui-accordion-content>Home Content</ui-accordion-content>
+                                      </ui-accordion>
+                                      <ui-accordion>
+                                        <ui-accordion-header>Profile</ui-accordion-header>
+                                        <ui-accordion-content>Profile Content</ui-accordion-content>
+                                      </ui-accordion>
+                                      <ui-accordion>
+                                        <ui-accordion-header>More</ui-accordion-header>
+                                        <ui-accordion-content>More Content</ui-accordion-content>
+                                      </ui-accordion>
+                                    </ui-accordions>
                                   </ui-tabpanel>
                                 </ui-tabs>
                               </div>
