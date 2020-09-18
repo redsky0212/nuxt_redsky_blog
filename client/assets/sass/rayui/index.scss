@@ -1,5 +1,6 @@
 @import './popup.scss';
 @import './accordions.scss';
+@import './textinput.scss';
 
 html {
   font-size: inherit;
@@ -7,4 +8,8 @@ html {
 h1, h2, h3, h4, h5, h6 {
   // margin-top: 0 !important;
   // margin-bottom: .5rem;
+}
+* {
+  padding: 0;
+  margin: 0;
 }

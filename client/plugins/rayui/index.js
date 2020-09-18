@@ -14,6 +14,7 @@ import UiAccordionContent from '@/components/rayui/accordions/src/UiAccordionCon
 import UiLists from '@/components/rayui/lists/src/UiLists.vue';
 import UiListsItem from '@/components/rayui/lists/src/UiListsItem.vue';
 import UiListsTitle from '@/components/rayui/lists/src/UiListsTitle.vue';
+import UiTextInput from '@/components/rayui/forms/src/UiTextInput.vue';
 
 export default (context, inject) => {
   // 전역 Dialog관련 코드 (BEGIN) ===========================
@@ -57,6 +58,12 @@ export default (context, inject) => {
     list: [],
   };
   // 전역 Accordions관련 코드 (END) ==========================
+  // 전역 Input관련 코드 (BEGIN) =============================
+  const inputStatusValue = {
+    key: 0,
+    list: [],
+  };
+  // 전역 Input관련 코드 (END) ===============================
 
   // 전역 rayui 컴포넌트 등록 ================================
   Vue.component('ui-button', UiButton);
@@ -70,8 +77,9 @@ export default (context, inject) => {
   Vue.component('ui-lists', UiLists);
   Vue.component('ui-lists-item', UiListsItem);
   Vue.component('ui-lists-title', UiListsTitle);
+  Vue.component('ui-text-input', UiTextInput);
 
-  // $root, context 모두 플러그인 주입 방식
+  // $root, context 모두 플러그인 주입방식 (전역 script) 등록 ==
   inject('rayui', {
     ResizeObserver,
     utils,
@@ -80,5 +88,6 @@ export default (context, inject) => {
     confirm, // 전역 confirm 컴포넌트 객체
     tabsStatusValue, // 전역 Tabs 컴포넌트의 상태값
     accordionsStatusValue, // 전역 Accordions 컴포넌트의 상태값
+    inputStatusValue, // 전역 Input 컴포넌트의 상태값
   });
 };

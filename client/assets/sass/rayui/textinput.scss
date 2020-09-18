@@ -1,0 +1,133 @@
+.ui-input {
+  align-items: flex-start;
+  display: flex;
+  flex: 1 1 auto;
+  font-size: 16px;
+  letter-spacing: normal;
+  max-width: 100%;
+  text-align: left;
+}
+.ui-text-input-container {
+  padding-top: 12px;
+  margin-top: 4px;
+  .ui-text-input-control {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    flex-grow: 1;
+    flex-wrap: wrap;
+    min-width: 0;
+    width: 100%;
+
+    color: inherit;
+    border-radius: inherit;
+    .ui-text-input-input {
+      align-items: center;
+      color: inherit;
+      display: flex;
+      margin-bottom: 8px;
+      min-height: inherit;
+      position: relative;
+      width: 100%;
+      border-radius: inherit;
+      cursor: text;
+      transition: background 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+      &:before {
+        border-color: rgba(0, 0, 0, 0.42); // 테마적용 시
+
+        text-decoration: inherit;
+        vertical-align: inherit;
+        background-repeat: no-repeat;
+        box-sizing: inherit;
+
+        bottom: -1px;
+        content: '';
+        left: 0;
+        position: absolute;
+        transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+        width: 100%;
+        border-color: inherit;
+        border-style: solid;
+        border-width: thin 0 0;
+      }
+      &:after {
+        bottom: -1px;
+        content: "";
+        left: 0;
+        position: absolute;
+        transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+        width: 100%;
+        border-color: currentcolor;
+        border-style: solid;
+        border-width: thin 0;
+        transform: scaleX(0); // focus시 scaleX(1)
+      }
+      .ui-text-input-wrapper {
+        display: flex;
+        flex: 1 1 auto;
+        position: relative;
+        cursor: text;
+        transition: background 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+        .ui-text-input-label {
+          font-size: 16px;
+          min-height: 8px;
+          transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+          max-width: 90%;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          top: 6px;
+          white-space: nowrap;
+          pointer-events: none;
+          height: 20px;
+          line-height: 20px;
+          color: rgba(0, 0, 0, 0.6); // 테마적용 시
+          transform-origin: top left;
+          &.ui-text-input-label-active {
+            max-width: 133%;
+            transform: translateY(-18px) scale(0.75);
+          }
+        }
+        input {
+          margin: 0;
+          font: inherit;
+          background-color: transparent;
+          border-style: none;
+          flex: 1 1 auto;
+          line-height: 20px;
+          padding: 8px 0;
+          max-width: 100%;
+          min-width: 0;
+          width: 100%;
+          max-height: 32px;
+          box-shadow: none;
+          color: rgba(0, 0, 0, 0.87); // 테마적용 시
+        }
+      }
+    }
+    .ui-text-input-detail {
+      display: flex;
+      flex: 1 0 auto;
+      max-width: 100%;
+      min-height: 14px;
+      overflow: hidden;
+      .ui-text-input-message {
+        flex: 1 1 auto;
+        font-size: 12px;
+        min-height: 14px;
+        min-width: 1px;
+        position: relative;
+        color: rgba(0, 0, 0, 0.6); // 테마적용 시
+        text-align: left;
+        .ui-text-input-message-value {
+          line-height: 12px;
+          word-break: break-word;
+          overflow-wrap: break-word;
+          word-wrap: break-word;
+          -webkit-hyphens: auto;
+          -ms-hyphens: auto;
+          hyphens: auto;
+        }
+      }
+    }
+  }
+}

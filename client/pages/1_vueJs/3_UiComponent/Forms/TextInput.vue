@@ -88,7 +88,8 @@
                                 </pre>
                               </ui-tabpanel>
                               <ui-tabpanel>
-                                ...
+                                <ui-text-input></ui-text-input>
+                                <ui-text-input></ui-text-input>
                               </ui-tabpanel>
                             </ui-tabs>
                           </div>
