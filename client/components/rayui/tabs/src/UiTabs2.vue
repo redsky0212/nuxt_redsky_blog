@@ -40,7 +40,7 @@ export default {
   methods: {
     init() {
       this.createTabsKey();
-      this.changeSlot();
+      // this.changeSlot();
     },
     changeSlot() {
       const s = this.$slots.default;
@@ -65,14 +65,15 @@ export default {
     },
     createTabsKey() {
       this.key = this.g_tabsStatusValue.key;
-      this.tabKey = `ui_tabs_key_${this.g_tabsStatusValue.key}`;
+      this.tabKey = `ui_tabs_key_${this.g_tabsStatusValue.key++}`;
       this.g_tabsStatusValue.list.push({
         tabKey: this.tabKey,
+        key: this.key,
         selectedIndex: this.selectedIndex,
+        fixedTabs: this.fixedTabs,
         tabWidth: 0,
         offsetLeft: 0,
       });
-      this.g_tabsStatusValue.key++;
     },
     removeTabsKey() {
       this.g_tabsStatusValue.list.some((item, index) => {
