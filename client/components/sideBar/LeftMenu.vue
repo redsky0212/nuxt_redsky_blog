@@ -78,14 +78,14 @@ export default {
           ulElem.className += ' nav-hide';
           ulElem.style.display = 'none';
           ulElem.style.height = '0';
-          ulElem.style.maxHeight = '0';
+          // ulElem.style.maxHeight = '0';
         } else {
           parent.className = 'open';
           ulElem.classList.remove('nav-hide');
           ulElem.className += ' nav-show';
           ulElem.style.display = 'block';
           ulElem.style.height = 'auto';
-          ulElem.style.maxHeight = '500px';
+          // ulElem.style.maxHeight = '500px';
         }
         ulElem.style.transitionProperty = 'max-height';
         ulElem.style.transitionDuration = '1s';
