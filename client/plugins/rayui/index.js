@@ -5,6 +5,8 @@ import alert from '@/components/rayui/alert';
 import confirm from '@/components/rayui/confirm';
 import UiButton from '@/components/rayui/button/src/UiButton.vue';
 import UiTabs from '@/components/rayui/tabs/src/UiTabs.vue';
+import UiTabTitles from '@/components/rayui/tabs/src/UiTabTitles.vue';
+import UiTabContents from '@/components/rayui/tabs/src/UiTabContents.vue';
 import UiTab from '@/components/rayui/tabs/src/UiTab.vue';
 import UiTabpanel from '@/components/rayui/tabs/src/UiTabpanel.vue';
 import UiAccordions from '@/components/rayui/accordions/src/UiAccordions.vue';
@@ -68,6 +70,8 @@ export default (context, inject) => {
   // 전역 rayui 컴포넌트 등록 ================================
   Vue.component('ui-button', UiButton);
   Vue.component('ui-tabs', UiTabs);
+  Vue.component('ui-tab-titles', UiTabTitles);
+  Vue.component('ui-tab-contents', UiTabContents);
   Vue.component('ui-tab', UiTab);
   Vue.component('ui-tabpanel', UiTabpanel);
   Vue.component('ui-accordions', UiAccordions);

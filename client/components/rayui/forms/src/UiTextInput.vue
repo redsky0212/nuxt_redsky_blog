@@ -91,7 +91,7 @@ export default {
       this.isFocus = false;
     },
     onInput(event) {
-      // this.$emit('input', event.currentTarget.value);
+      this.$emit('input', event.currentTarget.value);
     },
   },
 };
