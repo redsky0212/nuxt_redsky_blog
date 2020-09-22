@@ -1,31 +1,47 @@
 <template>
-  <div class="ui-lists-item">
-    <slot></slot>
+  <div class="ui-lists-item" :id="contentId" role="item" @click="onClick">
+    <slot :contentId="contentId"></slot>
   </div>
 </template>
 <script>
 export default {
   data() {
     return {
-      // g_listsStatusValue: window.$nuxt.$rayui.listsStatusValue,
-      // listIndex: this.$attrs.listIdx,
-      // selectedIndex: window.$nuxt.$rayui.listsStatusValue.list[this.$attrs.listsIdx].selectedIndex,
+      listsIndex: this.$attrs.listsIdx,
+      listsKey: this.$attrs.listsKey,
     };
   },
   computed: {
-    // headerId: function () {
-    //   return `ui-list-header-${this.g_listsStatusValue.key}-${this.listIndex}`;
-    // },
-    // contentId: function () {
-    //   return `ui-list-content-${this.g_listsStatusValue.key}-${this.listIndex}`;
-    // },
+    contentId: function () {
+      return `ui-lists-content-${this.listsKey}-${this.listsIndex}`;
+    },
     // TODO: aria-expanded 작업 처리 해야함
   },
   methods: {
     onClick(event) {
-      // const idx = event.currentTarget.getAttribute('idx');
-      // window.$nuxt.$rayui.listsStatusValue.list[this.$attrs.listsIdx].selectedIndex = idx;
-      // this.selectedIndex = idx;
+      // TODO: checkbox 등 관리 안하는 방향으로...
+      const listsid = event.currentTarget.getAttribute('listsid');
+      if (!listsid || !document.getElementById(listsid)) {
+        return;
+      }
+      const selectedIndexs = [];
+      const selectedValues = [];
+      const cbxList = document.getElementById(listsid).querySelectorAll('input[role="checkbox"]');
+      if (cbxList.length === 0) {
+        return;
+      }
+      cbxList.forEach((item, index) => {
+        if (item.checked === true) {
+          selectedValues.push(item.getAttribute('item-value'));
+          selectedIndexs.push(index);
+        }
+      });
+      window.$nuxt.$rayui.listsStatusValue.list.forEach((item, index) => {
+        if (item.listsId === listsid) {
+          item.selectedValues = selectedValues;
+          item.selectedIndexs = selectedIndexs;
+        }
+      });
     },
   },
 };

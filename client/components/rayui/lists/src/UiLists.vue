@@ -1,6 +1,6 @@
 <template>
   <div class="ui-lists-container">
-    <div class="ui-lists">
+    <div class="ui-lists" :id="listsid">
       <slot></slot>
     </div>
   </div>
@@ -12,16 +12,22 @@ export default {
      * 최초 선택 되어져야 할 List index값 설정한다
      * @type {String}
      */
-    // selectedIndex: {
-    //   type: String,
-    //   default: '',
-    // },
+    listsid: {
+      type: String,
+      default: '',
+    },
+    listdata: {
+      type: Object,
+      // eslint-disable-next-line vue/require-valid-default-prop
+      default: {},
+    },
   },
   data() {
     return {
-      // key: 0,
-      // listKey: '',
-      // g_listsStatusValue: window.$nuxt.$rayui.listsStatusValue,
+      key: 0,
+      listsKey: '',
+      arrList: [],
+      g_listsStatusValue: window.$nuxt.$rayui.listsStatusValue,
     };
   },
   beforeMount() {
@@ -31,40 +37,68 @@ export default {
   beforeDestroy() {
     this.removeListsKey();
   },
+  mounted() {
+    // 기본값 셋팅
+    this.setDefaultValue();
+  },
   methods: {
     init() {
-      // list 의 key생성.
+      // lists 의 key생성.
       this.setSlot();
       this.createListsKey();
     },
     setSlot() {
-      // const s = this.$slots.default;
-      // const arrList = [];
-      // s.forEach((element) => {
-      //   if (RegExp('ui-list', 'g').test(element.tag)) {
-      //     element.data.attrs = {
-      //       listIdx: arrList.length,
-      //       listsKey: this.g_listsStatusValue.key,
-      //     };
-      //     arrList.push(element);
-      //   }
-      // });
+      const s = this.$slots.default;
+      this.arrList = [];
+      s.forEach((element) => {
+        if (RegExp('ui-lists-item', 'g').test(element.tag)) {
+          element.data.attrs = {
+            listsIdx: this.arrList.length,
+            listsKey: this.g_listsStatusValue.key,
+            listsId: this.listsid,
+          };
+          this.arrList.push(element);
+        }
+      });
     },
     createListsKey() {
-      // this.key = this.g_listsStatusValue.key;
-      // this.listKey = `ui_lists_key_${this.g_listsStatusValue.key++}`;
-      // this.g_listsStatusValue.list.push({
-      //   listKey: this.listKey,
-      //   selectedIndex: this.selectedIndex,
-      // });
+      this.key = this.g_listsStatusValue.key;
+      this.listsKey = `ui_lists_key_${this.g_listsStatusValue.key++}`;
+      this.g_listsStatusValue.list.push({
+        listsKey: this.listsKey,
+        listsId: this.listsid,
+        selectedIndexs: this.selectedIndexs,
+        selectedValues: this.selectedValues,
+        contentList: this.arrList,
+      });
     },
     removeListsKey() {
-      // this.g_listsStatusValue.list.some((item, index) => {
-      //   if (this.listKey === this.g_listsStatusValue.list[index].listKey) {
-      //     this.g_listsStatusValue.list.splice(index, 1);
-      //     this.g_listsStatusValue.key--;
-      //   }
-      // });
+      this.g_listsStatusValue.list.some((item, index) => {
+        if (this.listsKey === this.g_listsStatusValue.list[index].listsKey) {
+          this.g_listsStatusValue.list.splice(index, 1);
+          this.g_listsStatusValue.key--;
+        }
+      });
+    },
+    setDefaultValue() {
+      // TODO: checkbox 등 관리 안하는 방향으로...
+      // 로딩시 기본값 셋팅
+      if (this.listdata && this.listdata.type === 'checkbox' && this.listdata.content) {
+        const selectedIndexs = [];
+        const selectedValues = [];
+        this.listdata.content.forEach((item, index) => {
+          if (item.checked === true) {
+            selectedValues.push(item.value);
+            selectedIndexs.push(index);
+          }
+        });
+        window.$nuxt.$rayui.listsStatusValue.list.forEach((item, index) => {
+          if (item.listsId === this.listsid) {
+            item.selectedValues = selectedValues;
+            item.selectedIndexs = selectedIndexs;
+          }
+        });
+      }
     },
   },
 };
