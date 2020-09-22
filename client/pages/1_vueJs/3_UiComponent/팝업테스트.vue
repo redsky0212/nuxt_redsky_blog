@@ -41,6 +41,11 @@
                 <div class="widget-main">
                   <div class="row">
                     <div class="col-sm-12">
+                      <div style="border: 1px solid #e2e2e2;">
+                        <ui-tabs2 selected-index="1">
+                          <ui-tab3 type="title">source</ui-tab3>
+                        </ui-tabs2>
+                      </div>
                       <ul>
                         <li>
                           <button @click="onOpen">alert열기</button>
@@ -74,6 +79,7 @@ export default {
   },
   data() {
     return {
+      testValue: 'aaa',
       testPluginVal: '',
     };
   },

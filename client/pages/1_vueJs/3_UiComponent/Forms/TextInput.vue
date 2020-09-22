@@ -61,15 +61,15 @@
                             으로 입력하고자 하는 위치에 코딩하고 다양한 옵선 속성을 적용하여 설정 합니다.
                           </p>
                           <div style="border: 1px solid #e2e2e2;">
-                            <ui-tabs>
+                            <ui-tabs selected-index="1">
                               <ui-tab>Source</ui-tab>
                               <ui-tab>Demo</ui-tab>
                               <ui-tabpanel>
                                 <pre class="prettyprint linenums lang-html">
 &lt;template&gt;
-  &lt;div&gt;
-    &lt;ui-text-input&gt;&lt;/ui-text-input&gt;
-  &lt;/div&gt;
+&lt;div&gt;
+  &lt;ui-text-input&gt;&lt;/ui-text-input&gt;
+&lt;/div&gt;
 &lt;/template&gt;
                                 </pre>
                               </ui-tabpanel>
