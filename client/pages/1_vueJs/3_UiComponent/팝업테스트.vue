@@ -53,6 +53,8 @@
                             </pre>
                           </ui-tab3>
                           <ui-tab3 title="Demo">
+                            <p>참조:</p>
+                            <a href="https://learnvue.co/2019/12/building-reusable-components-in-vuejs-tabs/" target="_blank">참조 url</a>
                             <ui-text-input v-model="testValue"></ui-text-input>
                           </ui-tab3>
                         </ui-tabs2>
