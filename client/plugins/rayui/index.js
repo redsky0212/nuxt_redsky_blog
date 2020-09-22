@@ -70,6 +70,12 @@ export default (context, inject) => {
     list: [],
   };
   // 전역 Input관련 코드 (END) ===============================
+  // 전역 Lists관련 코드 (BEGIN) ========================
+  const listsStatusValue = {
+    key: 0,
+    list: [],
+  };
+  // 전역 Lists관련 코드 (END) ==========================
 
   // 전역 rayui 컴포넌트 등록 ================================
   Vue.component('ui-button', UiButton);
@@ -101,5 +107,6 @@ export default (context, inject) => {
     tabsStatusValue, // 전역 Tabs 컴포넌트의 상태값
     accordionsStatusValue, // 전역 Accordions 컴포넌트의 상태값
     inputStatusValue, // 전역 Input 컴포넌트의 상태값
+    listsStatusValue, // 전역 Lists 컴포넌트의 상태값
   });
 };
