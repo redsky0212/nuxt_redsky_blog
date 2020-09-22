@@ -66,9 +66,7 @@
                           </p>
                           <div style="border: 1px solid #e2e2e2;">
                             <ui-tabs>
-                              <ui-tab>Source</ui-tab>
-                              <ui-tab>Demo</ui-tab>
-                              <ui-tabpanel>
+                              <ui-tab title="Source">
                                 <pre class="prettyprint linenums">
   &lt;template&gt;
     &lt;div&gt;
@@ -92,8 +90,8 @@
   };
   &lt;/script&gt;
                                 </pre>
-                              </ui-tabpanel>
-                              <ui-tabpanel>
+                              </ui-tab>
+                              <ui-tab title="Demo">
                                 <div class="title">기본 형태</div>
                                 <ui-lists listsid="listsId1" :listdata="listsData2">
                                   <ui-lists-title v-if="listsData.title" class="list-title">
@@ -132,7 +130,7 @@
                                     <!-- 복합 컨텐츠 형태 샘플 /E -->
                                   </ui-lists-item>
                                 </ui-lists>
-                              </ui-tabpanel>
+                              </ui-tab>
                             </ui-tabs>
                           </div>
                         </li>
@@ -168,9 +166,7 @@
                               </p>
                               <div style="border: 1px solid #e2e2e2;">
                                 <ui-tabs>
-                                  <ui-tab>Source</ui-tab>
-                                  <ui-tab>Demo</ui-tab>
-                                  <ui-tabpanel>
+                                  <ui-tab title="Source">
                                     <pre class="prettyprint linenums">
   &lt;template&gt;
     &lt;div&gt;
@@ -178,12 +174,12 @@
     &lt;/div&gt;
   &lt;/template&gt;
                                     </pre>
-                                  </ui-tabpanel>
-                                  <ui-tabpanel>
+                                  </ui-tab>
+                                  <ui-tab title="Demo">
                                     <div class="thumbnail">
                                       ...
                                     </div>
-                                  </ui-tabpanel>
+                                  </ui-tab>
                                 </ui-tabs>
                               </div>
                               <hr />

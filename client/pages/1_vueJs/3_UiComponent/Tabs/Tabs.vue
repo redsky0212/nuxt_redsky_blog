@@ -47,39 +47,31 @@
                         <li>
                           <b>템플릿에 <span class="bolder green">&lt;ui-tabs&gt;</span>컴퍼넌트를 삽입해서 사용.</b>
                           <br />
-                          <p><span class="bolder green">&lt;ui-tab&gt;</span>의 개수와 <span class="bolder green">&lt;ui-tabpanel&gt;</span>의 개수 index가 짝지어져 각각의 탭이 열립니다.</p>
+                          <p><span class="bolder green">&lt;ui-tab&gt;</span>의 개수가 탭의 개수이며 title 속성으로 탭의 타이틀을 입력합니다.</p>
                           <div style="border: 1px solid #e2e2e2;">
                             <ui-tabs>
-                              <ui-tab>Source</ui-tab>
-                              <ui-tab>Demo</ui-tab>
-                              <ui-tabpanel>
+                              <ui-tab title="Source">
                                 <pre class="prettyprint linenums">
   &lt;template&gt;
     &lt;div&gt;
       &lt;ui-tabs&gt;
-        &lt;ui-tab&gt;Home&lt;/ui-tab&gt;
-        &lt;ui-tab&gt;Profile&lt;/ui-tab&gt;
-        &lt;ui-tab&gt;More&lt;/ui-tab&gt;
-        &lt;ui-tabpanel&gt;Home panel&lt;/ui-tabpanel&gt;
-        &lt;ui-tabpanel&gt;Profile panel&lt;/ui-tabpanel&gt;
-        &lt;ui-tabpanel&gt;More panel&lt;/ui-tabpanel&gt;
+        &lt;ui-tab title="Home"&gt;Home panel&lt;/ui-tab&gt;
+        &lt;ui-tab title="Profile"&gt;Profile panel&lt;/ui-tab&gt;
+        &lt;ui-tab title="More"&gt;More panel&lt;/ui-tab&gt;
       &lt;/ui-tabs&gt;
     &lt;/div&gt;
   &lt;/template&gt;
                                 </pre>
-                              </ui-tabpanel>
-                              <ui-tabpanel>
+                              </ui-tab>
+                              <ui-tab title="Demo">
                                 <div class="thumbnail">
-                                  <ui-tabs selected-index="2">
-                                    <ui-tab v-for="(item, index) in tabData" :key="index">
-                                      {{ item.title }}
-                                    </ui-tab>
-                                    <ui-tabpanel v-for="(item, index) in tabData" :key="index">
+                                  <ui-tabs>
+                                    <ui-tab v-for="(item, index) in tabData" :key="index" :title="item.title">
                                       {{ item.content }}
-                                    </ui-tabpanel>
+                                    </ui-tab>
                                   </ui-tabs>
                                 </div>
-                              </ui-tabpanel>
+                              </ui-tab>
                             </ui-tabs>
                           </div>
                         </li>
@@ -115,36 +107,28 @@
                               </p>
                               <div style="border: 1px solid #e2e2e2;">
                                 <ui-tabs>
-                                  <ui-tab>Source</ui-tab>
-                                  <ui-tab>Demo</ui-tab>
-                                  <ui-tabpanel>
+                                  <ui-tab title="Source">
                                     <pre class="prettyprint linenums">
   &lt;template&gt;
     &lt;div&gt;
       &lt;ui-tabs fixed-tabs&gt;
-        &lt;ui-tab&gt;Home&lt;/ui-tab&gt;
-        &lt;ui-tab&gt;Profile&lt;/ui-tab&gt;
-        &lt;ui-tab&gt;More&lt;/ui-tab&gt;
-        &lt;ui-tabpanel&gt;Home panel&lt;/ui-tabpanel&gt;
-        &lt;ui-tabpanel&gt;Profile panel&lt;/ui-tabpanel&gt;
-        &lt;ui-tabpanel&gt;More panel&lt;/ui-tabpanel&gt;
+        &lt;ui-tab title="Home"&gt;Home panel&lt;/ui-tab&gt;
+        &lt;ui-tab title="Profile"&gt;Profile panel&lt;/ui-tab&gt;
+        &lt;ui-tab title="More"&gt;More panel&lt;/ui-tab&gt;
       &lt;/ui-tabs&gt;
     &lt;/div&gt;
   &lt;/template&gt;
                                     </pre>
-                                  </ui-tabpanel>
-                                  <ui-tabpanel>
+                                  </ui-tab>
+                                  <ui-tab title="Demo">
                                     <div class="thumbnail">
                                       <ui-tabs fixed-tabs>
-                                        <ui-tab v-for="(item, index) in tabData" :key="index">
-                                          {{ item.title }}
-                                        </ui-tab>
-                                        <ui-tabpanel v-for="(item, index) in tabData" :key="index">
+                                        <ui-tab v-for="(item, index) in tabData" :key="index" :title="item.title">
                                           {{ item.content }}
-                                        </ui-tabpanel>
+                                        </ui-tab>
                                       </ui-tabs>
                                     </div>
-                                  </ui-tabpanel>
+                                  </ui-tab>
                                 </ui-tabs>
                               </div>
                               <hr />
@@ -159,36 +143,28 @@
                               </p>
                               <div style="border: 1px solid #e2e2e2;">
                                 <ui-tabs>
-                                  <ui-tab>Source</ui-tab>
-                                  <ui-tab>Demo</ui-tab>
-                                  <ui-tabpanel>
+                                  <ui-tab title="Source">
                                     <pre class="prettyprint linenums">
   &lt;template&gt;
     &lt;div&gt;
       &lt;ui-tabs selected-index="2"&gt;
-        &lt;ui-tab&gt;Home&lt;/ui-tab&gt;
-        &lt;ui-tab&gt;Profile&lt;/ui-tab&gt;
-        &lt;ui-tab&gt;More&lt;/ui-tab&gt;
-        &lt;ui-tabpanel&gt;Home panel&lt;/ui-tabpanel&gt;
-        &lt;ui-tabpanel&gt;Profile panel&lt;/ui-tabpanel&gt;
-        &lt;ui-tabpanel&gt;More panel&lt;/ui-tabpanel&gt;
+        &lt;ui-tab title="Home"&gt;Home panel&lt;/ui-tab&gt;
+        &lt;ui-tab title="Profile"&gt;Profile panel&lt;/ui-tab&gt;
+        &lt;ui-tab title="More"&gt;More panel&lt;/ui-tab&gt;
       &lt;/ui-tabs&gt;
     &lt;/div&gt;
   &lt;/template&gt;
                                     </pre>
-                                  </ui-tabpanel>
-                                  <ui-tabpanel>
+                                  </ui-tab>
+                                  <ui-tab title="Demo">
                                     <div class="thumbnail">
                                       <ui-tabs selected-index="2">
-                                        <ui-tab v-for="(item, index) in tabData" :key="index">
-                                          {{ item.title }}
-                                        </ui-tab>
-                                        <ui-tabpanel v-for="(item, index) in tabData" :key="index">
+                                        <ui-tab v-for="(item, index) in tabData" :key="index" :title="item.title">
                                           {{ item.content }}
-                                        </ui-tabpanel>
+                                        </ui-tab>
                                       </ui-tabs>
                                     </div>
-                                  </ui-tabpanel>
+                                  </ui-tab>
                                 </ui-tabs>
                               </div>
                               <hr />

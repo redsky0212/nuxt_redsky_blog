@@ -7,14 +7,29 @@
           <div class="ui-tabs-bar-slide-wrapper" :style="changeSliderStyle" style="background-color: #39b689 !important; border: 0 solid #39b689; height: 3px; top: 0;">
             <div class="ui-tabs-bar-slider"></div>
           </div>
-          <slot name="tabs"></slot>
+          <a
+            ref="tabRef"
+            v-for="(tab, index) in tabs"
+            :key="index"
+            :href="`#tabpanel-${tabKey}${index}`"
+            :id="`tab-${tabKey}${index}`"
+            :aria-selected="g_selectedIndex === index ? 'true' : 'false'"
+            role="tab"
+            :aria-controls="`tabpanel-${tabKey}${index}`"
+            class="ui-tab"
+            :class="{ 'ui-tab-fixed': fixedTabs, 'ui-tab-active': g_selectedIndex === index }"
+            :idx="index"
+            @click.prevent="onTabClick"
+          >
+            {{ tab.$attrs.title }}
+          </a>
         </div>
       </div>
       <div class="ui-tabs-bar-slide-group-next">next</div>
     </div>
     <div class="ui-tabs-items">
       <div class="ui-tabs-items-container" style="padding: 1.25rem !important;">
-        <slot name="tabpanel"></slot>
+        <slot></slot>
       </div>
     </div>
   </div>
@@ -41,71 +56,58 @@ export default {
   },
   data() {
     return {
+      tabs: [],
       key: 0,
       tabKey: '',
-      g_tabsStatusValue: window.$nuxt.$rayui.tabsStatusValue,
+      g_tabsStatusValue: this.$rayui.tabsStatusValue,
     };
   },
   computed: {
+    g_selectedIndex() {
+      return Number(this.$rayui.tabsStatusValue.list[this.key].selectedIndex);
+    },
     changeSliderStyle: function () {
       const obj = {};
 
-      if (window.$nuxt.$rayui.tabsStatusValue.list[this.key] === undefined) {
+      if (this.$rayui.tabsStatusValue.list[this.key] === undefined) {
         return obj;
       }
-      const w = window.$nuxt.$rayui.tabsStatusValue.list[this.key].tabWidth;
-      const l = window.$nuxt.$rayui.tabsStatusValue.list[this.key].offsetLeft;
+      const w = this.$rayui.tabsStatusValue.list[this.key].tabWidth;
+      const l = this.$rayui.tabsStatusValue.list[this.key].offsetLeft;
       obj['width'] = w ? `${w}px` : '90px';
       obj['left'] = `${l}px`;
       return obj;
     },
   },
-  beforeMount() {
+  created() {
+    this.tabs = this.$children;
+  },
+  mounted() {
     // tabs 초기 생성시 초기화
     this.init();
+    this.$nextTick(() => {
+      this.currentSelectWidth();
+      this.observeSize();
+
+      this.createTabData();
+      this.selectTab(this.$rayui.tabsStatusValue.list[this.key].selectedIndex);
+    });
   },
   beforeDestroy() {
     this.removeTabsKey();
   },
   methods: {
     init() {
-      // tab, tabpanel 의 slot위치 조정.
-      this.changeSlot();
       this.createTabsKey();
-    },
-    changeSlot() {
-      const s = this.$slots.default;
-      const arrTab = [];
-      const arrTabpanel = [];
-      s.forEach((element) => {
-        if (RegExp('ui-tab', 'g').test(element.tag) && !RegExp('ui-tabpanel', 'g').test(element.tag)) {
-          element.data.attrs = {
-            tabIdx: arrTab.length,
-            tabsIdx: this.g_tabsStatusValue.key,
-            fixedTabs: this.fixedTabs,
-          };
-          arrTab.push(element);
-        }
-        if (RegExp('ui-tabpanel', 'g').test(element.tag)) {
-          element.data.attrs = {
-            tabIdx: arrTabpanel.length,
-            tabsIdx: this.g_tabsStatusValue.key,
-            fixedTabs: this.fixedTabs,
-          };
-          arrTabpanel.push(element);
-        }
-      });
-
-      this.$slots['tabs'] = arrTab;
-      this.$slots['tabpanel'] = arrTabpanel;
-      delete this.$slots.default;
     },
     createTabsKey() {
       this.key = this.g_tabsStatusValue.key;
       this.tabKey = `ui_tabs_key_${this.g_tabsStatusValue.key++}`;
       this.g_tabsStatusValue.list.push({
         tabKey: this.tabKey,
+        key: this.key,
         selectedIndex: this.selectedIndex,
+        fixedTabs: this.fixedTabs,
         tabWidth: 0,
         offsetLeft: 0,
       });
@@ -118,146 +120,61 @@ export default {
         }
       });
     },
+    currentSelectWidth() {
+      const selectIdx = this.$rayui.tabsStatusValue.list[this.key].selectedIndex;
+      if (this.$rayui.tabsStatusValue.list[this.key] !== undefined && this.$refs.tabRef) {
+        this.$rayui.tabsStatusValue.list[this.key].tabWidth = this.$refs.tabRef[selectIdx].clientWidth;
+        this.$rayui.tabsStatusValue.list[this.key].offsetLeft = this.$refs.tabRef[selectIdx].offsetLeft;
+      }
+    },
+    observeSize() {
+      if (this.$refs.tabRef.length > 0) {
+        this.$refs.tabRef.forEach((elem) => {
+          const ro = new this.$rayui.ResizeObserver((entries) => {
+            entries.some((entry) => {
+              console.log(entry.target.clientWidth);
+              if (entry.target.clientWidth > 0) {
+                this.currentSelectWidth();
+                ro.disconnect();
+              }
+            });
+          });
+          ro.observe(elem);
+        });
+      } else {
+        const ro = new this.$rayui.ResizeObserver((entries) => {
+          entries.some((entry) => {
+            console.log(entry.target.clientWidth);
+            if (entry.target.clientWidth > 0) {
+              this.currentSelectWidth();
+              ro.disconnect();
+            }
+          });
+        });
+
+        ro.observe(this.$refs.tabRef);
+      }
+    },
+    createTabData() {
+      const tabKey = window.$nuxt.$rayui.tabsStatusValue.list[this.key].tabKey;
+      this.tabs.forEach((tab, index) => {
+        tab.tabId = `tab-${tabKey + index}`;
+        tab.tabpanelId = `tabpanel-${tabKey + index}`;
+      });
+    },
+    selectTab(idx) {
+      this.tabs.forEach((tab, index) => {
+        tab.isActive = Number(idx) === index;
+      });
+    },
+    onTabClick(event) {
+      const idx = event.currentTarget.getAttribute('idx');
+      window.$nuxt.$rayui.tabsStatusValue.list[this.key].selectedIndex = idx;
+      this.$nextTick(() => {
+        this.currentSelectWidth();
+        this.selectTab(idx);
+      });
+    },
   },
 };
 </script>
-<style lang="scss" scoped>
-.ui-tabs {
-  flex: 1 1 auto;
-  width: 100%;
-  .ui-tabs-bar {
-    border-radius: inherit;
-    height: 48px;
-    .ui-tabs-bar-slide-group-wrapper {
-      contain: content;
-      display: flex;
-      flex: 1 1 auto;
-      overflow: hidden;
-      touch-action: none;
-      // margin-bottom: -1px;
-      .ui-tabs-bar-slide-group-content {
-        display: flex;
-        flex: 1 0 auto;
-        position: relative;
-        transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
-        white-space: nowrap;
-        &.ui-tabs-bar-slide-group-content-fixed {
-          flex: 1 0 auto;
-        }
-        .ui-tabs-bar-slide-wrapper {
-          bottom: 0;
-          margin: 0 !important;
-          position: absolute;
-          transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
-          z-index: 1;
-          .ui-tabs-bar-slider {
-            background-color: inherit;
-            height: 100%;
-            width: 100%;
-          }
-        }
-        .ui-tab {
-          cursor: pointer;
-          color: inherit;
-          align-items: center;
-          display: flex;
-          flex: 0 1 auto;
-          font-size: 0.95em;
-          font-weight: 500;
-          justify-content: center;
-          letter-spacing: 0.0892857143em;
-          line-height: normal;
-          min-width: 90px;
-          // max-width: 360px;
-          outline: none;
-          padding: 0 16px;
-          position: relative;
-          text-align: center;
-          text-decoration: none;
-          // text-transform: uppercase;
-          transition: none;
-          -webkit-user-select: none;
-          -moz-user-select: none;
-          -ms-user-select: none;
-          user-select: none;
-          margin-right: 2px;
-          border-bottom: 1px solid #e0e5e8;
-          &:last-child {
-            margin-right: 0;
-          }
-          &:before {
-            background-color: currentColor;
-            bottom: 0;
-            content: '';
-            left: 0;
-            opacity: 0;
-            pointer-events: none;
-            position: absolute;
-            right: 0;
-            top: 0;
-            transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
-          }
-          &:hover:not(.ui-tab-active) {
-            background-color: #fff;
-            transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
-          }
-          &.ui-tab-active {
-            margin-top: -2px;
-            height: calc(100% + 2px);
-            border-top-width: 3px;
-            font-weight: 600;
-            border-bottom: 0;
-          }
-          &.ui-tab-active:not(:disabled) {
-            color: #606060;
-            background-color: #fff;
-            border-color: #c5c5c5;
-          }
-          &.ui-tab-fixed {
-            flex: 1 1 auto;
-            width: 100%;
-          }
-        }
-      }
-    }
-    .ui-tabs-bar-slide-group-prev {
-      align-items: center;
-      // display: flex;
-      display: none;
-      flex: 0 1 52px;
-      justify-content: center;
-      min-width: 52px;
-    }
-    .ui-tabs-bar-slide-group-next {
-      align-items: center;
-      // display: flex;
-      display: none;
-      flex: 0 1 52px;
-      justify-content: center;
-      min-width: 52px;
-    }
-  }
-  .ui-tabs-bar-slide-group {
-    display: flex;
-  }
-  /* tabs items */
-  .ui-tabs-items {
-    background-color: #fff;
-    flex: 0 1 auto;
-    position: relative;
-    max-width: 100%;
-    transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
-    .ui-tabs-items-container {
-      height: inherit;
-      position: relative;
-      transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
-      .ui-tabs-item {
-        display: none;
-        &.ui-tabs-item-active {
-          display: block;
-        }
-      }
-    }
-  }
-}
-</style>

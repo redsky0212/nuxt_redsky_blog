@@ -42,8 +42,8 @@
                   <div class="row">
                     <div class="col-sm-12">
                       <div style="border: 1px solid #e2e2e2;">
-                        <ui-tabs2>
-                          <ui-tab3 title="소스보기 템플릿 화면">
+                        <ui-tabs selected-index="1">
+                          <ui-tab title="소스보기 템플릿 화면">
                             <pre class="prettyprint linenums lang-html">
 &lt;template&gt;
 &lt;div&gt;
@@ -51,18 +51,18 @@
 &lt;/div&gt;
 &lt;/template&gt;
                             </pre>
-                          </ui-tab3>
-                          <ui-tab3 title="Demo">
+                          </ui-tab>
+                          <ui-tab title="Demo">
                             <p>참조:</p>
                             <a href="https://learnvue.co/2019/12/building-reusable-components-in-vuejs-tabs/" target="_blank">참조 url</a>
                             <ui-text-input v-model="testValue"></ui-text-input>
-                          </ui-tab3>
-                        </ui-tabs2>
-                        <ui-tabs2 selected-index="2">
-                          <ui-tab3 v-for="(item, index) in tabData" :title="item.title" :key="index">
+                          </ui-tab>
+                        </ui-tabs>
+                        <ui-tabs selected-index="2">
+                          <ui-tab v-for="(item, index) in tabData" :title="item.title" :key="index">
                             {{ item.content }}
-                          </ui-tab3>
-                        </ui-tabs2>
+                          </ui-tab>
+                        </ui-tabs>
                       </div>
                       <ul>
                         <li>

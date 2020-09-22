@@ -62,9 +62,7 @@
                           </p>
                           <div style="border: 1px solid #e2e2e2;">
                             <ui-tabs selected-index="1">
-                              <ui-tab>Source</ui-tab>
-                              <ui-tab>Demo</ui-tab>
-                              <ui-tabpanel>
+                              <ui-tab title="Source">
                                 <pre class="prettyprint linenums lang-html">
 &lt;template&gt;
 &lt;div&gt;
@@ -72,11 +70,11 @@
 &lt;/div&gt;
 &lt;/template&gt;
                                 </pre>
-                              </ui-tabpanel>
-                              <ui-tabpanel>
+                              </ui-tab>
+                              <ui-tab title="Demo">
                                 <ui-text-input v-model="testValue"></ui-text-input>
                                 <ui-text-input></ui-text-input>
-                              </ui-tabpanel>
+                              </ui-tab>
                             </ui-tabs>
                           </div>
                         </li>
@@ -112,9 +110,7 @@
                               </p>
                               <div style="border: 1px solid #e2e2e2;">
                                 <ui-tabs>
-                                  <ui-tab>Source</ui-tab>
-                                  <ui-tab>Demo</ui-tab>
-                                  <ui-tabpanel>
+                                  <ui-tab title="Source">
                                     <pre class="prettyprint linenums">
 &lt;template&gt;
   &lt;div&gt;
@@ -122,10 +118,10 @@
   &lt;/div&gt;
 &lt;/template&gt;
                                     </pre>
-                                  </ui-tabpanel>
-                                  <ui-tabpanel>
+                                  </ui-tab>
+                                  <ui-tab title="Demo">
                                     ...
-                                  </ui-tabpanel>
+                                  </ui-tab>
                                 </ui-tabs>
                               </div>
                               <hr />

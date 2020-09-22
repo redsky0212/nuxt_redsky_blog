@@ -56,13 +56,11 @@
                           <p><span class="bolder green">&lt;ui-...&gt;</span>의 개수와 <span class="bolder green">&lt;ui-...&gt;</span>의 개수 index가 짝지어져 각각의 탭이 열립니다.</p>
                           <div style="border: 1px solid #e2e2e2;">
                             <ui-tabs>
-                              <ui-tab>Source</ui-tab>
-                              <ui-tab>Demo</ui-tab>
-                              <ui-tabpanel>
+                              <ui-tab title="Source">
                                 <pre class="prettyprint linenums">
   &lt;template&gt;
     &lt;div&gt;
-      &lt;ui-accordions :data="selectData"&gt;&lt;/ui-accordions&gt;
+      &lt;ui-select :data="selectData"&gt;&lt;/ui-select&gt;
     &lt;/div&gt;
   &lt;/template&gt;
   &lt;script&gt;
@@ -79,10 +77,10 @@
   };
   &lt;/script&gt;
                                 </pre>
-                              </ui-tabpanel>
-                              <ui-tabpanel>
-                                <!-- <ui-accordions></ui-accordions> -->
-                              </ui-tabpanel>
+                              </ui-tab>
+                              <ui-tab title="Demo">
+                                ...
+                              </ui-tab>
                             </ui-tabs>
                           </div>
                         </li>
@@ -118,22 +116,18 @@
                               </p>
                               <div style="border: 1px solid #e2e2e2;">
                                 <ui-tabs>
-                                  <ui-tab>Source</ui-tab>
-                                  <ui-tab>Demo</ui-tab>
-                                  <ui-tabpanel>
+                                  <ui-tab title="Source">
                                     <pre class="prettyprint linenums">
-  &lt;template&gt;
-    &lt;div&gt;
-      &lt;ui-accordion&gt;&lt;/ui-accordion&gt;
-    &lt;/div&gt;
-  &lt;/template&gt;
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;ui-accordion&gt;&lt;/ui-accordion&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
                                     </pre>
-                                  </ui-tabpanel>
-                                  <ui-tabpanel>
-                                    <div class="thumbnail">
-                                      ...
-                                    </div>
-                                  </ui-tabpanel>
+                                  </ui-tab>
+                                  <ui-tab title="Demo">
+                                    ...
+                                  </ui-tab>
                                 </ui-tabs>
                               </div>
                               <hr />

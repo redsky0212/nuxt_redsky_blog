@@ -82,9 +82,7 @@
                           </p>
                           <div style="border: 1px solid #e2e2e2;">
                             <ui-tabs>
-                              <ui-tab>Source</ui-tab>
-                              <ui-tab>Demo</ui-tab>
-                              <ui-tabpanel>
+                              <ui-tab title="Source">
                                 <pre class="prettyprint linenums lang-html">
 &lt;template&gt;
   &lt;div&gt;
@@ -109,8 +107,8 @@
   &lt;/div&gt;
 &lt;/template&gt;
                                 </pre>
-                              </ui-tabpanel>
-                              <ui-tabpanel>
+                              </ui-tab>
+                              <ui-tab title="Demo">
                                 <ui-accordions>
                                   <ui-accordion>
                                     <ui-accordion-header>Home</ui-accordion-header>
@@ -129,7 +127,7 @@
                                     <ui-accordion-content background-color="#f4f9fd">More Content</ui-accordion-content>
                                   </ui-accordion>
                                 </ui-accordions>
-                              </ui-tabpanel>
+                              </ui-tab>
                             </ui-tabs>
                           </div>
                         </li>
@@ -165,9 +163,7 @@
                               </p>
                               <div style="border: 1px solid #e2e2e2;">
                                 <ui-tabs>
-                                  <ui-tab>Source</ui-tab>
-                                  <ui-tab>Demo</ui-tab>
-                                  <ui-tabpanel>
+                                  <ui-tab title="Source">
                                     <pre class="prettyprint linenums">
 &lt;ui-accordions selected-index="1"&gt;
   &lt;ui-accordion&gt;
@@ -184,8 +180,8 @@
   &lt;/ui-accordion&gt;
 &lt;/ui-accordions&gt;
                                     </pre>
-                                  </ui-tabpanel>
-                                  <ui-tabpanel>
+                                  </ui-tab>
+                                  <ui-tab title="Demo">
                                     <ui-accordions selected-index="1">
                                       <ui-accordion>
                                         <ui-accordion-header>Home</ui-accordion-header>
@@ -200,7 +196,7 @@
                                         <ui-accordion-content>More Content</ui-accordion-content>
                                       </ui-accordion>
                                     </ui-accordions>
-                                  </ui-tabpanel>
+                                  </ui-tab>
                                 </ui-tabs>
                               </div>
                               <hr />
@@ -215,9 +211,7 @@
                               </p>
                               <div style="border: 1px solid #e2e2e2;">
                                 <ui-tabs>
-                                  <ui-tab>Source</ui-tab>
-                                  <ui-tab>Demo</ui-tab>
-                                  <ui-tabpanel>
+                                  <ui-tab title="Source">
                                     <pre class="prettyprint linenums">
 &lt;ui-accordions multi-select&gt;
   &lt;ui-accordion&gt;
@@ -234,8 +228,8 @@
   &lt;/ui-accordion&gt;
 &lt;/ui-accordions&gt;
                                     </pre>
-                                  </ui-tabpanel>
-                                  <ui-tabpanel>
+                                  </ui-tab>
+                                  <ui-tab title="Demo">
                                     <ui-accordions multi-select>
                                       <ui-accordion>
                                         <ui-accordion-header>Home</ui-accordion-header>
@@ -250,7 +244,7 @@
                                         <ui-accordion-content>More Content</ui-accordion-content>
                                       </ui-accordion>
                                     </ui-accordions>
-                                  </ui-tabpanel>
+                                  </ui-tab>
                                 </ui-tabs>
                               </div>
                               <hr />
