@@ -1,6 +1,37 @@
 <template>
   <div class="ui-tabs" style="font-size: 1em !important;">
-    <slot></slot>
+    <div class="ui-tabs-bar ui-tabs-bar-slide-group" role="tablist" style="background-color: #e0e5e8 !important; color: #42474e;">
+      <div class="ui-tabs-bar-slide-group-prev">prev</div>
+      <div class="ui-tabs-bar-slide-group-wrapper">
+        <div :class="{ 'ui-tabs-bar-slide-group-content': true, 'ui-tabs-bar-slide-group-content-fixed': fixedTabs }">
+          <div class="ui-tabs-bar-slide-wrapper" :style="changeSliderStyle" style="background-color: #39b689 !important; border: 0 solid #39b689; height: 3px; top: 0;">
+            <div class="ui-tabs-bar-slider"></div>
+          </div>
+          <a
+            ref="tabRef"
+            v-for="(tab, index) in tabs"
+            :key="index"
+            :href="`#tabpanel-${tabKey}${index}`"
+            :id="`tab-${tabKey}${index}`"
+            :aria-selected="g_selectedIndex === index ? 'true' : 'false'"
+            role="tab"
+            :aria-controls="`tabpanel-${tabKey}${index}`"
+            class="ui-tab"
+            :class="{ 'ui-tab-fixed': fixedTabs, 'ui-tab-active': g_selectedIndex === index }"
+            :idx="index"
+            @click.prevent="onTabClick"
+          >
+            {{ tab.$attrs.title }}
+          </a>
+        </div>
+      </div>
+      <div class="ui-tabs-bar-slide-group-next">next</div>
+    </div>
+    <div class="ui-tabs-items">
+      <div class="ui-tabs-items-container" style="padding: 1.25rem !important;">
+        <slot></slot>
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -25,14 +56,40 @@ export default {
   },
   data() {
     return {
+      tabs: [],
       key: 0,
       tabKey: '',
       g_tabsStatusValue: this.$rayui.tabsStatusValue,
+      tabId: '',
     };
   },
-  beforeMount() {
+  computed: {
+    g_selectedIndex() {
+      return Number(this.$rayui.tabsStatusValue.list[this.key].selectedIndex);
+    },
+    changeSliderStyle: function () {
+      const obj = {};
+
+      if (this.$rayui.tabsStatusValue.list[this.key] === undefined) {
+        return obj;
+      }
+      const w = this.$rayui.tabsStatusValue.list[this.key].tabWidth;
+      const l = this.$rayui.tabsStatusValue.list[this.key].offsetLeft;
+      obj['width'] = w ? `${w}px` : '90px';
+      obj['left'] = `${l}px`;
+      return obj;
+    },
+  },
+  created() {
+    this.tabs = this.$children;
+  },
+  mounted() {
     // tabs 초기 생성시 초기화
     this.init();
+    this.$nextTick(() => {
+      this.currentSelectWidth();
+      this.observeSize();
+    });
   },
   beforeDestroy() {
     this.removeTabsKey();
@@ -81,6 +138,51 @@ export default {
           this.g_tabsStatusValue.list.splice(index, 1);
           this.g_tabsStatusValue.key--;
         }
+      });
+    },
+    currentSelectWidth() {
+      const selectIdx = this.$rayui.tabsStatusValue.list[this.key].selectedIndex;
+      if (this.$rayui.tabsStatusValue.list[this.key] !== undefined && this.$refs.tabRef) {
+        this.$rayui.tabsStatusValue.list[this.key].tabWidth = this.$refs.tabRef[selectIdx].clientWidth;
+        this.$rayui.tabsStatusValue.list[this.key].offsetLeft = this.$refs.tabRef[selectIdx].offsetLeft;
+      }
+    },
+    observeSize() {
+      if (this.$refs.tabRef.length > 0) {
+        this.$refs.tabRef.forEach((elem) => {
+          const ro = new this.$rayui.ResizeObserver((entries) => {
+            entries.some((entry) => {
+              console.log(entry.target.clientWidth);
+              if (entry.target.clientWidth > 0) {
+                this.currentSelectWidth();
+                ro.disconnect();
+              }
+            });
+          });
+          ro.observe(elem);
+        });
+      } else {
+        const ro = new this.$rayui.ResizeObserver((entries) => {
+          entries.some((entry) => {
+            console.log(entry.target.clientWidth);
+            if (entry.target.clientWidth > 0) {
+              this.currentSelectWidth();
+              ro.disconnect();
+            }
+          });
+        });
+
+        ro.observe(this.$refs.tabRef);
+      }
+    },
+    onTabClick(event) {
+      const idx = event.currentTarget.getAttribute('idx');
+      window.$nuxt.$rayui.tabsStatusValue.list[this.key].selectedIndex = idx;
+      this.$nextTick(() => {
+        this.currentSelectWidth();
+      });
+      this.tabs.forEach((tab, index) => {
+        tab.isActive = idx === index;
       });
     },
   },

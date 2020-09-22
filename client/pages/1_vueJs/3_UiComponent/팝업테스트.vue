@@ -42,8 +42,24 @@
                   <div class="row">
                     <div class="col-sm-12">
                       <div style="border: 1px solid #e2e2e2;">
-                        <ui-tabs2 selected-index="1">
-                          <ui-tab3 type="title">source</ui-tab3>
+                        <ui-tabs2>
+                          <ui-tab3 title="소스보기 템플릿 화면">
+                            <pre class="prettyprint linenums lang-html">
+&lt;template&gt;
+&lt;div&gt;
+  &lt;ui-text-input&gt;&lt;/ui-text-input&gt;
+&lt;/div&gt;
+&lt;/template&gt;
+                            </pre>
+                          </ui-tab3>
+                          <ui-tab3 title="Demo">
+                            <ui-text-input v-model="testValue"></ui-text-input>
+                          </ui-tab3>
+                        </ui-tabs2>
+                        <ui-tabs2 selected-index="2">
+                          <ui-tab3 v-for="(item, index) in tabData" :title="item.title" :key="index">
+                            {{ item.content }}
+                          </ui-tab3>
                         </ui-tabs2>
                       </div>
                       <ul>
@@ -81,10 +97,15 @@ export default {
     return {
       testValue: 'aaa',
       testPluginVal: '',
+      tabData: [
+        { title: 'Home', content: 'Home panel' },
+        { title: 'Profile', content: 'Profile panel' },
+        { title: 'More', content: 'More panel' },
+      ],
     };
   },
   mounted() {
-    const a = '';
+    window.prettyPrint();
   },
   methods: {
     onOpen() {

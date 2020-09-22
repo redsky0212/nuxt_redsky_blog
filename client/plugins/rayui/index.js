@@ -8,7 +8,7 @@ import UiTabs from '@/components/rayui/tabs/src/UiTabs.vue';
 import UiTab from '@/components/rayui/tabs/src/UiTab.vue';
 import UiTabpanel from '@/components/rayui/tabs/src/UiTabpanel.vue';
 import UiTabs2 from '@/components/rayui/tabs/src/UiTabs2.vue';
-import UiTabTitles from '@/components/rayui/tabs/src/UiTabTitles.vue';
+import UiTabTitle from '@/components/rayui/tabs/src/UiTabTitle.vue';
 import UiTabContents from '@/components/rayui/tabs/src/UiTabContents.vue';
 import UiTab2 from '@/components/rayui/tabs/src/UiTab2.vue';
 import UiTab3 from '@/components/rayui/tabs/src/UiTab3.vue';
@@ -80,7 +80,7 @@ export default (context, inject) => {
   Vue.component('ui-tab2', UiTab2);
   Vue.component('ui-tab3', UiTab3);
   Vue.component('ui-tabpanel2', UiTabpanel2);
-  Vue.component('ui-tab-titles', UiTabTitles);
+  Vue.component('ui-tab-title', UiTabTitle);
   Vue.component('ui-tab-contents', UiTabContents);
   Vue.component('ui-accordions', UiAccordions);
   Vue.component('ui-accordion', UiAccordion);
