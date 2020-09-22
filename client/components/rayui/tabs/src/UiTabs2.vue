@@ -89,6 +89,9 @@ export default {
     this.$nextTick(() => {
       this.currentSelectWidth();
       this.observeSize();
+
+      this.createTabData();
+      this.selectTab(this.$rayui.tabsStatusValue.list[this.key].selectedIndex);
     });
   },
   beforeDestroy() {
@@ -175,14 +178,24 @@ export default {
         ro.observe(this.$refs.tabRef);
       }
     },
+    createTabData() {
+      const tabKey = window.$nuxt.$rayui.tabsStatusValue.list[this.key].tabKey;
+      this.tabs.forEach((tab, index) => {
+        tab.tabId = `tab-${tabKey + index}`;
+        tab.tabpanelId = `tabpanel-${tabKey + index}`;
+      });
+    },
+    selectTab(idx) {
+      this.tabs.forEach((tab, index) => {
+        tab.isActive = Number(idx) === index;
+      });
+    },
     onTabClick(event) {
       const idx = event.currentTarget.getAttribute('idx');
       window.$nuxt.$rayui.tabsStatusValue.list[this.key].selectedIndex = idx;
       this.$nextTick(() => {
         this.currentSelectWidth();
-      });
-      this.tabs.forEach((tab, index) => {
-        tab.isActive = idx === index;
+        this.selectTab(idx);
       });
     },
   },
