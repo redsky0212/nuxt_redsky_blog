@@ -34,6 +34,8 @@
               <div class="widget-header widget-header-flat">
                 <h4 class="smaller">
                   vuex axios 테스트
+                  <a href="https://dev.to/itnext/learn-how-you-can-build-enterprise-vue-js-applications-with-nuxt-5fp4" target="_blank">엔터프라이즈 Nuxt프로젝트 관련 참고 사이트</a><br />
+                  <a href="https://jbee.io/vuetorials/Vuetorials-7-Vuex-Best-Practice/" target="_blank">Nuxt store관리 관련 참조url</a>
                 </h4>
               </div>
 
@@ -142,9 +144,10 @@ export default {
     this.getNews();
   },
   methods: {
-    ...mapActions({
-      getNews: 'testBiz/getNews',
-    }),
+    // ...mapActions({
+    //   getNews: 'testBiz/getNews',
+    // }),
+    ...mapActions('testBiz', ['getNews']),
     onOpen() {
       console.log('call this.$rayui.alert()');
       const opt = {
