@@ -33,6 +33,30 @@
             <div class="widget-box">
               <div class="widget-header widget-header-flat">
                 <h4 class="smaller">
+                  vuex axios 테스트
+                </h4>
+              </div>
+
+              <div class="widget-body">
+                <div class="widget-main">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div style="border: 1px solid #e2e2e2;">
+                        <ul>
+                          <li v-for="(item, index) of newsData" :key="index">
+                            {{ item.title }}
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="widget-box">
+              <div class="widget-header widget-header-flat">
+                <h4 class="smaller">
                   this.$rayui.alert() 열기 테스트
                 </h4>
               </div>
@@ -91,6 +115,8 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex';
+
 export default {
   asyncData(context) {
     // context.app.$testPlugin('asyncData 호출!');
@@ -106,10 +132,19 @@ export default {
       ],
     };
   },
+  computed: {
+    ...mapGetters({
+      newsData: 'testBiz/getNewsData',
+    }),
+  },
   mounted() {
     window.prettyPrint();
+    this.getNews();
   },
   methods: {
+    ...mapActions({
+      getNews: 'testBiz/getNews',
+    }),
     onOpen() {
       console.log('call this.$rayui.alert()');
       const opt = {

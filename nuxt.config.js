@@ -2,6 +2,7 @@ const webpack = require('webpack');
 module.exports = {
   mode: 'spa',
   srcDir: 'client/',
+  modules: ['@nuxtjs/axios'],
   css: [
     '@/assets/sass/rayui/index.scss',
     '@/assets/sass/global.scss',
@@ -33,6 +34,9 @@ module.exports = {
   router: {
     // 빌드 후 router url이 특정 디렉토리 일때 추가.
     base: process.env.NODE_ENV === 'production' ? '/redsky/devil/' : '',
+  },
+  axios: {
+    baseURL: process.env.BASE_URL || 'https://api.Hnpwa.com/v0',
   },
   build: {
     analyze: true,
