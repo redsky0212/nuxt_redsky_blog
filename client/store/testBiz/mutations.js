@@ -1,5 +1,7 @@
+export const SET_NEWS_LIST = 'newsList';
+
 export default {
-  newsList(state, payload) {
+  [SET_NEWS_LIST](state, payload) {
     state.newsData = payload;
   },
 };

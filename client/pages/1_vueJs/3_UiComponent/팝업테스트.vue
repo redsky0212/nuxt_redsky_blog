@@ -45,7 +45,7 @@
                     <div class="col-sm-12">
                       <div style="border: 1px solid #e2e2e2;">
                         <ul>
-                          <li v-for="(item, index) of newsData" :key="index">
+                          <li v-for="(item, index) of $store.state.testBiz.newsData" :key="index">
                             {{ item.title }}
                           </li>
                         </ul>
@@ -118,6 +118,7 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex';
+import * as newsAction from '@/store/testBiz/actions';
 
 export default {
   asyncData(context) {
@@ -141,13 +142,13 @@ export default {
   },
   mounted() {
     window.prettyPrint();
-    this.getNews();
+    this.FETCH_NEWS();
   },
   methods: {
     // ...mapActions({
     //   getNews: 'testBiz/getNews',
     // }),
-    ...mapActions('testBiz', ['getNews']),
+    ...mapActions('testBiz', [newsAction.GETNEWS]),
     onOpen() {
       console.log('call this.$rayui.alert()');
       const opt = {

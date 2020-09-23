@@ -1,9 +1,13 @@
+import * as mutations from './mutations';
+
+export const GETNEWS = 'FETCH_NEWS';
+
 export default {
   async fetchNews({ commit }) {
     // const newsData = await AxiosService.instance.get('/news/1.json');
     // commit('newsList', newsData.data);
   },
-  getNews({ commit }) {
+  [GETNEWS]({ commit }) {
     // return this.$axios({
     //   method: 'get',
     //   url: '/news/1.json',
@@ -21,7 +25,7 @@ export default {
         params: { aa: 'bb' },
       })
       .then((data) => {
-        commit('newsList', data);
+        commit(mutations.SET_NEWS_LIST, data);
       })
       .catch((ex) => {
         console.log(ex);
