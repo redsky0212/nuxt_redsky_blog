@@ -43,6 +43,12 @@
                 https://dev.to/localeai/architecting-http-clients-in-vue-js-applications-for-effective-network-communication-1eec
               </a>
               <br />
+              <span class="blue bolder">dotenv 관련 참조 : </span>
+              <a href="https://fkkmemi.github.io/nuxt/nuxt-007-firebase-dotenv/" target="_blank">https://fkkmemi.github.io/nuxt/nuxt-007-firebase-dotenv/</a>
+              <br />
+              <span class="blue bolder">dotenv 다른사람예제 : </span>
+              <a href="https://pliss.tistory.com/146" target="_blank">https://pliss.tistory.com/146</a>
+              <br />
             </div>
 
             <div class="widget-box">
@@ -60,6 +66,36 @@
                         <ul>
                           <li v-for="(item, index) of newsData" :key="index">
                             {{ item.title }}
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="widget-box">
+              <div class="widget-header widget-header-flat">
+                <h4 class="smaller">
+                  .env 설정
+                </h4>
+              </div>
+
+              <div class="widget-body">
+                <div class="widget-main">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div style="border: 1px solid #e2e2e2;">
+                        <ul>
+                          <li>
+                            <b>npm install --save-dev <span class="bolder green">@nuxtjs/dotenv</span> 설치</b>
+                          </li>
+                          <li>
+                            <b><span class="bolder green">.env</span>파일 예제</b>
+                            <pre class="prettyprint linenums lang-env">
+BASE_URL="http://localhost:3000"
+API_URL="https://api.Hnpwa.com/v0"
+                            </pre>
                           </li>
                         </ul>
                       </div>

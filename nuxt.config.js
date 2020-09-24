@@ -2,7 +2,7 @@ const webpack = require('webpack');
 module.exports = {
   mode: 'spa',
   srcDir: 'client/',
-  modules: ['@nuxtjs/axios'],
+  modules: ['@nuxtjs/axios', '@nuxtjs/dotenv'],
   css: [
     '@/assets/sass/rayui/index.scss',
     '@/assets/sass/global.scss',
@@ -36,7 +36,7 @@ module.exports = {
     base: process.env.NODE_ENV === 'production' ? '/redsky/devil/' : '',
   },
   axios: {
-    baseURL: process.env.BASE_URL || 'https://api.Hnpwa.com/v0',
+    baseURL: process.env.API_URL || 'https://api.Hnpwa.com/v0',
   },
   build: {
     analyze: true,
