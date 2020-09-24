@@ -1,6 +1,11 @@
+export const NEWS_LIST = 'getNewsData';
+export const TEST_LIST = 'getTestList';
+
 export default {
-  getNewsData(state) {
-    const data = state.newsData;
-    return data;
+  [NEWS_LIST]: (state) => {
+    return state.newsData;
+  },
+  [TEST_LIST]: (state) => {
+    return state.itemData;
   },
 };
