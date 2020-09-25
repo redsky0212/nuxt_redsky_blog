@@ -33,7 +33,7 @@ module.exports = {
   ],
   router: {
     // 빌드 후 router url이 특정 디렉토리 일때 추가.
-    base: process.env.NODE_ENV === 'production' ? '/redsky/devil/' : '',
+    base: process.env.NODE_ENV === 'production' ? process.env.BASE_DIR : '',
   },
   env: {
     restApiUrl: process.env.REST_API_URL || 'http://localhost:3000',

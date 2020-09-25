@@ -415,6 +415,8 @@ API_URL="https://api.Hnpwa.com/v0"
 
 REST_API_URL="https://jsonplaceholder.typicode.com/"
 REST_API_URL2="https://api.Hnpwa.com"
+# 특정 디렉토리에서 서비스. router, base속성 셋팅
+BASE_DIR="/redsky/devil/"
                           </pre>
                         </li>
                         <li>
