@@ -66,6 +66,22 @@
                 <p>프로그램 API에서 중간에 매개변수를 가로 채 변경하거나 조작 처리하는 작은 라이브러리.</p>
               </div>
             </div>
+            <div class="media search-media">
+              <div class="media-body">
+                <div>
+                  <h4 class="media-heading">
+                    <a href="#" class="blue">proxy</a>
+                  </h4>
+                </div>
+                <p>프록시 서버(중계 서버)(보안, 캐시 목적)</p>
+                <p>프록시 서버란 인터넷 상의 여러 네트워크들에 접속할 때 중계 역할을 해주는 프로그램 또는 컴퓨터를 말한다.</p>
+                <ul>
+                  <li>포워드 프록시: 인터넷 상에서 어디로든지 리퀘스트를 전송해주는 프록시.</li>
+                  <li>리버스 프록시: 인터넷에서 리퀘스트를 받으면, 내부망 내의 서버로 전송해주는 프록시.</li>
+                  <li>nuxt의 proxy: @nuxtjs/proxy 설치</li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -49,6 +49,14 @@
               <span class="blue bolder">dotenv 다른사람예제 : </span>
               <a href="https://pliss.tistory.com/146" target="_blank">https://pliss.tistory.com/146</a>
               <br />
+              <span class="blue bolder">가짜 REST API 예제 사이트 : </span>
+              <a href="https://jsonplaceholder.typicode.com/" target="_blank">https://jsonplaceholder.typicode.com/</a>
+              <br />
+              <span class="blue bolder">Nuxt로 사이트 개발 과정 설명 : </span>
+              <a href="https://www.vuemastery.com/blog/why-nuxtjs-is-the-perfect-framework-for-building-static-websites/" target="_blank">
+                https://www.vuemastery.com/blog/why-nuxtjs-is-the-perfect-framework-for-building-static-websites/
+              </a>
+              <br />
             </div>
 
             <div class="widget-box">
@@ -65,7 +73,7 @@
                       <div style="border: 1px solid #e2e2e2;">
                         <ul>
                           <li v-for="(item, index) of newsData" :key="index">
-                            {{ item.title }}
+                            {{ item.email }}
                           </li>
                         </ul>
                       </div>
@@ -141,6 +149,7 @@ export default {
     this.$nextTick(() => {
       this.fetchNews();
       console.log(testBiz.getter);
+      console.log(`==================>${process.env.NODE_ENV}`);
     });
   },
   methods: {

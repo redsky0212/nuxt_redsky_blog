@@ -16,6 +16,17 @@
         <!-- PAGE CONTENT BEGINS -->
         <div class="row">
           <div class="col-xs-12">
+            <div class="alert alert-info hidden-sm hidden-xs">
+              <button type="button" class="close" data-dismiss="alert">
+                <i class="ace-icon fa fa-times"></i>
+              </button>
+              <span class="blue bolder">Nuxt 애플리케이션 배포 및 PM2 관련(Nuxt서버 환경에서 필요해 보임) : </span>
+              <a href="https://jhyeok.com/nuxtjs-pm2-nginx/" target="_blank">https://jhyeok.com/nuxtjs-pm2-nginx/</a>
+              <br />
+              <span class="blue bolder">Nuxt 에서 테스트 코드 짜기 관련(Jest) : </span>
+              <a href="https://jhyeok.com/nuxtjs-api-test/" target="_blank">https://jhyeok.com/nuxtjs-api-test/</a>
+              <br />
+            </div>
             <h2>Vue.js 개발을 위한 기본 셋팅</h2>
             <hr />
             <div class="widget-box">
@@ -368,6 +379,61 @@
               </div>
             </div>
             <hr />
+            <div class="widget-box">
+              <div class="widget-header widget-header-flat">
+                <h4 class="smaller">
+                  .env 설정(Nuxt에서 설정방법)
+                </h4>
+              </div>
+
+              <div class="widget-body">
+                <div class="widget-main">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <ul>
+                        <li>
+                          <b>Node.js에서 프로그래밍에 필요한 값들을 서술할 수 있는 .env 환경변수 파일</b>
+                        </li>
+                        <li>
+                          <p>설치 (npm i --save-dev <span class="bolder green">@nuxtjs/dotenv</span>)</p>
+                        </li>
+                        <li>
+                          <p>nuxt.config.js 에 모듈 등록</p>
+                          <pre class="prettyprint linenums lang-js">
+module.exports = {
+  modules: [
+    '@nuxtjs/dotenv'
+  ],
+};
+                          </pre>
+                        </li>
+                        <li>
+                          <p><span class="bolder green">.env</span> 파일을 root에 생성하고 필요한 환경변수를 기술한다.</p>
+                          <pre class="prettyprint linenums lang-env">
+BASE_URL="http://localhost:3000"
+API_URL="https://api.Hnpwa.com/v0"
+
+REST_API_URL="https://jsonplaceholder.typicode.com/"
+REST_API_URL2="https://api.Hnpwa.com"
+                          </pre>
+                        </li>
+                        <li>
+                          <p>nuxt.config.js 에 <span class="bolder green">env 프로퍼티</span>를 설정해서 사용할 수도 있다.</p>
+                          <pre class="prettyprint linenums lang-js">
+module.exports = {
+  env: {
+    baseUrl: process.env.BASE_URL || 'http://localhost:3000'
+  }
+}
+                          </pre>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr />
           </div>
         </div>
       </div>
@@ -375,5 +441,9 @@
   </div>
 </template>
 <script>
-export default {};
+export default {
+  mounted() {
+    window.prettyPrint();
+  },
+};
 </script>

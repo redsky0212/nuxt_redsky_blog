@@ -35,9 +35,18 @@ module.exports = {
     // 빌드 후 router url이 특정 디렉토리 일때 추가.
     base: process.env.NODE_ENV === 'production' ? '/redsky/devil/' : '',
   },
-  axios: {
-    baseURL: process.env.API_URL || 'https://api.Hnpwa.com/v0',
+  env: {
+    restApiUrl: process.env.REST_API_URL || 'http://localhost:3000',
   },
+  axios: {
+    baseURL: process.env.REST_API_URL || 'http://localhost:3000',
+    proxy: false, // proxy 사용
+    proxyHeaders: false,
+    credentials: false,
+  },
+  // proxy: {
+  //   '/api': 'http://localhost:3000',
+  // },
   build: {
     analyze: true,
     vendor: ['jquery'],
