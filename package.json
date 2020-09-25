@@ -24,7 +24,7 @@
     "@nuxtjs/proxy": "^2.0.1",
     "animejs": "^3.2.0",
     "bootstrap": "^3.3.6",
-    "jquery": "^2.1.4",
+    "jquery": "^3.5.0",
     "nuxt": "^2.14.0",
     "resize-observer-polyfill": "^1.5.1"
   },
