@@ -2,6 +2,7 @@ import testBizHttp from '@/api/testBiz';
 import * as mutations from './mutations';
 
 export const FETCH_NEWS_CON = 'FETCH_NEWS';
+export const GET_PHOTOS = 'GET_PHOTOS';
 
 export default {
   async fetchNews({ commit }) {
@@ -52,5 +53,8 @@ export default {
       .catch((ex) => {
         console.log(ex);
       });
+  },
+  [GET_PHOTOS]({ commit }, payload) {
+    return testBizHttp.getPhotos(payload);
   },
 };

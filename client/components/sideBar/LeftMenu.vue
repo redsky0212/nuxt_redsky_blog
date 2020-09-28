@@ -14,7 +14,7 @@
 
       <b class="arrow"></b>
 
-      <sub-menu v-if="gnbItem.sub.length > 0" :sub-data="gnbItem.sub" @rcvMenuClick="onMenuClick" />
+      <sub-menu v-if="gnbItem.sub.length > 0" :sub-data="gnbItem.sub" @rcvMenuClick="onRcvMenuClick" />
     </li>
   </ul>
 </template>
@@ -54,8 +54,11 @@ export default {
     }
   },
   methods: {
-    onMenuClick(event) {
+    onMenuClick(event, sub) {
       // TODO: 수정작업필요.
+      if (!sub && document.body.clientWidth < 991) {
+        return;
+      }
       const target = event.currentTarget;
       const parent = target.parentElement;
       // 우선 선택 되어있는 메뉴를 모두 선택삭제.
@@ -91,6 +94,9 @@ export default {
         ulElem.style.transitionDuration = '1s';
         ulElem.style.transitionTimingFunction = 'ease-in';
       }
+    },
+    onRcvMenuClick(event) {
+      this.onMenuClick(event, 'sub');
     },
     onChange() {
       this.$store.dispatch('sideBar/signUp');

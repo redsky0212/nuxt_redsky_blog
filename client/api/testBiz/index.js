@@ -4,6 +4,9 @@ import URL from '@/api/testBiz/url';
 
 export default {
   getNews(testParam) {
-    return http.get(URL.NEWS, { params: testParam });
+    return http.get(URL.USERS, { params: testParam });
+  },
+  getPhotos(param) {
+    return http.get(URL.PHOTOS, { params: param });
   },
 };

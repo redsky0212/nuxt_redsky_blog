@@ -62,6 +62,50 @@
             <div class="widget-box">
               <div class="widget-header widget-header-flat">
                 <h4 class="smaller">
+                  get photos list
+                </h4>
+              </div>
+
+              <div class="widget-body">
+                <div class="widget-main">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div>
+                        <ul class="ace-thumbnails clearfix">
+                          <li v-for="(photo, index) in $rayui.utils.isArray(photoList) ? photoList.slice(0, 10) : []" :key="index">
+                            <a :href="photo.url" title="Photo Title" data-rel="colorbox">
+                              <img width="150" height="150" alt="150x150" :src="photo.thumbnailUrl" />
+                            </a>
+
+                            <div class="tags">
+                              <span class="label-holder">
+                                <span class="label label-info">breakfast</span>
+                              </span>
+
+                              <span class="label-holder">
+                                <span class="label label-danger">fruits</span>
+                              </span>
+
+                              <span class="label-holder">
+                                <span class="label label-success">toast</span>
+                              </span>
+
+                              <span class="label-holder">
+                                <span class="label label-warning arrowed-in">diet</span>
+                              </span>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="widget-box">
+              <div class="widget-header widget-header-flat">
+                <h4 class="smaller">
                   Hacker News API 테스트
                 </h4>
               </div>
@@ -129,7 +173,7 @@ export default {
   },
   data() {
     return {
-      b: '',
+      photoList: null,
     };
   },
   computed: {
@@ -150,11 +194,15 @@ export default {
       this.fetchNews();
       console.log(testBiz.getter);
       console.log(`==================>${process.env.NODE_ENV}`);
+      this.getPhotos().then((data) => {
+        this.photoList = data.data;
+      });
     });
   },
   methods: {
     ...mapActions({
       fetchNews: testBiz.action.FETCH_NEWS_CON,
+      getPhotos: testBiz.action.GET_PHOTOS,
     }),
   },
 };

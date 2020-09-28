@@ -1,7 +1,13 @@
 <template>
   <!-- <div id="sidebar" class="sidebar responsive ace-save-state sidebar-fixed"> -->
   <div id="sidebar" class="sidebar responsive ace-save-state">
-    <left-menu :menu-list="menuList" />
+    <div class="nav-wrap-up pos-rel">
+      <div class="nav-wrap" style="max-height: 613px; overflow-y: auto;">
+        <div style="position: relative; top: 0px; transition-property: top; transition-duration: 0.15s;">
+          <left-menu :menu-list="menuList" />
+        </div>
+      </div>
+    </div>
 
     <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
       <i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>

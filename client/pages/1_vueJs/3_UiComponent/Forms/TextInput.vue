@@ -26,6 +26,9 @@
               <span class="blue bolder">Vuetify 참조 : </span>
               <a href="https://vuetifyjs.com/ko/components/forms/" target="_blank">https://vuetifyjs.com/ko/components/forms/</a>
               <br />
+              <span class="blue bolder">Vue component 참조 사이트 : </span>
+              <a href="https://ej2.syncfusion.com/home/vue.html" target="_blank">https://ej2.syncfusion.com/home/vue.html</a>
+              <br />
               <span class="blue bolder">bootstrap input 참조 : </span>
               <a href="https://bootstrap-vue.org/docs/components/form-input" target="_blank">https://bootstrap-vue.org/docs/components/form-input</a>
               <br />
