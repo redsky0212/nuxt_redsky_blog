@@ -50,6 +50,17 @@
               <br />
             </div>
 
+            <div class="alert alert-danger hidden-sm hidden-xs">
+              <button type="button" class="close" data-dismiss="alert">
+                <i class="ace-icon fa fa-times"></i>
+              </button>
+              <i class="ace-icon fa fa-check bigger-110 green"></i>
+              <span class="bolder">추가 해야할 작업</span><br />
+              <i class="ace-icon fa fa-angle-right bigger-110"></i>
+              <span class="red">contents에 data를 바인딩 했을경우 오류있음 </span>
+              <br />
+            </div>
+
             <div class="widget-box">
               <div class="widget-header">
                 <h4 class="smaller">
@@ -116,6 +127,8 @@
                                       Home Content
                                       <br />
                                       <input type="text" placeholder="text 입력상자 테스트" />
+                                      <ui-text-input v-model="testValue"></ui-text-input>
+                                      <ui-text-input></ui-text-input>
                                     </ui-accordion-content>
                                   </ui-accordion>
                                   <ui-accordion>
@@ -277,6 +290,7 @@ export default {
         { title: 'Profile', content: 'Profile panel' },
         { title: 'More', content: 'More panel' },
       ],
+      testValue: 'cc',
     };
   },
   mounted() {

@@ -40,6 +40,23 @@
               <br />
             </div>
 
+            <div class="alert alert-danger hidden-sm hidden-xs">
+              <button type="button" class="close" data-dismiss="alert">
+                <i class="ace-icon fa fa-times"></i>
+              </button>
+              <i class="ace-icon fa fa-check bigger-110 green"></i>
+              <span class="bolder">추가 해야할 작업</span><br />
+              <i class="ace-icon fa fa-angle-right bigger-110"></i>
+              <span class="red">focus 되었을때 밑줄, floating label처리 </span>
+              <br />
+              <i class="ace-icon fa fa-angle-right bigger-110"></i>
+              <span class="red">validation처리 (error, warning, normal) </span>
+              <br />
+              <i class="ace-icon fa fa-angle-right bigger-110"></i>
+              <span class="red">다양한 Formatting처리 (Number, Eng, Kor, length 등) </span>
+              <br />
+            </div>
+
             <div class="widget-box">
               <div class="widget-header">
                 <h4 class="smaller">

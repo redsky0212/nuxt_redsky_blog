@@ -76,24 +76,6 @@
                             <a :href="photo.url" title="Photo Title" data-rel="colorbox">
                               <img width="150" height="150" alt="150x150" :src="photo.thumbnailUrl" />
                             </a>
-
-                            <div class="tags">
-                              <span class="label-holder">
-                                <span class="label label-info">breakfast</span>
-                              </span>
-
-                              <span class="label-holder">
-                                <span class="label label-danger">fruits</span>
-                              </span>
-
-                              <span class="label-holder">
-                                <span class="label label-success">toast</span>
-                              </span>
-
-                              <span class="label-holder">
-                                <span class="label label-warning arrowed-in">diet</span>
-                              </span>
-                            </div>
                           </li>
                         </ul>
                       </div>
