@@ -1,6 +1,6 @@
 <template>
-  <!-- <div id="sidebar" class="sidebar responsive ace-save-state sidebar-fixed"> -->
-  <div id="sidebar" class="sidebar responsive ace-save-state">
+  <div id="sidebar" class="sidebar responsive ace-save-state sidebar-fixed">
+    <!-- <div id="sidebar" class="sidebar responsive ace-save-state"> -->
     <div class="nav-wrap-up pos-rel">
       <div class="nav-wrap" style="max-height: 613px; overflow-y: auto;">
         <div style="position: relative; top: 0px; transition-property: top; transition-duration: 0.15s;">
