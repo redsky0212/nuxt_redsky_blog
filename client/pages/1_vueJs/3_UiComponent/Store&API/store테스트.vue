@@ -127,8 +127,9 @@
                           <li>
                             <b><span class="bolder green">.env</span>파일 예제</b>
                             <pre class="prettyprint linenums lang-env">
-BASE_URL="http://localhost:3000"
-API_URL="https://api.Hnpwa.com/v0"
+BASE_DIR="/redsky/devil/"
+REST_API_URL="https://jsonplaceholder.typicode.com/"
+REST_API_URL2="https://api.Hnpwa.com"
                             </pre>
                           </li>
                         </ul>
