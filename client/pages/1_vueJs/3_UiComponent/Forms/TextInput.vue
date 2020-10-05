@@ -95,7 +95,8 @@
                                 </pre>
                               </ui-tab>
                               <ui-tab title="Demo">
-                                <ui-text-input v-model="testValue" label="label <span style='color: red;'>Text</span>" message="값을 입력하세요." type="number"></ui-text-input>
+                                <ui-text-input v-model="testValue" label="숫자 입력" message="숫자값을 입력하세요." type="number"></ui-text-input>
+                                <ui-text-input v-model="testValue2" label="label <span style='color: red;'>Text</span>" message="값을 입력하세요."></ui-text-input>
                                 <ui-text-input label="Full Name"></ui-text-input>
                               </ui-tab>
                             </ui-tabs>
@@ -171,7 +172,8 @@ export default {
   },
   data() {
     return {
-      testValue: 'aaa',
+      testValue: '123',
+      testValue2: 'abc',
       tabData: [
         { title: 'Home', content: 'Home panel' },
         { title: 'Profile', content: 'Profile panel' },
