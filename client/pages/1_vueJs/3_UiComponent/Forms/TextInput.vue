@@ -47,7 +47,10 @@
               <i class="ace-icon fa fa-check bigger-110 green"></i>
               <span class="bolder">추가 해야할 작업</span><br />
               <i class="ace-icon fa fa-angle-right bigger-110"></i>
-              <span class="red">focus 되었을때 밑줄, floating label처리 </span>
+              <span class="red" style="text-decoration: line-through;">focus와 value가 있을때 label 처리 </span>
+              <br />
+              <i class="ace-icon fa fa-angle-right bigger-110"></i>
+              <span class="red" style="text-decoration: line-through;">focus 되었을때 밑줄, floating label처리 </span>
               <br />
               <i class="ace-icon fa fa-angle-right bigger-110"></i>
               <span class="red">validation처리 (error, warning, normal) </span>
@@ -92,8 +95,8 @@
                                 </pre>
                               </ui-tab>
                               <ui-tab title="Demo">
-                                <ui-text-input v-model="testValue"></ui-text-input>
-                                <ui-text-input></ui-text-input>
+                                <ui-text-input v-model="testValue" label="label <span style='color: red;'>Text</span>" message="값을 입력하세요." type="number"></ui-text-input>
+                                <ui-text-input label="Full Name"></ui-text-input>
                               </ui-tab>
                             </ui-tabs>
                           </div>

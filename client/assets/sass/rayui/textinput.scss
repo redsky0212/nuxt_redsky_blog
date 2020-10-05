@@ -46,21 +46,20 @@
         position: absolute;
         transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
         width: 100%;
-        border-color: inherit;
-        border-style: solid;
-        border-width: thin 0 0;
+        height: 1px;
+        border-width: 0;
+        background-color: currentColor;
       }
       &:after {
         bottom: -1px;
-        content: "";
+        content: '';
         left: 0;
         position: absolute;
         transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
         width: 100%;
-        border-color: currentcolor;
-        border-style: solid;
-        border-width: thin 0;
+        height: 2px;
         transform: scaleX(0); // focus시 scaleX(1)
+        background-color: blue;
       }
       .ui-text-input-wrapper {
         display: flex;
@@ -136,6 +135,8 @@
         transform: scaleX(1);
       }
     }
+  }
+  &.ui-text-input-focus,&.ui-text-input-isvalue {
     .ui-text-input-label {
       max-width: 133%;
       transform: translateY(-18px) scale(0.75);

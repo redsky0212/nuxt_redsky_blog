@@ -3,14 +3,14 @@
     <div class="ui-text-input-control">
       <div class="ui-text-input-input">
         <div class="ui-text-input-wrapper">
-          <label :for="inputKey" class="ui-text-input-label" style="left: 0; right: auto; position: absolute;">label</label>
-          <input :id="inputKey" type="text" :value="value" @focus="onFocus" @blur="onBlur" @input="onInput" />
+          <label :for="inputKey" class="ui-text-input-label" style="left: 0; right: auto; position: absolute;" v-html="label"></label>
+          <input :id="inputKey" :type="type" :pattern="type === 'number' ? '[0-9]*' : ''" :value="value" @focus="onFocus" @blur="onBlur" @input="onInput" />
         </div>
       </div>
       <div class="ui-text-input-detail">
         <div class="ui-text-input-message" role="alert">
           <div class="ui-text-input-message-wrapper">
-            <div class="ui-text-input-message-value">message</div>
+            <div class="ui-text-input-message-value">{{ message }}</div>
           </div>
         </div>
       </div>
@@ -25,20 +25,28 @@ export default {
       default: '',
     },
     /**
-     * textInput 이 펼쳐질때 하나가 아닌 여러개 펼쳐지게 해주는 옵션.
-     * @type {Boolean}
+     * label 텍스트를 셋팅합니다.
+     * @type {String}
      */
-    multiSelect: {
-      type: Boolean,
-      default: false,
+    label: {
+      type: String,
+      default: '',
     },
     /**
-     * 최초 선택 되어져야 할 Accordion index값 설정한다
-     * @type {String||Array}
+     * input 아래쪽에 메시지를 입력합니다.
+     * @type {String}
      */
-    selectedIndex: {
-      type: [String, Array],
+    message: {
+      type: String,
       default: '',
+    },
+    /**
+     * HTML input엘리먼트의 type 속성과 같은 값을 입력합니다.
+     * @type {String}
+     */
+    type: {
+      type: String,
+      default: 'text',
     },
   },
   data() {
@@ -53,6 +61,13 @@ export default {
       const obj = {};
 
       obj['ui-text-input-focus'] = this.isFocus;
+      if (this.isFocus) {
+        obj['ui-text-input-isvalue'] = true;
+      } else if (!this.isFocus && this.value !== '') {
+        obj['ui-text-input-isvalue'] = true;
+      } else {
+        obj['ui-text-input-isvalue'] = false;
+      }
 
       return obj;
     },
