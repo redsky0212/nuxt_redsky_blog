@@ -15,7 +15,7 @@
         <!-- PAGE CONTENT BEGINS -->
         <div class="row">
           <div class="col-xs-12">
-            <h3>Vuex를 베이스로 store 생성 방법</h3>
+            <h3>store 생성 방법, 순서 (Vuex)</h3>
 
             <div class="alert alert-info hidden-sm hidden-xs">
               <button type="button" class="close" data-dismiss="alert">
@@ -45,7 +45,7 @@
                       <img alt="store생성 예제 이미지" src="~/assets/images/pages/store.png" />
                       <ul>
                         <li>
-                          <b>위 그림과 같이 store폴더에 업무별 폴더를 생성하고 파일을 추가한다.</b>
+                          <b>위 그림과 같이 store폴더에 작업 하고자 하는 각 업무별 폴더를 생성하고 5개의 파일을 추가한다.</b>
                           <ul class="list-unstyled">
                             <li>
                               <i class="ace-icon fa fa-caret-right blue"></i>
@@ -91,7 +91,7 @@ export default {
 // state는 객체가 아닌 함수로 만든다.
 export default () => {
   return {
-    newsData: null, // 자유롭게 state를 설정한다.
+    newsData: null, // 자유롭게 state를 생성한다.
     ...
   };
 };
@@ -99,7 +99,7 @@ export default () => {
                           <ul class="list-unstyled">
                             <li>
                               <i class="ace-icon fa fa-caret-right blue"></i>
-                              state는 화살표 함수로 생성하고 state값은 자유롭게 생성한다.
+                              state는 화살표 함수로 생성하고 state 자유롭게 원하는 이름으로 생성한다.
                             </li>
                           </ul>
                         </li>
@@ -150,7 +150,7 @@ export default {
                         <li>
                           <b>actions.js</b>
                           <pre class="prettyprint linenums lang-js" style="margin-bottom: 0;">
-// api는 api폴더에서 따로 관리하여 import로 가져와 사용한다.
+// api는 api폴더에서 각 업무별로 따로 관리하고 import하여 사용한다.
 import testBizHttp from '@/api/testBiz';
 import * as mutations from './mutations';
 
@@ -183,6 +183,85 @@ export default {
                             <li>
                               <i class="ace-icon fa fa-caret-right blue"></i>
                               각 업무별로 api를 api폴더에서 따로 관리하여 사용한다.
+                            </li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="widget-box">
+              <div class="widget-header widget-header-flat">
+                <h4 class="smaller">
+                  api폴더에 각 업무 api생성 과정
+                </h4>
+              </div>
+
+              <div class="widget-body">
+                <div class="widget-main">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <img alt="store생성 예제 이미지" src="~/assets/images/pages/api01.jpg" />
+                      <ul>
+                        <li>
+                          <b>위 그림과 같이 api폴더에 작업 하고자 하는 각 업무 폴더를 생성하고 url.js, index.js 파일을 추가한다.</b>
+                          <ul class="list-unstyled">
+                            <li>
+                              <i class="ace-icon fa fa-caret-right blue"></i>
+                              <span class="bolder green">url.js, index.js</span> 파일 생성
+                            </li>
+                          </ul>
+                        </li>
+                        <li>
+                          <b>url.js</b>
+                          <pre class="prettyprint linenums lang-js" style="margin-bottom: 0;">
+const TESTBIZ_PREFIX = '';
+
+export default {
+  USERS: `${TESTBIZ_PREFIX}/users`, // jsonplaceholder의 users 가져오기 param: null.
+  PHOTOS: `${TESTBIZ_PREFIX}/photos`, // jsonplaceholder의 photos 가져오기 param: null.
+  ...
+};
+                          </pre>
+                          <ul class="list-unstyled">
+                            <li>
+                              <i class="ace-icon fa fa-caret-right blue"></i>
+                              api url만 모아놓은 객체를 export 한다.
+                            </li>
+                            <li>
+                              <i class="ace-icon fa fa-caret-right blue"></i>
+                              '업무명_PREFIX' 상수값은 api마다 비슷한 url 텍스트가 있다면 따로 상수로 생성하여 사용한다.
+                            </li>
+                          </ul>
+                        </li>
+                        <li>
+                          <b>업무명/index.js</b>
+                          <pre class="prettyprint linenums lang-js" style="margin-bottom: 0;">
+import http from '@/service/http'; // http객체
+// 각 업무별 url을 따로 분리해서 관리
+import URL from '@/api/testBiz/url';
+
+export default {
+  getNews(testParam) {
+    return http.get(URL.USERS, { params: testParam });
+  },
+  getPhotos(param) {
+    return http.get(URL.PHOTOS, { params: param });
+  },
+};
+
+                          </pre>
+                          <ul class="list-unstyled">
+                            <li>
+                              <i class="ace-icon fa fa-caret-right blue"></i>
+                              필요 api 함수를 생성하여 return한다.
+                            </li>
+                            <li>
+                              <i class="ace-icon fa fa-caret-right blue"></i>
+                              생성된 api함수는 추 후 actions쪽에서 import하여 사용한다.
                             </li>
                           </ul>
                         </li>
