@@ -38,6 +38,12 @@
               <span class="blue bolder">input text 접근성 관련 참조 : </span>
               <a href="https://neul-carpediem.tistory.com/266" target="_blank">https://neul-carpediem.tistory.com/266</a>
               <br />
+              <span class="blue bolder">javascript 확장기능들 모음 참조 : </span>
+              <a href="https://locutus.io/php/" target="_blank">https://locutus.io/php/</a>
+              <br />
+              <span class="blue bolder">input type설정 관련 참조 : </span>
+              <a href="https://www.filamentgroup.com/lab/type-number.html" target="_blank">https://www.filamentgroup.com/lab/type-number.html</a>
+              <br />
             </div>
 
             <div class="alert alert-danger hidden-sm hidden-xs">
@@ -82,6 +88,9 @@
                           <p>
                             <span class="bolder green">&lt;ui-text-input&gt;</span>
                             으로 입력하고자 하는 위치에 코딩하고 다양한 옵선 속성을 적용하여 설정 합니다.
+                            <br />
+                            <span class="bolder green">&lt;ui-text-input v-model="값 연결"&gt;</span>
+                            모든 UiTextInput은 <span class="bolder blue">v-model</span>로 data 값을 연결하여 입력된 데이터를 유지할 수 있게 한다.
                           </p>
                           <div style="border: 1px solid #e2e2e2;">
                             <ui-tabs selected-index="1">
@@ -89,15 +98,25 @@
                                 <pre class="prettyprint linenums lang-html">
 &lt;template&gt;
 &lt;div&gt;
-  &lt;ui-text-input&gt;&lt;/ui-text-input&gt;
+  &lt;ui-text-input v-model="testValue"&gt;&lt;/ui-text-input&gt;
 &lt;/div&gt;
 &lt;/template&gt;
+&lt;script&gt;
+export default {
+  data() {
+    return {
+      testValue: '',
+    };
+  },
+}
+&lt;/script&gt;
                                 </pre>
                               </ui-tab>
                               <ui-tab title="Demo">
-                                <ui-text-input v-model="testValue" label="숫자 입력" message="숫자값을 입력하세요." type="number"></ui-text-input>
-                                <ui-text-input v-model="testValue2" label="label <span style='color: red;'>Text</span>" message="값을 입력하세요."></ui-text-input>
-                                <ui-text-input label="Full Name"></ui-text-input>
+                                <ui-text-input v-model="testValue" label="Full Name"></ui-text-input>
+                                <ui-text-input v-model="testValue2" label="숫자 입력" message="숫자값을 입력하세요." type="number"></ui-text-input>
+                                <ui-text-input v-model="testValue3" label="message-area옵션 테스트" message-area="auto" message="값을 입력하세요."></ui-text-input>
+                                <ui-text-input v-model="testValue4" label="format속성 테스트" message-area="auto" message="값을 입력하세요." type="number" format="currency"></ui-text-input>
                               </ui-tab>
                             </ui-tabs>
                           </div>
@@ -172,8 +191,10 @@ export default {
   },
   data() {
     return {
-      testValue: '123',
-      testValue2: 'abc',
+      testValue: '',
+      testValue2: '123',
+      testValue3: 'abc',
+      testValue4: '',
       tabData: [
         { title: 'Home', content: 'Home panel' },
         { title: 'Profile', content: 'Profile panel' },

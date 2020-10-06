@@ -22,7 +22,8 @@ module.exports = {
     'no-debugger': 'off',
     'vue/html-closing-bracket-newline': 'off',
     'vue/no-v-html': 'off',
-    'linebreak-style': ['error', 'windows'],
+    'linebreak-style': 'off',
+    'no-useless-escape': 'off',
     'prettier/prettier': [
       'error',
       {

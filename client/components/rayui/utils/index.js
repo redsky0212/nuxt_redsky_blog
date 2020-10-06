@@ -34,6 +34,19 @@ class Utils {
   isError(value) {
     return value instanceof Error && typeof value.message !== 'undefined';
   }
+  // 다양한 형식의 포맷 제공 함수
+  format(value, type) {
+    let returnVal = {
+      value: value,
+      formatValue: value,
+    };
+
+    if (type === 'currency') {
+      returnVal.formatValue = new Intl.NumberFormat().format(value);
+    }
+
+    return returnVal;
+  }
 }
 
 export default new Utils();

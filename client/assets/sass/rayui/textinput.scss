@@ -101,6 +101,16 @@
           box-shadow: none;
           color: rgba(0, 0, 0, 0.87); // 테마적용 시
         }
+        /* Remove Arrows,Spinners(input 오른쪽에 위아래 화살표 숨기기) */
+        /* Chrome, Safari, Edge, Opera */
+        input::-webkit-outer-spin-button,input::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+        /* Firefox */
+        input[type=number] {
+          -moz-appearance: textfield;
+        }
       }
     }
     .ui-text-input-detail {
