@@ -59,6 +59,9 @@
               <span class="red" style="text-decoration: line-through;">focus 되었을때 밑줄, floating label처리 </span>
               <br />
               <i class="ace-icon fa fa-angle-right bigger-110"></i>
+              <span class="red">number 통화포맷시 콤마처리 및 커서포지션 버그 수정 </span>
+              <br />
+              <i class="ace-icon fa fa-angle-right bigger-110"></i>
               <span class="red">validation처리 (error, warning, normal) </span>
               <br />
               <i class="ace-icon fa fa-angle-right bigger-110"></i>
@@ -116,7 +119,8 @@ export default {
                                 <ui-text-input v-model="testValue" label="Full Name"></ui-text-input>
                                 <ui-text-input v-model="testValue2" label="숫자 입력" message="숫자값을 입력하세요." type="number"></ui-text-input>
                                 <ui-text-input v-model="testValue3" label="message-area옵션 테스트" message-area="auto" message="값을 입력하세요."></ui-text-input>
-                                <ui-text-input v-model="testValue4" label="format속성 테스트" message-area="auto" message="값을 입력하세요." type="number" format="currency"></ui-text-input>
+                                <ui-text-input v-model="testValue4" label="format속성 테스트 (currency)" message-area="auto" message="값을 입력하세요." type="number" format="currency"></ui-text-input>
+                                <ui-text-input v-model="testValue5" label="format속성 테스트 (only number)" message-area="auto" message="값을 입력하세요." type="number"></ui-text-input>
                               </ui-tab>
                             </ui-tabs>
                           </div>
@@ -194,7 +198,8 @@ export default {
       testValue: '',
       testValue2: '123',
       testValue3: 'abc',
-      testValue4: '',
+      testValue4: '34242.4324',
+      testValue5: '342424324',
       tabData: [
         { title: 'Home', content: 'Home panel' },
         { title: 'Profile', content: 'Profile panel' },

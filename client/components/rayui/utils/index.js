@@ -34,15 +34,35 @@ class Utils {
   isError(value) {
     return value instanceof Error && typeof value.message !== 'undefined';
   }
+  // 특수문자 검증 및 제거
+  removeRegExp(value) {
+    const str = value.toString();
+    let returnVal = '';
+    // 소수점은 제외
+    // const regExp = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi;
+    const regExp = /[\{\}\[\]\/?,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi;
+    if (regExp.test(str)) {
+      //특수문자 제거
+      returnVal = str.replace(regExp, '');
+    } else {
+      returnVal = str;
+    }
+    return returnVal;
+  }
   // 다양한 형식의 포맷 제공 함수
   format(value, type) {
     let returnVal = {
-      value: value,
+      value: this.removeRegExp(value),
       formatValue: value,
     };
 
     if (type === 'currency') {
-      returnVal.formatValue = new Intl.NumberFormat().format(value);
+      // js기본제공 함수 사용법
+      // returnVal.formatValue = new Intl.NumberFormat().format(returnVal.value);
+      const reg = /(^[+-]?\d+)(\d{3})/;
+      let str = returnVal.value;
+      while (reg.test(str)) str = str.replace(reg, '$1' + ',' + '$2');
+      returnVal.formatValue = str;
     }
 
     return returnVal;

@@ -4,7 +4,21 @@
       <div class="ui-text-input-input">
         <div class="ui-text-input-wrapper">
           <label :for="inputKey" class="ui-text-input-label" style="left: 0; right: auto; position: absolute;" v-html="label"></label>
-          <input :id="inputKey" :type="setType" :pattern="pattern" :value="setValue.formatValue" @focus="onFocus" @blur="onBlur" @input="onInput" @keypress="onKeypress" />
+          <input
+            v-format-change
+            :data-position="position"
+            :data-prev-value="prevValue"
+            :data-type="type"
+            :data-format="format"
+            :id="inputKey"
+            :type="setType"
+            :pattern="pattern"
+            :value="formatedValue"
+            @focus="onFocus"
+            @blur="onBlur"
+            @input="onInput"
+            @keypress="onKeypress"
+          />
         </div>
       </div>
       <div class="ui-text-input-detail" v-if="showDetail">
@@ -18,7 +32,28 @@
   </div>
 </template>
 <script>
+// TODO: 숫자 타입에 문자 들어가는 버그.
+// TODO: only number에서 문자키 입력시 하나가 계속 들어가는 현상
 export default {
+  directives: {
+    // 통화포맷 설정시 커서위치가 맨 뒤로 이동해버리는 버그 관련 position조정을 위한 directive.
+    formatChange: {
+      update(event) {
+        if (event.dataset.type === 'number' && event.dataset.format === 'currency') {
+          let positionDiff = 0;
+          if (event.dataset.prevValue.length === event.value.length - 1) {
+            positionDiff = 1;
+          }
+          if (event.dataset.prevValue.length === event.value.length + 1) {
+            positionDiff = -1;
+          }
+          if (event.selectionEnd !== event.dataset.position) {
+            event.selectionEnd = Number(event.dataset.position) + positionDiff;
+          }
+        }
+      },
+    },
+  },
   props: {
     value: {
       type: String,
@@ -72,6 +107,9 @@ export default {
       g_inputStatusValue: this.$rayui.inputStatusValue,
       isFocus: false,
       pattern: this.type === 'number' ? '[0-9]*' : '', // number타입일때 모바일 숫자 키패드 보이기.
+      formatedValue: this.processFormatting(this.value, this.format),
+      prevValue: '',
+      position: 0,
     };
   },
   computed: {
@@ -99,11 +137,8 @@ export default {
         return false;
       }
     },
-    setValue: function () {
-      return this.$rayui.utils.format(this.value, this.format);
-    },
     setType: function () {
-      if (this.type === 'number') {
+      if (this.type === 'number' && this.format === 'currency') {
         return 'text';
       } else {
         return this.type;
@@ -136,23 +171,12 @@ export default {
         }
       });
     },
-    // text input 이벤트 ====================================
-    onFocus(event) {
-      this.isFocus = true;
-    },
-    onBlur(event) {
-      this.isFocus = false;
-    },
-    onInput(event) {
-      this.$emit('input', event.currentTarget.value);
-    },
-    onKeypress(event) {
-      if (this.type === 'number') {
-        // 숫자만 입력 체크
-        if (!this.onlyForCurrency(event)) {
-          event.preventDefault();
-        }
+    // 값을 format type에 맞게 포맷팅한다.
+    processFormatting(value, type) {
+      if (!value) {
+        return '';
       }
+      return this.$rayui.utils.format(value, type).formatValue;
     },
     // 금액관련 값 체크
     onlyForCurrency(event) {
@@ -167,6 +191,29 @@ export default {
       // }
 
       return true;
+    },
+    // text input 이벤트 ====================================
+    onFocus(event) {
+      this.isFocus = true;
+    },
+    onBlur(event) {
+      this.isFocus = false;
+    },
+    onInput(event) {
+      const currVal = event.currentTarget.value;
+      this.prevValue = currVal;
+      this.position = event.currentTarget.selectionStart;
+      let targetValue = this.$rayui.utils.removeRegExp(currVal);
+      this.formatedValue = this.processFormatting(targetValue, this.format);
+      this.$emit('input', this.formatedValue);
+    },
+    onKeypress(event) {
+      if (this.type === 'number' && this.format === 'currency') {
+        // 통화 숫자만 입력 체크
+        if (!this.onlyForCurrency(event)) {
+          event.preventDefault();
+        }
+      }
     },
   },
 };
