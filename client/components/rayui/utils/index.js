@@ -53,7 +53,7 @@ class Utils {
   removeRegString(value) {
     const str = value.toString();
     let returnVal = '';
-    // 숫자와 , . 만 남기고 모두 지우기
+    // 숫자와 , .만 남기고 모두 지우기
     const regExp = /([^(0-9)\.\,])/gi;
     if (regExp.test(str)) {
       //특수문자 제거

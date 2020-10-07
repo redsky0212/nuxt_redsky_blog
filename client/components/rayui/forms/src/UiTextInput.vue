@@ -123,7 +123,6 @@ export default {
   computed: {
     changeClassRoot: function () {
       const obj = {};
-
       obj['ui-text-input-focus'] = this.isFocus;
       if (this.isFocus) {
         obj['ui-text-input-isvalue'] = true;
@@ -191,7 +190,16 @@ export default {
       const keyCode = event.keyCode ? event.keyCode : event.which;
       // 소수점 하나만 체크
       if ((keyCode < 48 || keyCode > 57) && (keyCode !== 46 || this.value.indexOf('.') !== -1)) {
-        return false;
+        // + , - 키
+        if (keyCode === 43 || keyCode === 45) {
+          if (this.value.indexOf('-') !== -1 || this.value.indexOf('+') !== -1) {
+            return false;
+          } else {
+            return true;
+          }
+        } else {
+          return false;
+        }
       }
       // 소수점 이하 두자리 체크
       // if (this.value !== '' && this.value.indexOf('.') > -1 && this.value.split('.')[1].length > 2) {
@@ -221,7 +229,7 @@ export default {
       this.$emit('input', this.formatedValue);
     },
     onKeypress(event) {
-      if (this.type === 'number' && this.format === 'currency') {
+      if (this.type === 'number') {
         // 통화 숫자만 입력 체크
         if (!this.onlyForCurrency(event)) {
           event.preventDefault();
