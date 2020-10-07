@@ -49,6 +49,20 @@ class Utils {
     }
     return returnVal;
   }
+  // 숫자,.만 남기고 모두 제거
+  removeRegString(value) {
+    const str = value.toString();
+    let returnVal = '';
+    // 숫자와 , . 만 남기고 모두 지우기
+    const regExp = /([^(0-9)\.\,])/gi;
+    if (regExp.test(str)) {
+      //특수문자 제거
+      returnVal = str.replace(regExp, '');
+    } else {
+      returnVal = str;
+    }
+    return returnVal;
+  }
   // 다양한 형식의 포맷 제공 함수
   format(value, type) {
     let returnVal = {

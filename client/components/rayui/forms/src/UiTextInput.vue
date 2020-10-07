@@ -210,9 +210,12 @@ export default {
     },
     onInput(event) {
       const currVal = event.currentTarget.value;
+      let targetValue = currVal;
+      if (this.type === 'number') {
+        targetValue = this.$rayui.utils.removeRegString(currVal);
+      }
       this.prevValue = currVal;
       this.position = event.currentTarget.selectionStart;
-      let targetValue = this.$rayui.utils.removeRegExp(currVal);
       this.formatedValue = this.processFormatting(targetValue, this.format);
       this.targetElemId = event.currentTarget.id; // 수정된 값의 input target을 저장.
       this.$emit('input', this.formatedValue);
