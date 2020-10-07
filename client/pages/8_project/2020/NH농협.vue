@@ -28,6 +28,11 @@
                 http://blog.naver.com/PostView.nhn?blogId=ecjjmrikqo&logNo=40196155537&parentCategoryNo=&categoryNo=61&viewDate=&isShowPopularPosts=true&from=search
               </a>
               <br />
+              <span class="blue bolder">jsp 강좌 : </span>
+              <a href="https://www.linux.co.kr/jsp/" target="_blank">
+                https://www.linux.co.kr/jsp/
+              </a>
+              <br />
             </div>
 
             <div class="alert alert-danger hidden-sm hidden-xs">

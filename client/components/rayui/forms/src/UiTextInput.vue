@@ -10,10 +10,12 @@
             :data-prev-value="prevValue"
             :data-type="type"
             :data-format="format"
+            :data-target="targetElemId"
             :id="inputKey"
             :type="setType"
             :pattern="pattern"
             :value="formatedValue"
+            autocomplete="off"
             @focus="onFocus"
             @blur="onBlur"
             @input="onInput"
@@ -39,6 +41,10 @@ export default {
     // 통화포맷 설정시 커서위치가 맨 뒤로 이동해버리는 버그 관련 position조정을 위한 directive.
     formatChange: {
       update(event) {
+        // 값이 수정된 대상 input일때만 로직이 수행 되게 하기 위한 체크.
+        if (event.dataset.target !== event.id) {
+          return;
+        }
         if (event.dataset.type === 'number' && event.dataset.format === 'currency') {
           let positionDiff = 0;
           if (event.dataset.prevValue.length === event.value.length - 1) {
@@ -48,6 +54,7 @@ export default {
             positionDiff = -1;
           }
           if (event.selectionEnd !== event.dataset.position) {
+            // 여러개의 input의 focus이동을 했을때도 update가 발생되어 아래코드 적용 시 모바일에서 포커스 이동이 되지 않는 버그가 있음.
             event.selectionEnd = Number(event.dataset.position) + positionDiff;
           }
         }
@@ -110,6 +117,7 @@ export default {
       formatedValue: this.processFormatting(this.value, this.format),
       prevValue: '',
       position: 0,
+      targetElemId: '',
     };
   },
   computed: {
@@ -198,6 +206,7 @@ export default {
     },
     onBlur(event) {
       this.isFocus = false;
+      this.targetElemId = '';
     },
     onInput(event) {
       const currVal = event.currentTarget.value;
@@ -205,6 +214,7 @@ export default {
       this.position = event.currentTarget.selectionStart;
       let targetValue = this.$rayui.utils.removeRegExp(currVal);
       this.formatedValue = this.processFormatting(targetValue, this.format);
+      this.targetElemId = event.currentTarget.id; // 수정된 값의 input target을 저장.
       this.$emit('input', this.formatedValue);
     },
     onKeypress(event) {
