@@ -5,7 +5,7 @@
         Vue UI 개발 (개인 프로젝트)
         <small>
           <i class="ace-icon fa fa-angle-double-right"></i>
-          VueJs를 이용한 UI 라이브러리 개발 (2019.08.19 ~ )
+          VueJs를 이용한 UI 라이브러리 개발 (2019.08.19 ~ ) github : <a href="https://github.com/redsky0212/nuxt_redsky_blog">https://github.com/redsky0212/nuxt_redsky_blog</a>
         </small>
       </h1>
     </div>

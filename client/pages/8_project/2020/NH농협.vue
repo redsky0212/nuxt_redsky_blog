@@ -5,7 +5,7 @@
         NH농협
         <small>
           <i class="ace-icon fa fa-angle-double-right"></i>
-          jsp개발
+          jsp개발 개인종합자산관리서비스(PFM) (2020.10.08 ~ 2020.12.23) 2개월15일
         </small>
       </h1>
     </div>
